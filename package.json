@@ -3,11 +3,15 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "start": "ng serve --aot --port 8888",
+    "build": "ng build --aot --prod",
+    "test": "ng test --watch",
+    "test:cli": "ng test --no-watch",
+    "prettier": "prettier --write 'src/**/*.*'",
+    "tslint": "tslint './src/**/*.ts' --fix",
+    "lint": "npm run prettier && npm run tslint",
+    "e2e": "ng e2e",
+    "deploy": "firebase deploy --only hosting,firestore:rules"
   },
   "private": true,
   "dependencies": {
