@@ -62,7 +62,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-template:build"
+            "browserTarget": "angular-template:build",
+            "aot": true,
+            "port": 8888
           },
           "configurations": {
             "production": {
