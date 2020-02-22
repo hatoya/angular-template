@@ -1,0 +1,22 @@
+box: hatoya/docker-firebase
+
+test:
+  steps:
+    - npm-install
+    - script:
+      name: npm run build
+      code: npm run build
+
+deploy:
+  steps:
+    - npm-install
+    - script:
+      name: npm run build
+      code: npm run build
+    - script:
+      name: npm run deploy
+      code: npm run deploy
+  after-steps:
+    - maestrohealthcaretechnologies/slack-notify@0.3.0:
+      url: $SLACK_WEBHOOK_URL
+      icon-url: https://secure.gravatar.com/avatar/33a5bfbcf8a2b90f40e849b6f1fa5eeb
