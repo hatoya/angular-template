@@ -1,1 +1,3 @@
-<router-outlet></router-outlet>
+<div class="app" *ngIf="store$ | async as state">
+  <router-outlet></router-outlet>
+</div>
