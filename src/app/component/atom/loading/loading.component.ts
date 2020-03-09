@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { faCircleNotch } from '@fortawesome/pro-solid-svg-icons';
 
 @Component({
   selector: 'app-loading',
@@ -7,6 +8,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoadingComponent implements OnInit {
+  faCircleNotch = faCircleNotch;
+
   constructor() {}
 
   ngOnInit(): void {}
