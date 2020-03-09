@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "angular-template-a2ff7"
+  },
+  "targets": {
+    "angular-template-a2ff7": {
+      "hosting": {
+        "angular-template": [
+          "angular-template-a2ff7"
+        ]
+      }
+    }
   }
 }
