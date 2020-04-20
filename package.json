@@ -24,7 +24,7 @@
     "@angular/platform-browser": "~9.1.2",
     "@angular/platform-browser-dynamic": "~9.1.2",
     "@angular/router": "~9.1.2",
-    "@datorama/akita": "^4.19.2",
+    "@datorama/akita": "^4.23.0",
     "@datorama/akita-ng-entity-service": "^1.0.0",
     "@fortawesome/angular-fontawesome": "~0.6.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
