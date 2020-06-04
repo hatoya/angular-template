@@ -11,9 +11,6 @@ deploy:
   steps:
     - npm-install
     - script:
-      name: npm run build
-      code: npm run build
-    - script:
       name: npm run deploy
       code: npm run deploy
   after-steps:
