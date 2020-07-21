@@ -11,7 +11,11 @@ export class FormComponent implements OnInit {
   formGroup: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
-    this.formGroup = this.formBuilder.group({ name: ['', Validators.required], address: ['', Validators.required] });
+    this.formGroup = this.formBuilder.group({
+      name: ['', Validators.required],
+      address: ['', Validators.required],
+      body: ['', Validators.required]
+    });
   }
 
   ngOnInit(): void {}
