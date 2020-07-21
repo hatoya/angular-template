@@ -5,7 +5,8 @@ import { IndexStore } from './index.store';
 export class IndexService {
   constructor(private indexStore: IndexStore) {}
 
-  switchLoadingFlag(flag: boolean) {
+  // Akita
+  updateLoading(flag: boolean) {
     this.indexStore.setLoading(flag);
   }
 
