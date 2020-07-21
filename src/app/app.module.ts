@@ -15,9 +15,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoadingComponent } from './component/atom/loading/loading.component';
 import { FormComponent } from './component/page/form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TextComponent } from './component/atom/text/text.component';
 
 @NgModule({
-  declarations: [AppComponent, IndexComponent, LoadingComponent, FormComponent],
+  declarations: [AppComponent, IndexComponent, LoadingComponent, FormComponent, TextComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
