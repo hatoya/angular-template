@@ -1,1 +1,9 @@
-<div class="form"></div>
+<div class="form" [formGroup]="formGroup">
+  <div class="form__wrapper">
+    <app-text label="Name" formControlName="name"></app-text>
+    <app-text label="Address" formControlName="address"></app-text>
+  </div>
+  <div class="form__button"></div>
+  <p class="form__value">VALID: {{ formGroup.valid }}</p>
+  <p class="form__value">VALUE: {{ formGroup.value | json }}</p>
+</div>
