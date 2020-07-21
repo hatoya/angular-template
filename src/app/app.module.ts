@@ -13,9 +13,10 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoadingComponent } from './component/atom/loading/loading.component';
+import { FormComponent } from './component/page/form/form.component';
 
 @NgModule({
-  declarations: [AppComponent, IndexComponent, LoadingComponent],
+  declarations: [AppComponent, IndexComponent, LoadingComponent, FormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
