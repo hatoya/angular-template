@@ -17,9 +17,10 @@ import { FormComponent } from './component/page/form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextComponent } from './component/atom/text/text.component';
 import { TextareaComponent } from './component/atom/textarea/textarea.component';
+import { SelectComponent } from './component/atom/select/select.component';
 
 @NgModule({
-  declarations: [AppComponent, IndexComponent, LoadingComponent, FormComponent, TextComponent, TextareaComponent],
+  declarations: [AppComponent, IndexComponent, LoadingComponent, FormComponent, TextComponent, TextareaComponent, SelectComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
