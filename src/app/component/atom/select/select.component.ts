@@ -1,12 +1,11 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, ViewChild, ElementRef, Self } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, Self } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { IOption } from 'src/app/model/option.model';
 
 @Component({
   selector: 'app-select',
   templateUrl: './select.component.html',
-  styleUrls: ['./select.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./select.component.scss']
 })
 export class SelectComponent implements ControlValueAccessor, OnInit {
   @Input() type = 'default';
