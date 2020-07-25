@@ -4,8 +4,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 @Component({
   selector: 'app-textarea',
   templateUrl: './textarea.component.html',
-  styleUrls: ['./textarea.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./textarea.component.scss']
 })
 export class TextareaComponent implements ControlValueAccessor, OnInit {
   @Input() type = 'default';
