@@ -26,4 +26,12 @@ export class FormComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  submit() {
+    if (this.formGroup.invalid) {
+      this.formGroup.markAllAsTouched();
+      console.log(this.formGroup);
+      return;
+    }
+  }
 }
