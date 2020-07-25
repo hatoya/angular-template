@@ -15,9 +15,22 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoadingComponent } from './component/atom/loading/loading.component';
 import { FormComponent } from './component/page/form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TextComponent } from './component/atom/text/text.component';
+import { TextareaComponent } from './component/atom/textarea/textarea.component';
+import { SelectComponent } from './component/atom/select/select.component';
+import { ButtonComponent } from './component/atom/button/button.component';
 
 @NgModule({
-  declarations: [AppComponent, IndexComponent, LoadingComponent, FormComponent],
+  declarations: [
+    AppComponent,
+    IndexComponent,
+    LoadingComponent,
+    FormComponent,
+    TextComponent,
+    TextareaComponent,
+    SelectComponent,
+    ButtonComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

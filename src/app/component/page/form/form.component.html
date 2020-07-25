@@ -1,1 +1,12 @@
-<div class="form"></div>
+<div class="form" [formGroup]="formGroup">
+  <div class="form__wrapper">
+    <app-select label="Category" blank="" [options]="categoryOptions" formControlName="category"></app-select>
+    <app-text label="Name" formControlName="name"></app-text>
+    <app-text label="Address" formControlName="address"></app-text>
+    <app-textarea label="Body" formControlName="body"></app-textarea>
+    <app-button (clickButton)="submit()">Send</app-button>
+  </div>
+  <div class="form__button"></div>
+  <p class="form__value">VALID: {{ formGroup.valid }}</p>
+  <p class="form__value">VALUE: {{ formGroup.value | json }}</p>
+</div>

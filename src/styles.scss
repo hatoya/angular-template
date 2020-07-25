@@ -80,30 +80,6 @@ th {
   vertical-align: top;
 }
 
-label {
-  line-height: 16px;
-  font-size: 14px;
-}
-
-input {
-  font-family: $defaultFamily;
-}
-
-textarea {
-  display: block;
-  position: relative;
-  width: 100%;
-  height: 100px;
-  padding: 10px;
-  font-size: 14px;
-  font-family: $defaultFamily;
-  border: 1px solid $borderColor;
-}
-
-select {
-  font-family: $defaultFamily;
-}
-
 .u-pc-hide {
   @include pc-only {
     display: none !important;

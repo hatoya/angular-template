@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
 
+## Production
+
+https://angular-template-a2ff7.web.app/
+
 ## Development server
 
 Run `npm start` for a dev server. Navigate to `http://localhost:8888/`. The app will automatically reload if you change any of the source files.
