@@ -1,5 +1,5 @@
 <div class="select">
-  <p class="select__label" *ngIf="label">{{ label }}</p>
+  <p class="select__label" [class.-required]="required" *ngIf="label">{{ label }}</p>
   <select
     #select
     [disabled]="!options.length"

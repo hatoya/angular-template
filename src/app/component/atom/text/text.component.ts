@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, Self } from '@angular/core';
-import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { ControlValueAccessor, NgControl, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-text',
@@ -13,6 +13,8 @@ export class TextComponent implements ControlValueAccessor, OnInit {
 
   @ViewChild('text') element: ElementRef;
 
+  required = false;
+
   onChange: (value: any) => void;
   onTouched: (value: any) => void;
 
@@ -20,7 +22,9 @@ export class TextComponent implements ControlValueAccessor, OnInit {
     this.control.valueAccessor = this;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.required = this.control.control.validator({} as AbstractControl)?.required || false;
+  }
 
   // ControlValueAccessor
   writeValue(value: any) {

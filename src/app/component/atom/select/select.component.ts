@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, Self } from '@angular/core';
-import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { ControlValueAccessor, NgControl, AbstractControl } from '@angular/forms';
 import { IOption } from 'src/app/model/option.model';
 
 @Component({
@@ -15,6 +15,8 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
 
   @ViewChild('select') element: ElementRef;
 
+  required = false;
+
   onChange: (value: any) => void;
   onTouched: (value: any) => void;
 
@@ -22,7 +24,9 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
     this.control.valueAccessor = this;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.required = this.control.control.validator({} as AbstractControl)?.required || false;
+  }
 
   // ControlValueAccessor
   writeValue(value: any) {

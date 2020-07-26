@@ -10,7 +10,7 @@
   }
 }
 
-@mixin required() {
+@mixin label() {
   &.-required {
     &::after {
       content: '*';
