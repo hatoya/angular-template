@@ -1,0 +1,19 @@
+@import '../../../../scss/import.scss';
+
+::ng-deep app-radio {
+  display: block;
+}
+
+.radio {
+  &__label {
+    @include label;
+  }
+  &__wrapper {
+  }
+  &__wrapper-list {
+    input,
+    label {
+      cursor: pointer;
+    }
+  }
+}

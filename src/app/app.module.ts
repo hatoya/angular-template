@@ -19,6 +19,7 @@ import { TextComponent } from './component/atom/text/text.component';
 import { TextareaComponent } from './component/atom/textarea/textarea.component';
 import { SelectComponent } from './component/atom/select/select.component';
 import { ButtonComponent } from './component/atom/button/button.component';
+import { RadioComponent } from './component/atom/radio/radio.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ButtonComponent } from './component/atom/button/button.component';
     TextComponent,
     TextareaComponent,
     SelectComponent,
-    ButtonComponent
+    ButtonComponent,
+    RadioComponent
   ],
   imports: [
     BrowserModule,
