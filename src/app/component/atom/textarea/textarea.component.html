@@ -1,5 +1,5 @@
 <div class="textarea">
-  <p class="textarea__label" *ngIf="label">{{ label }}</p>
+  <p class="textarea__label" [class.-required]="required" *ngIf="label">{{ label }}</p>
   <textarea
     #textarea
     [class.-error]="control.touched && control.invalid"

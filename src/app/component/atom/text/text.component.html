@@ -1,5 +1,5 @@
 <div class="text">
-  <p class="text__label" *ngIf="label !== null">{{ label }}</p>
+  <p class="text__label" [class.-required]="required" *ngIf="label !== null">{{ label }}</p>
   <input
     #text
     [placeholder]="placeholder"
