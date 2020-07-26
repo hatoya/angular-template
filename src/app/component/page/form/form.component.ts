@@ -30,7 +30,6 @@ export class FormComponent implements OnInit {
   submit() {
     if (this.formGroup.invalid) {
       this.formGroup.markAllAsTouched();
-      console.log(this.formGroup);
       return;
     }
   }
