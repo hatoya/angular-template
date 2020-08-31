@@ -2,15 +2,17 @@
 
 .form {
   padding: 40px;
-  &__wrapper {
-    > * {
-      &:not(:first-child) {
-        margin-top: 20px;
-      }
+  > * {
+    &:not(:first-child) {
+      margin-top: 20px;
     }
   }
   &__button {
-    margin-top: 20px;
+    display: flex;
+    > * {
+      display: block;
+      margin-right: 10px;
+    }
   }
   &__value {
     margin-top: 20px;
