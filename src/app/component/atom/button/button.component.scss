@@ -39,44 +39,20 @@
     &::selection {
       background: none;
     }
-    &.-login {
-      line-height: 50px;
-      box-shadow: none;
+  }
+  &:hover & {
+    &__popup {
+      opacity: 1;
     }
-    &.-flat {
+  }
+  &.-flat & {
+    &__button {
       color: #8f9cb1;
       background: none;
       box-shadow: none;
       &:hover {
         background: rgba(#8f9cb1, 0.08);
       }
-    }
-    &.-text {
-      display: inline-block;
-      line-height: 1;
-      padding: 0;
-      color: $brandColor;
-      background: none;
-      box-shadow: none;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-    &.-goal {
-      display: inline-block;
-      line-height: 1;
-      padding: 0;
-      color: $grayColor;
-      background: none;
-      box-shadow: none;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-  &:hover & {
-    &__popup {
-      opacity: 1;
     }
   }
   &.-disabled {

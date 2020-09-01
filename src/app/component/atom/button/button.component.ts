@@ -7,6 +7,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent implements OnInit {
+  @Input() type = 'default';
   @Input() disabled = false;
   @Input() popup = '';
 
