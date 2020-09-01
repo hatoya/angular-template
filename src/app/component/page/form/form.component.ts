@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IOption } from 'src/app/model/option.model';
 
 @Component({
@@ -15,22 +15,49 @@ export class FormComponent implements OnInit {
     { value: 'bbb', label: 'BBB' },
     { value: 'ccc', label: 'CCC' }
   ];
+  genderOptins: IOption<string, string>[] = [
+    { value: 'male', label: 'Male' },
+    { value: 'female', label: 'Female' }
+  ];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private changeDetectorRef: ChangeDetectorRef) {}
+
+  ngOnInit(): void {
+    this.createFormGroup();
+    this.patchValue();
+  }
+
+  emit() {
+    this.changeDetectorRef.detectChanges();
+  }
+
+  createFormGroup() {
     this.formGroup = this.formBuilder.group({
       category: ['', Validators.required],
       name: ['', Validators.required],
       address: ['', Validators.required],
-      body: ['', Validators.required]
+      body: ['', Validators.required],
+      gender: ['', Validators.required]
     });
   }
-
-  ngOnInit(): void {}
 
   submit() {
     if (this.formGroup.invalid) {
       this.formGroup.markAllAsTouched();
       return;
     }
+  }
+
+  patchValue() {
+    setTimeout(() => {
+      this.formGroup.patchValue({
+        category: 'aaa',
+        name: 'Hayato Wada',
+        address: 'hatoyab@gmail.com',
+        body: `aaaaaa\nbbbbbbbbb\ncccccccccccccccc`,
+        gender: 'female'
+      });
+      this.emit();
+    });
   }
 }

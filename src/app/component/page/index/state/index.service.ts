@@ -6,8 +6,8 @@ export class IndexService {
   constructor(private indexStore: IndexStore) {}
 
   // Akita
-  updateLoading(flag: boolean) {
-    this.indexStore.setLoading(flag);
+  updateLoading(loading: boolean) {
+    this.indexStore.update({ loading });
   }
 
   resetStore() {

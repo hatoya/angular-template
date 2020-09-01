@@ -5,8 +5,9 @@ import { AppStore } from './app.store';
 export class AppService {
   constructor(private appStore: AppStore) {}
 
-  switchLoadingFlag(flag: boolean) {
-    this.appStore.setLoading(flag);
+  // Akita
+  updateLoading(loading: boolean) {
+    this.appStore.update({ loading });
   }
 
   resetStore() {

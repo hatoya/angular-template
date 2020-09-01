@@ -1,8 +1,8 @@
-import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IndexState } from './state/index.store';
 import { IndexQuery } from './state/index.query';
 import { IndexService } from './state/index.service';
+import { IndexState } from './state/index.store';
 
 @Component({
   selector: 'app-index',

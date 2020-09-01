@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, Self } from '@angular/core';
-import { ControlValueAccessor, NgControl, AbstractControl } from '@angular/forms';
+import { Component, ElementRef, Input, OnInit, Self, ViewChild } from '@angular/core';
+import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'app-text',
@@ -23,7 +23,8 @@ export class TextComponent implements ControlValueAccessor, OnInit {
   }
 
   ngOnInit(): void {
-    this.required = this.control.control.validator({} as AbstractControl)?.required || false;
+    const validator = this.control.control.validator;
+    this.required = validator ? validator({} as AbstractControl).required || false : false;
   }
 
   // ControlValueAccessor

@@ -11,6 +11,8 @@
 }
 
 @mixin label() {
+  white-space: nowrap;
+  margin-bottom: 6px;
   &.-required {
     &::after {
       content: '*';
