@@ -31,5 +31,5 @@ jobs:
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       - uses: rtCamp/action-slack-notify@master
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        # env:
+        #   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
