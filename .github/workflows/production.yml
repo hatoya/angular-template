@@ -34,5 +34,11 @@ jobs:
         with:
           status: ${{ job.status }}
           fields: repo,message,commit,author,action,workflow,job,took
+          custom_payload: |
+            {
+              username: 'GitHub Actions',
+              icon_emoji: ':octocat:'
+            }
         env:
+          GITHUB_TOKEN: ${{ github.token }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
