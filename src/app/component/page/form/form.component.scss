@@ -1,20 +1,33 @@
 @import '../../../../scss/import.scss';
 
 .form {
-  padding: 40px;
-  > * {
-    &:not(:first-child) {
-      margin-top: 20px;
+  padding: 40px 0;
+  &__wrapper {
+    width: $defaultWidth;
+    margin: 0 auto;
+    > * {
+      &:not(:first-child) {
+        margin-top: 20px;
+      }
     }
   }
-  &__button {
+  &__wrapper-search {
+    display: flex;
+    align-items: flex-end;
+    > * {
+      &:not(:first-child) {
+        margin-left: 10px;
+      }
+    }
+  }
+  &__wrapper-button {
     display: flex;
     > * {
       display: block;
       margin-right: 10px;
     }
   }
-  &__value {
+  &__wrapper-value {
     margin-top: 20px;
   }
 }
