@@ -32,16 +32,8 @@ jobs:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       - uses: 8398a7/action-slack@v3
         with:
-          status: custom
+          status: ${{ job.status }}
           fields: repo,message,commit,author,action,workflow,job,took
-          custom_payload: |
-            {
-              username: 'GitHub Actions',
-              icon_emoji: ':octocat:',
-              attachments: [{
-                color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning'
-              }]
-            }
         env:
           GITHUB_TOKEN: ${{ github.token }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
