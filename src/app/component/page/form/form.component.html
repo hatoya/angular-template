@@ -13,8 +13,9 @@
     <app-textarea label="Body" formControlName="body"></app-textarea>
     <app-radio [options]="genderOptins" formControlName="gender"></app-radio>
     <div class="form__wrapper-button">
+      <app-button type="flat">Cancel</app-button>
       <app-button (clickButton)="emit()">Emit</app-button>
-      <app-button (clickButton)="submit()">Submit</app-button>
+      <app-button [popup]="'VALID: ' + formGroup.valid" (clickButton)="submit()">Submit</app-button>
     </div>
     <p class="form__wrapper-value">VALID: {{ formGroup.valid }}</p>
     <p class="form__wrapper-value">VALUE: {{ formGroup.value | json }}</p>
