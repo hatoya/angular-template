@@ -1,8 +1,8 @@
-import { Component, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AppState } from './state/app.store';
 import { AppQuery } from './state/app.query';
 import { AppService } from './state/app.service';
+import { AppState } from './state/app.store';
 
 @Component({
   selector: 'app-root',

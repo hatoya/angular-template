@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Query } from '@datorama/akita';
-import { IndexStore, IndexState } from './index.store';
+import { IndexState, IndexStore } from './index.store';
 
 @Injectable({ providedIn: 'root' })
 export class IndexQuery extends Query<IndexState> {

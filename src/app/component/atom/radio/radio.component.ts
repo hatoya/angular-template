@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, Self, ViewChildren } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Self, ViewChild, ViewChildren } from '@angular/core';
+import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
 import { IOption } from 'src/app/model/option.model';
-import { ControlValueAccessor, NgControl, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-radio',
