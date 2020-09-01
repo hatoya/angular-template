@@ -1,23 +1,24 @@
 <div class="form" [formGroup]="formGroup">
   <div class="form__wrapper">
-    <div class="form__wrapper-search">
+    <div class="form__wrapper-body">
+      <div class="search">
+        <app-select label="Category" blank="" [options]="categoryOptions" formControlName="category"></app-select>
+        <app-text label="Name" formControlName="name"></app-text>
+        <app-text formControlName="name"></app-text>
+        <app-text formControlName="name"></app-text>
+        <app-text label="Address" formControlName="address"></app-text>
+      </div>
       <app-select label="Category" blank="" [options]="categoryOptions" formControlName="category"></app-select>
       <app-text label="Name" formControlName="name"></app-text>
-      <app-text formControlName="name"></app-text>
-      <app-text formControlName="name"></app-text>
       <app-text label="Address" formControlName="address"></app-text>
+      <app-textarea label="Body" formControlName="body"></app-textarea>
+      <app-radio [options]="genderOptins" formControlName="gender"></app-radio>
+      <p>{{ formGroup.value | json }}</p>
     </div>
-    <app-select label="Category" blank="" [options]="categoryOptions" formControlName="category"></app-select>
-    <app-text label="Name" formControlName="name"></app-text>
-    <app-text label="Address" formControlName="address"></app-text>
-    <app-textarea label="Body" formControlName="body"></app-textarea>
-    <app-radio [options]="genderOptins" formControlName="gender"></app-radio>
-    <div class="form__wrapper-button">
+    <div class="form__wrapper-foot">
       <app-button type="flat">Cancel</app-button>
       <app-button (clickButton)="emit()">Emit</app-button>
       <app-button [popup]="'VALID: ' + formGroup.valid" (clickButton)="submit()">Submit</app-button>
     </div>
-    <p class="form__wrapper-value">VALID: {{ formGroup.valid }}</p>
-    <p class="form__wrapper-value">VALUE: {{ formGroup.value | json }}</p>
   </div>
 </div>

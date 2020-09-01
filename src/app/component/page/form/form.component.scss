@@ -5,29 +5,35 @@
   &__wrapper {
     width: $defaultWidth;
     margin: 0 auto;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 0 5px $shadowColor;
+  }
+  &__wrapper-body {
+    padding: 20px;
     > * {
       &:not(:first-child) {
         margin-top: 20px;
       }
     }
   }
-  &__wrapper-search {
+  &__wrapper-foot {
     display: flex;
-    align-items: flex-end;
-    > * {
-      &:not(:first-child) {
-        margin-left: 10px;
-      }
-    }
-  }
-  &__wrapper-button {
-    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    border-top: 1px solid $borderColor;
     > * {
       display: block;
-      margin-right: 10px;
+      margin-left: 10px;
     }
   }
-  &__wrapper-value {
-    margin-top: 20px;
+}
+.search {
+  display: flex;
+  align-items: flex-end;
+  > * {
+    &:not(:first-child) {
+      margin-left: 10px;
+    }
   }
 }
