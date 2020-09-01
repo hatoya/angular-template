@@ -30,8 +30,9 @@ jobs:
           args: deploy --only hosting,firestore:rules
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-      - uses: rtCamp/action-slack-notify@master
+      - uses: 8398a7/action-slack@master
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,author,action,workflow,job,took
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_USERNAME: GitHub Actions
-          SLACK_ICON: https://image.flaticon.com/icons/png/512/25/25231.png
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
