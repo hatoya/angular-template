@@ -18,6 +18,7 @@ import { RadioComponent } from './component/atom/radio/radio.component';
 import { SelectComponent } from './component/atom/select/select.component';
 import { TextComponent } from './component/atom/text/text.component';
 import { TextareaComponent } from './component/atom/textarea/textarea.component';
+import { RadioGroupComponent } from './component/molecule/radio-group/radio-group.component';
 import { FormComponent } from './component/page/form/form.component';
 import { IndexComponent } from './component/page/index/index.component';
 
@@ -31,7 +32,8 @@ import { IndexComponent } from './component/page/index/index.component';
     TextareaComponent,
     SelectComponent,
     ButtonComponent,
-    RadioComponent
+    RadioComponent,
+    RadioGroupComponent
   ],
   imports: [
     BrowserModule,
