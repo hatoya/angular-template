@@ -12,8 +12,9 @@
     "lint": "npm run prettier && npm run tslint",
     "e2e": "ng e2e",
     "deploy": "firebase deploy --only hosting,firestore:rules",
-    "component": "func() { ng g component component/\"$1\"/\"$2\"  && npm run lint; }; func",
-    "page": "func() { ng g component component/page/\"$1\" && ng g af component/page/\"$1\"/\"$1\" --spec --plain && npm run lint; }; func"
+    "component": "func() { ng g component component/\"$1\"/\"$2\" && ng g service component/\"$1\"/\"$2\"/\"$2\" && npm run lint; }; func",
+    "page": "func() { ng g component component/page/\"$1\" && ng g af component/page/\"$1\"/\"$1\" --spec --plain && npm run lint; }; func",
+    "modal": "func() { ng g component component/modal/\"$1\" && ng g af component/modal/\"$1\"/\"$1\" --spec --plain && npm run lint; }; func"
   },
   "private": true,
   "dependencies": {
