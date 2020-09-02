@@ -13,6 +13,7 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { ButtonComponent } from './component/atom/button/button.component';
+import { CheckboxComponent } from './component/atom/checkbox/checkbox.component';
 import { LoadingComponent } from './component/atom/loading/loading.component';
 import { RadioComponent } from './component/atom/radio/radio.component';
 import { SelectComponent } from './component/atom/select/select.component';
@@ -35,7 +36,8 @@ import { IndexComponent } from './component/page/index/index.component';
     ButtonComponent,
     RadioComponent,
     RadioGroupComponent,
-    CheckboxGroupComponent
+    CheckboxGroupComponent,
+    CheckboxComponent
   ],
   imports: [
     BrowserModule,
