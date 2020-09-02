@@ -15,7 +15,6 @@ import { AppRoutingModule } from './app.routing';
 import { ButtonComponent } from './component/atom/button/button.component';
 import { CheckboxComponent } from './component/atom/checkbox/checkbox.component';
 import { LoadingComponent } from './component/atom/loading/loading.component';
-import { RadioComponent } from './component/atom/radio/radio.component';
 import { SelectComponent } from './component/atom/select/select.component';
 import { TextComponent } from './component/atom/text/text.component';
 import { TextareaComponent } from './component/atom/textarea/textarea.component';
@@ -34,7 +33,6 @@ import { IndexComponent } from './component/page/index/index.component';
     TextareaComponent,
     SelectComponent,
     ButtonComponent,
-    RadioComponent,
     RadioGroupComponent,
     CheckboxGroupComponent,
     CheckboxComponent
