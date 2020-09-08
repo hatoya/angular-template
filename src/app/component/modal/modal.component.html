@@ -1,1 +1,21 @@
-<p>modal works!</p>
+<ng-container *ngIf="store$ | async as state">
+  <div class="modal" [ngClass]="{ '-on': state.opened, '-large': state.size === 'large' }">
+    <div class="modal__filter" (click)="close()"></div>
+    <div class="modal__wrapper">
+      <p class="modal__heading">{{ state.heading }}</p>
+      <div class="modal__loading" *ngIf="state.loading">
+        <app-loading></app-loading>
+      </div>
+      <div class="modal__content" [hidden]="state.loading">
+        <ng-container #inner></ng-container>
+      </div>
+      <div class="modal__button">
+        <div class="modal__button-wrapper"></div>
+        <div class="modal__button-wrapper">
+          <app-button type="flat" (clickButton)="close()">Cancel</app-button>
+          <app-button [disabled]="state.sending" (clickButton)="submit()">Submit</app-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

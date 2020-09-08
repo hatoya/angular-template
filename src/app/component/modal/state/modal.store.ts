@@ -2,12 +2,20 @@ import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
 
 export interface ModalState {
-  key: string;
+  size: string;
+  heading: string;
+  opened: boolean;
+  loading: boolean;
+  sending: boolean;
 }
 
 export function createInitialState(): ModalState {
   return {
-    key: ''
+    size: 'default',
+    heading: '',
+    opened: false,
+    loading: false,
+    sending: false
   };
 }
 
