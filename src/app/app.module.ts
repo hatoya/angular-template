@@ -21,6 +21,7 @@ import { TextareaComponent } from './component/atom/textarea/textarea.component'
 import { ModalComponent } from './component/modal/modal.component';
 import { CheckboxGroupComponent } from './component/molecule/checkbox-group/checkbox-group.component';
 import { RadioGroupComponent } from './component/molecule/radio-group/radio-group.component';
+import { AccountIndexComponent } from './component/page/account-index/account-index.component';
 import { FormComponent } from './component/page/form/form.component';
 import { IndexComponent } from './component/page/index/index.component';
 
@@ -37,7 +38,8 @@ import { IndexComponent } from './component/page/index/index.component';
     RadioGroupComponent,
     CheckboxGroupComponent,
     CheckboxComponent,
-    ModalComponent
+    ModalComponent,
+    AccountIndexComponent
   ],
   imports: [
     BrowserModule,
