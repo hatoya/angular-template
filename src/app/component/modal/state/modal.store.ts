@@ -12,7 +12,7 @@ export interface ModalState {
 export function createInitialState(): ModalState {
   return {
     size: 'default',
-    heading: '',
+    heading: 'Modal',
     opened: false,
     loading: false,
     sending: false
