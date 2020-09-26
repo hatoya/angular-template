@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ModalService } from '../../modal/state/modal.service';
 
 @Component({
   selector: 'app-modal-layout',
@@ -7,7 +8,13 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ModalLayoutComponent implements OnInit {
-  constructor() {}
+  @Input() loading = false;
+
+  constructor(private modalService: ModalService) {}
 
   ngOnInit(): void {}
+
+  close() {
+    this.modalService.close();
+  }
 }
