@@ -10,6 +10,16 @@
   }
 }
 
+@mixin not-first-child() {
+  ::ng-deep {
+    > * {
+      &:not(:first-child) {
+        @content;
+      }
+    }
+  }
+}
+
 @mixin label() {
   white-space: nowrap;
   margin-bottom: 6px;
