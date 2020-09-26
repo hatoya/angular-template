@@ -26,6 +26,7 @@ import { RadioGroupComponent } from './component/molecule/radio-group/radio-grou
 import { AccountIndexComponent } from './component/page/account-index/account-index.component';
 import { FormComponent } from './component/page/form/form.component';
 import { IndexComponent } from './component/page/index/index.component';
+import { ModalLayoutComponent } from './component/template/modal-layout/modal-layout.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { IndexComponent } from './component/page/index/index.component';
     ModalComponent,
     AccountIndexComponent,
     SigninComponent,
-    LoginComponent
+    LoginComponent,
+    ModalLayoutComponent
   ],
   imports: [
     BrowserModule,
