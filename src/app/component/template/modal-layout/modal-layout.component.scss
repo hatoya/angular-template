@@ -36,12 +36,8 @@
   &__wrapper {
     display: flex;
     align-items: center;
-    ::ng-deep {
-      > * {
-        &:not(:first-child) {
-          margin-left: 10px;
-        }
-      }
+    @include not-first-child {
+      margin-left: 10px;
     }
   }
 }
