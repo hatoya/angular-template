@@ -1,4 +1,6 @@
 <div class="app" *ngIf="store$ | async as state">
+  <app-button (clickButton)="signin()">Signin</app-button>
+  <app-button (clickButton)="login()">Login</app-button>
   <router-outlet></router-outlet>
   <app-modal></app-modal>
 </div>
