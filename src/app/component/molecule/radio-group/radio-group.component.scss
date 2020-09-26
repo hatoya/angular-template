@@ -1,10 +1,10 @@
 @import '../../../../scss/import.scss';
 
-::ng-deep app-radio {
+::ng-deep app-radio-group {
   display: block;
 }
 
-.radio {
+.group {
   &__label {
     @include label;
   }

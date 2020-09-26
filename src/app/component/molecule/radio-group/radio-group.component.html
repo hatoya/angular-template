@@ -1,7 +1,7 @@
-<div class="radio">
-  <p class="radio__label" [class.-required]="required" *ngIf="label">{{ label }}</p>
-  <div class="radio__wrapper">
-    <div class="radio__wrapper-list" *ngFor="let option of options">
+<div class="group">
+  <p class="group__label" [class.-required]="required" *ngIf="label">{{ label }}</p>
+  <div class="group__wrapper">
+    <div class="group__wrapper-list" *ngFor="let option of options">
       <input
         #radio
         type="radio"

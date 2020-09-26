@@ -1,13 +1,13 @@
-import { Component, ElementRef, Input, OnInit, Self, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Self, ViewChildren } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
 import { IOption } from 'src/app/model/option.model';
 
 @Component({
-  selector: 'app-radio',
-  templateUrl: './radio.component.html',
-  styleUrls: ['./radio.component.scss']
+  selector: 'app-radio-group',
+  templateUrl: './radio-group.component.html',
+  styleUrls: ['./radio-group.component.scss']
 })
-export class RadioComponent implements ControlValueAccessor, OnInit {
+export class RadioGroupComponent implements ControlValueAccessor, OnInit {
   @Input() label = null;
   @Input() options: IOption<any, any>[] = [];
 

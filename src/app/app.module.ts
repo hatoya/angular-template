@@ -13,13 +13,20 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { ButtonComponent } from './component/atom/button/button.component';
+import { CheckboxComponent } from './component/atom/checkbox/checkbox.component';
 import { LoadingComponent } from './component/atom/loading/loading.component';
-import { RadioComponent } from './component/atom/radio/radio.component';
 import { SelectComponent } from './component/atom/select/select.component';
 import { TextComponent } from './component/atom/text/text.component';
 import { TextareaComponent } from './component/atom/textarea/textarea.component';
+import { LoginComponent } from './component/modal/login/login.component';
+import { ModalComponent } from './component/modal/modal.component';
+import { SigninComponent } from './component/modal/signin/signin.component';
+import { CheckboxGroupComponent } from './component/molecule/checkbox-group/checkbox-group.component';
+import { RadioGroupComponent } from './component/molecule/radio-group/radio-group.component';
+import { AccountIndexComponent } from './component/page/account-index/account-index.component';
 import { FormComponent } from './component/page/form/form.component';
 import { IndexComponent } from './component/page/index/index.component';
+import { ModalLayoutComponent } from './component/template/modal-layout/modal-layout.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +38,14 @@ import { IndexComponent } from './component/page/index/index.component';
     TextareaComponent,
     SelectComponent,
     ButtonComponent,
-    RadioComponent
+    RadioGroupComponent,
+    CheckboxGroupComponent,
+    CheckboxComponent,
+    ModalComponent,
+    AccountIndexComponent,
+    SigninComponent,
+    LoginComponent,
+    ModalLayoutComponent
   ],
   imports: [
     BrowserModule,
