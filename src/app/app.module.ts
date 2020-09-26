@@ -18,6 +18,7 @@ import { LoadingComponent } from './component/atom/loading/loading.component';
 import { SelectComponent } from './component/atom/select/select.component';
 import { TextComponent } from './component/atom/text/text.component';
 import { TextareaComponent } from './component/atom/textarea/textarea.component';
+import { LoginComponent } from './component/modal/login/login.component';
 import { ModalComponent } from './component/modal/modal.component';
 import { SigninComponent } from './component/modal/signin/signin.component';
 import { CheckboxGroupComponent } from './component/molecule/checkbox-group/checkbox-group.component';
@@ -41,7 +42,8 @@ import { IndexComponent } from './component/page/index/index.component';
     CheckboxComponent,
     ModalComponent,
     AccountIndexComponent,
-    SigninComponent
+    SigninComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
