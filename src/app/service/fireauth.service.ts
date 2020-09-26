@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { from } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,6 @@ export class FireauthService {
   }
 
   createAccount(email: string, password: string) {
-    return from(this.angularFireAuth.createUserWithEmailAndPassword(email, password));
+    return from(this.angularFireAuth.createUserWithEmailAndPassword(email, password)).pipe(map(item => item.user.uid));
   }
 }
