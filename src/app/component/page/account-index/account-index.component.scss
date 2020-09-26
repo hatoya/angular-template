@@ -1,0 +1,15 @@
+@import '../../../../scss/import.scss';
+
+.accountIndex {
+  padding: 20px;
+}
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &__wrapper {
+  }
+}
+.table {
+  margin-top: 20px;
+}

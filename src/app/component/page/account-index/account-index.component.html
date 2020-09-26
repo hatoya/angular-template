@@ -1,1 +1,31 @@
-<p>account-index works!</p>
+<div class="accountIndex">
+  <div class="search">
+    <div class="search__wrapper" [formGroup]="formGroup">
+      <app-select
+        label="Authority"
+        blank=""
+        [options]="appQuery.select('authorityOptions') | async"
+        formControlName="authority"
+      ></app-select>
+    </div>
+    <div class="search__wrapper"></div>
+  </div>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>CREATED_AT</th>
+      <th>UPDATED_AT</th>
+      <th>NAME</th>
+      <th>EMAIL</th>
+      <th>AUTHORITY</th>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+</div>
