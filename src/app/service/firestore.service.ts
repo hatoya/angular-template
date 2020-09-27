@@ -25,10 +25,7 @@ export class FirestoreService {
   // Account
   getAccounts() {
     return this.angularFirestore
-      .collection<IAccount>('account', ref => {
-        ref = ref.orderBy('created_at', 'asc') as any;
-        return ref;
-      })
+      .collection<IAccount>('account', ref => ref.orderBy('created_at', 'asc').limit(100))
       .valueChanges()
       .pipe(map(items => items.map(item => createAccount(item))));
   }
