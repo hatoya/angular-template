@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
+import { IAccount } from 'src/app/model/account.model';
 
 export interface AccountIndexState {
-  key: string;
+  accounts: IAccount[];
+  loading: boolean;
 }
 
 export function createInitialState(): AccountIndexState {
   return {
-    key: ''
+    accounts: [],
+    loading: true
   };
 }
 

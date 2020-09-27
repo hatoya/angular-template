@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
 
 export interface SigninState {
-  key: string;
+  sending: boolean;
 }
 
 export function createInitialState(): SigninState {
   return {
-    key: ''
+    sending: false
   };
 }
 

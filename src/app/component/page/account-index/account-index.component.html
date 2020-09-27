@@ -1,4 +1,4 @@
-<div class="accountIndex">
+<div class="accountIndex" *ngIf="query.select() | async as state">
   <div class="search">
     <div class="search__wrapper" [formGroup]="formGroup">
       <app-select
@@ -10,22 +10,29 @@
     </div>
     <div class="search__wrapper"></div>
   </div>
-  <table class="table">
-    <tr>
-      <th>ID</th>
-      <th>CREATED_AT</th>
-      <th>UPDATED_AT</th>
-      <th>NAME</th>
-      <th>EMAIL</th>
-      <th>AUTHORITY</th>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </table>
+  <ng-container *ngIf="state.loading">
+    <div class="loading">
+      <app-loading></app-loading>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!state.loading">
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>CREATED_AT</th>
+        <th>UPDATED_AT</th>
+        <th>NAME</th>
+        <th>EMAIL</th>
+        <th>AUTHORITY</th>
+      </tr>
+      <tr *ngFor="let account of state.accounts">
+        <td>{{ account.id }}</td>
+        <td>{{ account.created_at?.toDate() | date: dateFormat }}</td>
+        <td>{{ account.updated_at?.toDate() | date: dateFormat }}</td>
+        <td>{{ account.name }}</td>
+        <td>{{ account.email }}</td>
+        <td>{{ getAuthorityLabel(account.authority) }}</td>
+      </tr>
+    </table>
+  </ng-container>
 </div>
