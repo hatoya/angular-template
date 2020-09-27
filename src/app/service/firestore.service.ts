@@ -23,6 +23,16 @@ export class FirestoreService {
   }
 
   // Account
+  getAccounts() {
+    return this.angularFirestore
+      .collection<IAccount>('account', ref => {
+        ref = ref.orderBy('created_at', 'asc') as any;
+        return ref;
+      })
+      .valueChanges()
+      .pipe(map(items => items.map(item => createAccount(item))));
+  }
+
   setAccount(account: Partial<IAccount>) {
     const item = this.updateTimestamp(account);
     return from(this.angularFirestore.doc(`account/${item.id}`).set(item)).pipe(map(() => createAccount(item)));
