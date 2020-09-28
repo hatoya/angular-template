@@ -18,6 +18,7 @@ import { LoadingComponent } from './component/atom/loading/loading.component';
 import { SelectComponent } from './component/atom/select/select.component';
 import { TextComponent } from './component/atom/text/text.component';
 import { TextareaComponent } from './component/atom/textarea/textarea.component';
+import { AccountEditComponent } from './component/modal/account-edit/account-edit.component';
 import { LoginComponent } from './component/modal/login/login.component';
 import { ModalComponent } from './component/modal/modal.component';
 import { SigninComponent } from './component/modal/signin/signin.component';
@@ -45,7 +46,8 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     AccountIndexComponent,
     SigninComponent,
     LoginComponent,
-    ModalLayoutComponent
+    ModalLayoutComponent,
+    AccountEditComponent
   ],
   imports: [
     BrowserModule,
