@@ -2,7 +2,9 @@
   <div class="app__side">
     <div class="logo"><a routerLink="/">Angular Template</a></div>
     <div class="menu">
-      <a class="menu__list" routerLink="/" routerLinkActive="-on" [routerLinkActiveOptions]="{ exact: true }">TOP</a>
+      <a class="menu__list" routerLink="/" routerLinkActive="-on" [routerLinkActiveOptions]="{ exact: true }"
+        ><fa-duotone-icon [icon]="faFlag"></fa-duotone-icon>TOP</a
+      >
       <a class="menu__list" routerLink="/account" routerLinkActive="-on"><fa-duotone-icon [icon]="faUser"></fa-duotone-icon>ACCOUNT</a>
     </div>
     <div class="account"></div>
