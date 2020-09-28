@@ -33,6 +33,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "@fortawesome/pro-solid-svg-icons": "^5.12.1",
+    "@fortawesome/pro-duotone-svg-icons": "^5.12.1",
     "firebase": "^7.8.0",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
