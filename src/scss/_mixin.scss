@@ -21,8 +21,10 @@
 }
 
 @mixin label() {
-  white-space: nowrap;
   margin-bottom: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  color: $grayColor;
   &.-required {
     &::after {
       content: '*';
