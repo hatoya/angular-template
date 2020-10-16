@@ -34,7 +34,10 @@
         <td>{{ account.email }}</td>
         <td>{{ getAuthorityLabel(account.authority) }}</td>
         <td>
-          <app-option></app-option>
+          <app-option>
+            <p>編集</p>
+            <p class="-warning">削除</p>
+          </app-option>
         </td>
       </tr>
     </table>
