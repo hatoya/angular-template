@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app.routing';
 import { ButtonComponent } from './component/atom/button/button.component';
 import { CheckboxComponent } from './component/atom/checkbox/checkbox.component';
 import { LoadingComponent } from './component/atom/loading/loading.component';
+import { OptionComponent } from './component/atom/option/option.component';
 import { SelectComponent } from './component/atom/select/select.component';
 import { TextComponent } from './component/atom/text/text.component';
 import { TextareaComponent } from './component/atom/textarea/textarea.component';
@@ -47,7 +48,8 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     SigninComponent,
     LoginComponent,
     ModalLayoutComponent,
-    AccountEditComponent
+    AccountEditComponent,
+    OptionComponent
   ],
   imports: [
     BrowserModule,

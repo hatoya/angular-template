@@ -12,6 +12,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   @Input() label = null;
   @Input() blank: string = null;
   @Input() options: IOption<any, any>[] = [];
+  @Input() disabled = false;
 
   @ViewChild('select') element: ElementRef;
 
@@ -26,7 +27,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
 
   ngOnInit(): void {
     const validator = this.control.control.validator;
-    this.required = validator ? validator({} as AbstractControl).required || false : false;
+    this.required = validator ? validator({} as AbstractControl)?.required || false : false;
   }
 
   // ControlValueAccessor
