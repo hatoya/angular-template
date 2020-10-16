@@ -27,7 +27,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
 
   ngOnInit(): void {
     const validator = this.control.control.validator;
-    this.required = validator ? validator({} as AbstractControl).required || false : false;
+    this.required = validator ? validator({} as AbstractControl)?.required || false : false;
   }
 
   // ControlValueAccessor
