@@ -2,7 +2,7 @@
   <p class="select__label" [class.-required]="required" *ngIf="label">{{ label }}</p>
   <select
     #select
-    [disabled]="!options.length"
+    [disabled]="!options.length || disabled"
     [class.-error]="control.touched && control.invalid"
     (change)="onChange(select.value)"
     (blur)="onTouched(select.value)"

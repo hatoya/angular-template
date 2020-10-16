@@ -12,6 +12,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   @Input() label = null;
   @Input() blank: string = null;
   @Input() options: IOption<any, any>[] = [];
+  @Input() disabled = false;
 
   @ViewChild('select') element: ElementRef;
 
