@@ -24,6 +24,7 @@ import { ModalComponent } from './component/modal/modal.component';
 import { SigninComponent } from './component/modal/signin/signin.component';
 import { CheckboxGroupComponent } from './component/molecule/checkbox-group/checkbox-group.component';
 import { RadioGroupComponent } from './component/molecule/radio-group/radio-group.component';
+import { OptionComponent } from './component/option/option.component';
 import { AccountIndexComponent } from './component/page/account-index/account-index.component';
 import { FormComponent } from './component/page/form/form.component';
 import { IndexComponent } from './component/page/index/index.component';
@@ -47,7 +48,8 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     SigninComponent,
     LoginComponent,
     ModalLayoutComponent,
-    AccountEditComponent
+    AccountEditComponent,
+    OptionComponent
   ],
   imports: [
     BrowserModule,

@@ -24,6 +24,7 @@
         <th>NAME</th>
         <th>EMAIL</th>
         <th>AUTHORITY</th>
+        <th></th>
       </tr>
       <tr *ngFor="let account of state.accounts">
         <td>{{ account.id }}</td>
@@ -32,6 +33,9 @@
         <td>{{ account.name }}</td>
         <td>{{ account.email }}</td>
         <td>{{ getAuthorityLabel(account.authority) }}</td>
+        <td>
+          <app-option></app-option>
+        </td>
       </tr>
     </table>
   </ng-container>
