@@ -10,8 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - uses: bahmutov/npm-install@master
-      - run: npm run build
+      - name: Cache modules
+        id: node_modules_cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.npm
+            **/node_modules
+          key: node-${{ hashFiles('**/package-lock.json') }}
+      - name: Install modules
+        if: steps.node_modules_cache.outputs.cache-hit != 'true'
+        run: npm ci
       - uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting,firestore:rules
