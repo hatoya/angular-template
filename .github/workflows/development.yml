@@ -18,7 +18,7 @@ jobs:
           path: ~/.npm
           key: node-${{ hashFiles('**/package-lock.json') }}
       - name: npm install
-        if: steps.node_modules_cache.outputs.cache-hit != true
+        if: steps.node_modules_cache.outputs.cache-hit != 'true'
         run: npm ci
       - run: npm run build
       - uses: 8398a7/action-slack@v3
