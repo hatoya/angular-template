@@ -13,7 +13,7 @@
     padding: 0 12px;
     font-size: 14px;
     font-family: $defaultFamily;
-    border: 2px solid $borderColor;
+    border: 1px solid $borderColor;
     &.-error {
       border-color: $warningColor;
     }
