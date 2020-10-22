@@ -1,7 +1,7 @@
 @import '../../../../scss/import.scss';
 
 ::ng-deep app-button {
-  display: inline-block;
+  display: table;
 }
 
 .button {
