@@ -22,7 +22,8 @@ jobs:
       - name: Install modules
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
         run: npm ci
-      - run: npm run build
+      - name: Build
+        run: npm run build
       - uses: 8398a7/action-slack@v3
         if: failure()
         with:

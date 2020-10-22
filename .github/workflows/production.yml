@@ -21,6 +21,8 @@ jobs:
       - name: Install modules
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
         run: npm ci
+      - name: Build
+        run: npm run build
       - uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting,firestore:rules
