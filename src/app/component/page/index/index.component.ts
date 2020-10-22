@@ -22,4 +22,18 @@ export class IndexComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.service.resetStore();
   }
+
+  error404() {
+    console.log('Error 404');
+    this.service.getStatus(404).subscribe({
+      next: item => console.log(item)
+    });
+  }
+
+  error500() {
+    console.log('Error 500');
+    this.service.getStatus(500).subscribe({
+      next: item => console.log(item)
+    });
+  }
 }
