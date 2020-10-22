@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: cache modules
+      - name: Cache modules
         id: node_modules_cache
         uses: actions/cache@v2
         with:
@@ -19,7 +19,7 @@ jobs:
             ~/.npm
             **/node_modules
           key: node-${{ hashFiles('**/package-lock.json') }}
-      - name: npm install
+      - name: Install modules
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
         run: npm ci
       - run: npm run build
