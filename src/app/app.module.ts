@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -5,7 +6,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { Router } from '@angular/router';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -30,6 +30,7 @@ import { AccountIndexComponent } from './component/page/account-index/account-in
 import { FormComponent } from './component/page/form/form.component';
 import { IndexComponent } from './component/page/index/index.component';
 import { ModalLayoutComponent } from './component/template/modal-layout/modal-layout.component';
+import { SentryService } from './service/sentry.service';
 
 @NgModule({
   declarations: [
@@ -62,20 +63,15 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     AngularFirestoreModule,
     AngularFireStorageModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     {
       provide: ErrorHandler,
-      useValue: Sentry.createErrorHandler({})
-    },
-    {
-      provide: Sentry.TraceService,
-      deps: [Router]
+      useClass: SentryService
     }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-  constructor(trace: Sentry.TraceService) {}
-}
+export class AppModule {}

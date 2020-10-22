@@ -18,11 +18,12 @@ Sentry.init({
   environment: environment.production ? 'Production' : 'Development',
   integrations: [
     new Integrations.BrowserTracing({
-      tracingOrigins: ['localhost', `https://${environment.firebase.projectId}.web.app`],
-      routingInstrumentation: Sentry.routingInstrumentation
+      tracingOrigins: ['localhost', `https://${environment.firebase.projectId}.web.app`]
     })
   ],
-  tracesSampleRate: 1.0
+  maxBreadcrumbs: 50,
+  tracesSampleRate: 1.0,
+  logLevel: 3
 });
 
 platformBrowserDynamic()
