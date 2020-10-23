@@ -22,8 +22,7 @@ Sentry.init({
     })
   ],
   maxBreadcrumbs: 50,
-  tracesSampleRate: 1.0,
-  logLevel: 3
+  tracesSampleRate: 1.0
 });
 
 platformBrowserDynamic()
