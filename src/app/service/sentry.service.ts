@@ -9,7 +9,8 @@ export class SentryService implements ErrorHandler {
   constructor() {}
 
   handleError(error: any) {
-    Sentry.captureException(error.originalError || error);
+    console.error('ErrorHandler', error);
+    Sentry.captureException(error.error || error.message || error.originalError || error);
   }
 
   setUser(account: IAccount) {
