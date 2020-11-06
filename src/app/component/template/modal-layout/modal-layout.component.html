@@ -14,7 +14,7 @@
     </div>
     <div class="button__wrapper">
       <app-button type="flat" (clickButton)="close()">Cancel</app-button>
-      <ng-content select="[modal-footer-right]"></ng-content>
+      <ng-content select="[modal-footer-right]" *ngIf="!loading"></ng-content>
     </div>
   </div>
 </div>
