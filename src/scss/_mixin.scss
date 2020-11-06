@@ -10,6 +10,13 @@
   }
 }
 
+@mixin block() {
+  display: block;
+  &[hidden] {
+    display: none;
+  }
+}
+
 @mixin not-first-child() {
   ::ng-deep {
     > * {
