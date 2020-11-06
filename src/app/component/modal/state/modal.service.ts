@@ -33,24 +33,8 @@ export class ModalService {
   }
 
   // Akita
-  updateSize(size: string) {
-    this.modalStore.update({ size });
-  }
-
-  updateHeading(heading: string) {
-    this.modalStore.update({ heading });
-  }
-
   updateOpened(opened: boolean) {
     this.modalStore.update({ opened });
-  }
-
-  updateLoading(loading: boolean) {
-    this.modalStore.update({ loading });
-  }
-
-  updateSending(sending: boolean) {
-    this.modalStore.update({ sending });
   }
 
   resetStore() {

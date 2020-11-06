@@ -35,7 +35,6 @@ export class ModalComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   submit() {
-    this.service.updateSending(true);
     this.service.submit();
   }
 }
