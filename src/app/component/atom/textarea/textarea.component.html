@@ -3,6 +3,7 @@
   <textarea
     #textarea
     [class.-error]="control.touched && control.invalid"
+    [placeholder]="placeholder"
     (input)="onChange(textarea.value)"
     (blur)="onTouched(textarea.value)"
   ></textarea>
