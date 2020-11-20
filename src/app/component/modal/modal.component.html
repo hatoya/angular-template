@@ -1,5 +1,5 @@
 <ng-container *ngIf="store$ | async as state">
-  <div class="modal" [ngClass]="{ '-on': state.opened, '-large': state.size === 'large' }">
+  <div class="modal" [ngClass]="{ '-on': state.opened }">
     <div class="modal__filter" (click)="close()"></div>
     <div class="modal__content">
       <ng-container #inner></ng-container>
