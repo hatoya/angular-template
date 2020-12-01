@@ -48,7 +48,7 @@ body {
   word-wrap: break-word;
   font-family: $defaultFamily;
   -webkit-font-smoothing: antialiased;
-  background: #f3f5f7;
+  background: $backgroundColor;
 }
 
 h1,
@@ -135,7 +135,7 @@ table {
 }
 
 fa-icon {
-  &.-trash {
+  .fa-trash {
     color: $grayColor;
     cursor: pointer;
     transition: 0.2s;
@@ -143,7 +143,7 @@ fa-icon {
       color: $brandColor;
     }
   }
-  &.-link {
+  .fa-link {
     margin-left: 6px;
     color: $brandColor;
   }
