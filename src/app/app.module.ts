@@ -16,6 +16,7 @@ import { ButtonComponent } from './component/atom/button/button.component';
 import { CheckboxComponent } from './component/atom/checkbox/checkbox.component';
 import { LoadingComponent } from './component/atom/loading/loading.component';
 import { OptionComponent } from './component/atom/option/option.component';
+import { RadioboxComponent } from './component/atom/radiobox/radiobox.component';
 import { SelectComponent } from './component/atom/select/select.component';
 import { TextComponent } from './component/atom/text/text.component';
 import { TextareaComponent } from './component/atom/textarea/textarea.component';
@@ -47,7 +48,8 @@ import { SentryService } from './service/sentry.service';
     LoginComponent,
     ModalLayoutComponent,
     AccountEditComponent,
-    OptionComponent
+    OptionComponent,
+    RadioboxComponent
   ],
   imports: [
     BrowserModule,

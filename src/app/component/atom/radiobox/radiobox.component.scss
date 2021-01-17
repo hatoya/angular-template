@@ -1,0 +1,44 @@
+@import '../../../../scss/import.scss';
+
+::ng-deep app-radiobox {
+  display: block;
+}
+
+.radiobox {
+  &__label {
+    @include label;
+  }
+  &__wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    @include not-first-child {
+      margin-left: 4px;
+    }
+  }
+  &__wrapper-list {
+    width: 100%;
+    input {
+      display: none;
+      &:checked {
+        & + label {
+          color: white;
+          background: black;
+        }
+      }
+    }
+    label {
+      display: block;
+      width: 100%;
+      line-height: 42px;
+      font-size: 12px;
+      text-align: center;
+      color: black;
+      background: #f2f4f7;
+      border-radius: 4px;
+      cursor: pointer;
+      @include sp-only {
+      }
+    }
+  }
+}
