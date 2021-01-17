@@ -3,13 +3,13 @@ import { IFirestore } from '../model/firestore.model';
 
 interface WhereOp<T extends IFirestore> {
   field: keyof T;
-  operator: firebase.firestore.WhereFilterOp;
+  operator: firebase.default.firestore.WhereFilterOp;
   value: any;
 }
 
 interface OrderByOp<T extends IFirestore> {
   field: keyof T;
-  direction: firebase.firestore.OrderByDirection;
+  direction: firebase.default.firestore.OrderByDirection;
 }
 
 export class FirestoreQueryBuilder<T extends IFirestore> {
@@ -30,7 +30,7 @@ export class FirestoreQueryBuilder<T extends IFirestore> {
     return this;
   }
 
-  orderBy(field: keyof T, direction: firebase.firestore.OrderByDirection = 'desc') {
+  orderBy(field: keyof T, direction: firebase.default.firestore.OrderByDirection = 'desc') {
     this._orderBy = { field, direction };
     return this;
   }
@@ -40,17 +40,17 @@ export class FirestoreQueryBuilder<T extends IFirestore> {
     return this;
   }
 
-  // notEqualWhere<K extends keyof T>(field: keyof T, value: T[K]) {
-  //   this._where.push({ field, operator: '!=', value });
-  //   return this;
-  // }
+  notEqualWhere<K extends keyof T>(field: keyof T, value: T[K]) {
+    this._where.push({ field, operator: '!=', value });
+    return this;
+  }
 
   startAfter(value: string) {
     this._startAfter = value;
     return this;
   }
 
-  build(query: firebase.firestore.Query<T>): firebase.firestore.Query<T> {
+  build(query: firebase.default.firestore.Query<T>): firebase.default.firestore.Query<T> {
     query = query.orderBy(this._orderBy.field as string, this._orderBy.direction);
     if (this._startAfter) {
       query = query.startAfter(this._startAfter);

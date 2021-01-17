@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
 import { EMPTY, from, of, throwError } from 'rxjs';
-import { expand, map, mergeMap, take, tap } from 'rxjs/operators';
+import { expand, map, mergeMap, take } from 'rxjs/operators';
 import { FirestoreQueryBuilder } from '../builder/firestore-query.builder';
 import { ECollection } from '../enum/collection.enum';
 import { EError } from '../enum/error.enum';
@@ -26,7 +26,7 @@ export class FirestoreService {
 
   getDocuments<T extends IFirestore>(collection: ECollection, initFunc: (item: Partial<T>) => T, query = new FirestoreQueryBuilder<T>()) {
     return this.angularFirestore
-      .collection<T>(collection, ref => query.build(ref as firebase.firestore.CollectionReference<T>))
+      .collection<T>(collection, ref => query.build(ref as firebase.default.firestore.CollectionReference<T>))
       .valueChanges()
       .pipe(map(items => items.map(item => initFunc(item))));
   }
