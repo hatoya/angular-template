@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RadioGroupService } from './radio-group.service';
+import { RadioboxService } from './radiobox.service';
 
-describe('RadioGroupService', () => {
-  let service: RadioGroupService;
+describe('RadioboxService', () => {
+  let service: RadioboxService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(RadioGroupService);
+    service = TestBed.inject(RadioboxService);
   });
 
   it('should be created', () => {

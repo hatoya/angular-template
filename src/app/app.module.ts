@@ -16,6 +16,7 @@ import { ButtonComponent } from './component/atom/button/button.component';
 import { CheckboxComponent } from './component/atom/checkbox/checkbox.component';
 import { LoadingComponent } from './component/atom/loading/loading.component';
 import { OptionComponent } from './component/atom/option/option.component';
+import { RadioboxComponent } from './component/atom/radiobox/radiobox.component';
 import { SelectComponent } from './component/atom/select/select.component';
 import { TextComponent } from './component/atom/text/text.component';
 import { TextareaComponent } from './component/atom/textarea/textarea.component';
@@ -23,8 +24,6 @@ import { AccountEditComponent } from './component/modal/account-edit/account-edi
 import { LoginComponent } from './component/modal/login/login.component';
 import { ModalComponent } from './component/modal/modal.component';
 import { SigninComponent } from './component/modal/signin/signin.component';
-import { CheckboxGroupComponent } from './component/molecule/checkbox-group/checkbox-group.component';
-import { RadioGroupComponent } from './component/molecule/radio-group/radio-group.component';
 import { AccountIndexComponent } from './component/page/account-index/account-index.component';
 import { FormComponent } from './component/page/form/form.component';
 import { IndexComponent } from './component/page/index/index.component';
@@ -42,8 +41,6 @@ import { SentryService } from './service/sentry.service';
     TextareaComponent,
     SelectComponent,
     ButtonComponent,
-    RadioGroupComponent,
-    CheckboxGroupComponent,
     CheckboxComponent,
     ModalComponent,
     AccountIndexComponent,
@@ -51,13 +48,14 @@ import { SentryService } from './service/sentry.service';
     LoginComponent,
     ModalLayoutComponent,
     AccountEditComponent,
-    OptionComponent
+    OptionComponent,
+    RadioboxComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
-    AkitaNgRouterStoreModule.forRoot(),
+    AkitaNgRouterStoreModule,
     AngularFireModule.initializeApp(environment.firebase, environment.firebase.projectId),
     AngularFireAuthModule,
     AngularFirestoreModule,

@@ -1,17 +1,18 @@
-import { Component, ElementRef, Input, OnInit, Self, ViewChildren } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, Self, ViewChildren } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
 import { IOption } from 'src/app/model/option.model';
 
 @Component({
-  selector: 'app-radio-group',
-  templateUrl: './radio-group.component.html',
-  styleUrls: ['./radio-group.component.scss']
+  selector: 'app-radiobox',
+  templateUrl: './radiobox.component.html',
+  styleUrls: ['./radiobox.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RadioGroupComponent implements ControlValueAccessor, OnInit {
+export class RadioboxComponent implements ControlValueAccessor, OnInit {
   @Input() label = null;
   @Input() options: IOption<any, any>[] = [];
 
-  @ViewChildren('radio') elements: ElementRef[] = [];
+  @ViewChildren('radiobox') elements: ElementRef[] = [];
 
   required = false;
 
