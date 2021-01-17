@@ -17,6 +17,13 @@
   }
 }
 
+@mixin inline-block() {
+  display: inline-block;
+  &[hidden] {
+    display: none;
+  }
+}
+
 @mixin not-first-child() {
   ::ng-deep {
     > * {
@@ -24,6 +31,14 @@
         @content;
       }
     }
+  }
+}
+
+@mixin square() {
+  &::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
   }
 }
 
@@ -39,6 +54,48 @@
       margin-left: 4px;
       font-weight: bold;
       color: $warningColor;
+    }
+  }
+}
+
+@mixin sub() {
+  margin-bottom: 6px;
+  line-height: 1.2;
+  font-size: 12px;
+}
+
+@mixin markdown() {
+  ::ng-deep {
+    @include not-first-child {
+      margin-top: 24px;
+    }
+    h1 {
+      line-height: 1.5;
+      font-size: 28px;
+      font-weight: bold;
+      @include sp-only {
+        font-size: 24px;
+      }
+    }
+    h2 {
+      line-height: 1.5;
+      font-size: 20px;
+      font-weight: bold;
+      @include sp-only {
+        font-size: 16px;
+      }
+    }
+    p {
+      line-height: 1.7;
+      font-size: 16px;
+      @include sp-only {
+        font-size: 16px;
+      }
+    }
+    img {
+      max-width: 100%;
+      margin-right: auto;
+      margin-left: auto;
     }
   }
 }
