@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { IAccount } from 'src/app/model/account.model';
+import { ECollection } from 'src/app/enum/collection.enum';
+import { createAccount, IAccount } from 'src/app/model/account.model';
 import { FirestoreService } from 'src/app/service/firestore.service';
 import { AccountIndexStore } from './account-index.store';
 
@@ -9,7 +10,7 @@ export class AccountIndexService {
 
   // Firestore
   getAccounts() {
-    return this.firestoreService.getAccounts();
+    return this.firestoreService.getDocuments(ECollection.ACCOUNT, createAccount);
   }
 
   // Akita

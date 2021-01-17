@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { from } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { createAccount, IAccount } from '../model/account.model';
-import { IFirestore } from '../model/firestore.model';
+import * as firebase from 'firebase/app';
+import { EMPTY, from, of, throwError } from 'rxjs';
+import { expand, map, mergeMap, take, tap } from 'rxjs/operators';
+import { FirestoreQueryBuilder } from '../builder/firestore-query.builder';
+import { ECollection } from '../enum/collection.enum';
+import { EError } from '../enum/error.enum';
+import { createFirestore, IFirestore } from '../model/firestore.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,16 +24,41 @@ export class FirestoreService {
     return item as T;
   }
 
-  // Account
-  getAccounts() {
+  getDocuments<T extends IFirestore>(collection: ECollection, initFunc: (item: Partial<T>) => T, query = new FirestoreQueryBuilder<T>()) {
     return this.angularFirestore
-      .collection<IAccount>('account', ref => ref.orderBy('created_at', 'asc').limit(100))
+      .collection<T>(collection, ref => query.build(ref as firebase.firestore.CollectionReference<T>))
       .valueChanges()
-      .pipe(map(items => items.map(item => createAccount(item))));
+      .pipe(map(items => items.map(item => initFunc(item))));
   }
 
-  setAccount(account: Partial<IAccount>) {
-    const item = this.updateTimestamp(account);
-    return from(this.angularFirestore.doc(`account/${item.id}`).set(item)).pipe(map(() => createAccount(item)));
+  getAllDocument<T extends IFirestore>(collection: ECollection, initFunc: (item: Partial<T>) => T, query = new FirestoreQueryBuilder<T>()) {
+    return this.getDocuments(collection, initFunc, query).pipe(
+      take(1),
+      expand(arts =>
+        arts.length
+          ? this.getDocuments(collection, initFunc, query.startAfter(arts[arts.length - 1][query.field + '']).limit(100)).pipe(take(1))
+          : EMPTY
+      ),
+      mergeMap(items => from(items))
+    );
+  }
+
+  getDocument<T extends IFirestore>(collection: ECollection, initFunc: (item: Partial<T>) => T, id: string) {
+    return this.angularFirestore
+      .doc<T>(`${collection}/${id}`)
+      .valueChanges()
+      .pipe(
+        mergeMap(item => (item ? of(item) : throwError(EError.E404))),
+        map(item => initFunc(item))
+      );
+  }
+
+  setDocument<T extends IFirestore>(collection: ECollection, data: Partial<T>) {
+    const item = this.updateTimestamp<T>(data);
+    return from(this.angularFirestore.doc(`${collection}/${item.id}`).set(item, { merge: true })).pipe(map(() => createFirestore(item)));
+  }
+
+  deleteDocument(collection: ECollection, id: string) {
+    return from(this.angularFirestore.doc(`${collection}/${id}`).delete());
   }
 }
