@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { firestore } from 'firebase/app';
 import { from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { createAccount, IAccount } from '../model/account.model';
@@ -13,7 +12,7 @@ export class FirestoreService {
   constructor(private angularFirestore: AngularFirestore) {}
 
   updateTimestamp<T>(item: Partial<T> & Partial<IFirestore>): Partial<T> {
-    const now = firestore.Timestamp.now();
+    const now = new Date().getTime();
     item.updated_at = now;
     if (!item.id) {
       item.id = this.angularFirestore.createId();

@@ -18,6 +18,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["firebase", "@firebase/app", "@firebase/firestore", "@firebase/auth"],
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -44,7 +45,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -68,7 +68,6 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "angular-template:build",
-            "aot": true,
             "port": 8888
           },
           "configurations": {
