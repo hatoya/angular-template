@@ -1,4 +1,4 @@
-<div class="app" *ngIf="store$ | async as state">
+<div class="app" *ngIf="query.select() | async as state">
   <div class="app__side">
     <div class="logo"><a routerLink="/">Angular Template</a></div>
     <div class="menu">

@@ -1,12 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { faFlag, faUser } from '@fortawesome/pro-duotone-svg-icons';
-import { Observable } from 'rxjs';
 import { LoginComponent } from './component/modal/login/login.component';
 import { SigninComponent } from './component/modal/signin/signin.component';
 import { ModalService } from './component/modal/state/modal.service';
 import { AppQuery } from './state/app.query';
 import { AppService } from './state/app.service';
-import { AppState } from './state/app.store';
 
 @Component({
   selector: 'app-root',
@@ -14,14 +12,13 @@ import { AppState } from './state/app.store';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnDestroy {
-  store$: Observable<AppState>;
+export class AppComponent implements OnInit, OnDestroy {
   faFlag = faFlag;
   faUser = faUser;
 
-  constructor(private query: AppQuery, private service: AppService, private modalService: ModalService) {
-    this.store$ = this.query.select();
-  }
+  constructor(public query: AppQuery, private service: AppService, private modalService: ModalService) {}
+
+  ngOnInit() {}
 
   ngOnDestroy() {
     this.service.resetStore();
