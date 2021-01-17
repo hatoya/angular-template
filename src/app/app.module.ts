@@ -23,7 +23,6 @@ import { AccountEditComponent } from './component/modal/account-edit/account-edi
 import { LoginComponent } from './component/modal/login/login.component';
 import { ModalComponent } from './component/modal/modal.component';
 import { SigninComponent } from './component/modal/signin/signin.component';
-import { RadioGroupComponent } from './component/molecule/radio-group/radio-group.component';
 import { AccountIndexComponent } from './component/page/account-index/account-index.component';
 import { FormComponent } from './component/page/form/form.component';
 import { IndexComponent } from './component/page/index/index.component';
@@ -41,7 +40,6 @@ import { SentryService } from './service/sentry.service';
     TextareaComponent,
     SelectComponent,
     ButtonComponent,
-    RadioGroupComponent,
     CheckboxComponent,
     ModalComponent,
     AccountIndexComponent,
