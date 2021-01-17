@@ -55,7 +55,7 @@ import { SentryService } from './service/sentry.service';
     BrowserModule,
     AppRoutingModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
-    AkitaNgRouterStoreModule.forRoot(),
+    AkitaNgRouterStoreModule,
     AngularFireModule.initializeApp(environment.firebase, environment.firebase.projectId),
     AngularFireAuthModule,
     AngularFirestoreModule,
