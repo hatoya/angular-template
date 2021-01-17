@@ -1,15 +1,13 @@
-import { firestore } from 'firebase/app';
-
 export interface IFirestore {
   id: string;
-  created_at: firestore.Timestamp;
-  updated_at: firestore.Timestamp;
+  created_at: number;
+  updated_at: number;
 }
 
 export function createFirestore(item: Partial<IFirestore>): IFirestore {
   return {
     id: item.id || '',
-    created_at: item.created_at || null,
-    updated_at: item.updated_at || null
+    created_at: item.created_at || 0,
+    updated_at: item.updated_at || 0
   };
 }

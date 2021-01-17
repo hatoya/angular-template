@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { firestore } from 'firebase/app';
 import { createAccount } from 'src/app/model/account.model';
 import { FireauthService } from 'src/app/service/fireauth.service';
 import { FirestoreService } from 'src/app/service/firestore.service';
@@ -18,7 +17,7 @@ export class SigninService {
   // Firestore
   setAccount(accountId: string, value) {
     const { name, email } = value;
-    return this.firestoreService.setAccount(createAccount({ id: accountId, created_at: firestore.Timestamp.now(), name, email }));
+    return this.firestoreService.setAccount(createAccount({ id: accountId, created_at: new Date().getTime(), name, email }));
   }
 
   // Akita
