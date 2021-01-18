@@ -1,39 +1,26 @@
-// also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/angular/types-6-0';
-import Button from './button.component';
+import { CommonModule } from '@angular/common';
+import { Meta, Story } from '@storybook/angular/types-6-0';
+import { ButtonComponent } from 'src/app/component/atom/button/button.component';
 
 export default {
   title: 'Example/Button',
-  component: Button,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  component: ButtonComponent,
 } as Meta;
 
-const Template: Story<Button> = (args: Button) => ({
-  component: Button,
+const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
+  component: ButtonComponent,
   props: args,
+  moduleMetadata: {
+    declarations: [ButtonComponent]
+  },
+  template: `<app-button [type]="type" [popup]="popup" [isDisabled]="isDisabled">Click me</app-button>`,
 });
 
-export const Primary = Template.bind({});
-Primary.args = {
-  primary: true,
-  label: 'Button',
-};
+export const Default = Template.bind({});
+Default.args = {};
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: 'Button',
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large',
-  label: 'Button',
-};
-
-export const Small = Template.bind({});
-Small.args = {
-  size: 'small',
-  label: 'Button',
+export const Flat = Template.bind({});
+Flat.args = {
+  ...Default.args,
+  type: 'flat'
 };

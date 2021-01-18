@@ -8,8 +8,8 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 })
 export class ButtonComponent implements OnInit {
   @Input() type = 'default';
-  @Input() isDisabled = false;
   @Input() popup = '';
+  @Input() isDisabled = false;
 
   @Output() clickButton = new EventEmitter();
 
