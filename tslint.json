@@ -14,9 +14,7 @@
     "contextual-lifecycle": true,
     "directive-class-suffix": true,
     "curly": true,
-    "deprecation": {
-      "severity": "warning"
-    },
+    "deprecation": true,
     "directive-selector": [true, "attribute", "app", "camelCase"],
     "component-selector": [
       true,

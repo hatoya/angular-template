@@ -6,11 +6,13 @@ describe('ModalLayoutComponent', () => {
   let component: ModalLayoutComponent;
   let fixture: ComponentFixture<ModalLayoutComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ModalLayoutComponent]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [ModalLayoutComponent]
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ModalLayoutComponent);

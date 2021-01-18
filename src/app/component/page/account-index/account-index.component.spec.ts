@@ -6,11 +6,13 @@ describe('AccountIndexComponent', () => {
   let component: AccountIndexComponent;
   let fixture: ComponentFixture<AccountIndexComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [AccountIndexComponent]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [AccountIndexComponent]
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AccountIndexComponent);
