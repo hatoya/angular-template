@@ -14,7 +14,10 @@
     "deploy": "firebase deploy --only hosting,firestore:rules",
     "component": "func() { ng g component component/\"$1\"/\"$2\" && ng g service component/\"$1\"/\"$2\"/\"$2\" && npm run lint; }; func",
     "page": "func() { ng g component component/page/\"$1\" && ng g af component/page/\"$1\"/\"$1\" --spec --plain && npm run lint; }; func",
-    "modal": "func() { ng g component component/modal/\"$1\" && ng g af component/modal/\"$1\"/\"$1\" --spec --plain && npm run lint; }; func"
+    "modal": "func() { ng g component component/modal/\"$1\" && ng g af component/modal/\"$1\"/\"$1\" --spec --plain && npm run lint; }; func",
+    "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
+    "storybook": "npm run docs:json && start-storybook -p 6006",
+    "build:storybook": "npm run docs:json && build-storybook"
   },
   "private": true,
   "dependencies": {
@@ -41,16 +44,28 @@
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
+    "@angular-devkit/architect": "^0.900.0-0 || ^0.900.0",
     "@angular-devkit/build-angular": "~0.1100.7",
     "@angular/cli": "~11.0.7",
     "@angular/compiler-cli": "~11.0.9",
     "@angular/language-service": "~11.0.9",
+    "@babel/core": "^7.12.10",
+    "@compodoc/compodoc": "^1.1.11",
     "@datorama/akita-ng-router-store": "^6.0.0",
     "@datorama/akita-ngdevtools": "^6.0.0",
-    "@types/node": "^12.11.1",
+    "@storybook/addon-actions": "^6.1.14",
+    "@storybook/addon-essentials": "^6.1.14",
+    "@storybook/addon-links": "^6.1.14",
+    "@storybook/angular": "^6.1.14",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
+    "babel-loader": "^8.2.2",
     "codelyzer": "^6.0.0",
+    "firebase-tools": "^9.2.1",
+    "fuzzy": "^0.1.3",
+    "inquirer": "^6.2.2",
+    "inquirer-autocomplete-prompt": "^1.0.1",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.1.1",
@@ -58,15 +73,10 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "prettier": "^2.0.5",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.0.5",
-    "@angular-devkit/architect": "^0.900.0-0 || ^0.900.0",
-    "firebase-tools": "^9.2.1",
-    "fuzzy": "^0.1.3",
-    "inquirer": "^6.2.2",
-    "inquirer-autocomplete-prompt": "^1.0.1",
-    "prettier": "^2.0.5"
+    "typescript": "~4.0.5"
   }
 }
