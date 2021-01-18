@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/angular/types-6-0';
 import { ButtonComponent } from 'src/app/component/atom/button/button.component';
 
 export default {
-  title: 'Example/Button',
+  title: 'Atom/Button',
   component: ButtonComponent
 } as Meta;
 
