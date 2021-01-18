@@ -16,7 +16,7 @@
     "page": "func() { ng g component component/page/\"$1\" && ng g af component/page/\"$1\"/\"$1\" --spec --plain && npm run lint; }; func",
     "modal": "func() { ng g component component/modal/\"$1\" && ng g af component/modal/\"$1\"/\"$1\" --spec --plain && npm run lint; }; func",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
-    "storybook": "npm run docs:json && start-storybook -p 6006",
+    "storybook": "npm run docs:json && start-storybook --ci -p 7777",
     "build:storybook": "npm run docs:json && build-storybook"
   },
   "private": true,
