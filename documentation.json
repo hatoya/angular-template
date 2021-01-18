@@ -4893,17 +4893,17 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.ts",
+                "file": "src/environments/environment.prod.ts",
                 "type": "object",
-                "defaultValue": "{\n  production: false,\n  firebase: {\n    apiKey: 'AIzaSyDRLhr6CzG6KrIH0zc0SHqFPVVodWBao5Q',\n    authDomain: 'angular-template-a2ff7.firebaseapp.com',\n    databaseURL: 'https://angular-template-a2ff7.firebaseio.com',\n    projectId: 'angular-template-a2ff7',\n    storageBucket: 'angular-template-a2ff7.appspot.com',\n    messagingSenderId: '91476180592',\n    appId: '1:91476180592:web:e79e4d2eb18afb170f7eb5',\n    measurementId: 'G-0826YHHZ66'\n  }\n}"
+                "defaultValue": "{\n  production: true,\n  firebase: {\n    apiKey: 'AIzaSyDRLhr6CzG6KrIH0zc0SHqFPVVodWBao5Q',\n    authDomain: 'angular-template-a2ff7.firebaseapp.com',\n    databaseURL: 'https://angular-template-a2ff7.firebaseio.com',\n    projectId: 'angular-template-a2ff7',\n    storageBucket: 'angular-template-a2ff7.appspot.com',\n    messagingSenderId: '91476180592',\n    appId: '1:91476180592:web:e79e4d2eb18afb170f7eb5',\n    measurementId: 'G-0826YHHZ66'\n  }\n}"
             },
             {
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.prod.ts",
+                "file": "src/environments/environment.ts",
                 "type": "object",
-                "defaultValue": "{\n  production: true,\n  firebase: {\n    apiKey: 'AIzaSyDRLhr6CzG6KrIH0zc0SHqFPVVodWBao5Q',\n    authDomain: 'angular-template-a2ff7.firebaseapp.com',\n    databaseURL: 'https://angular-template-a2ff7.firebaseio.com',\n    projectId: 'angular-template-a2ff7',\n    storageBucket: 'angular-template-a2ff7.appspot.com',\n    messagingSenderId: '91476180592',\n    appId: '1:91476180592:web:e79e4d2eb18afb170f7eb5',\n    measurementId: 'G-0826YHHZ66'\n  }\n}"
+                "defaultValue": "{\n  production: false,\n  firebase: {\n    apiKey: 'AIzaSyDRLhr6CzG6KrIH0zc0SHqFPVVodWBao5Q',\n    authDomain: 'angular-template-a2ff7.firebaseapp.com',\n    databaseURL: 'https://angular-template-a2ff7.firebaseio.com',\n    projectId: 'angular-template-a2ff7',\n    storageBucket: 'angular-template-a2ff7.appspot.com',\n    messagingSenderId: '91476180592',\n    appId: '1:91476180592:web:e79e4d2eb18afb170f7eb5',\n    measurementId: 'G-0826YHHZ66'\n  }\n}"
             },
             {
                 "name": "Large",
@@ -5064,21 +5064,21 @@
             },
             {
                 "name": "createInitialState",
-                "file": "src/app/component/modal/login/state/login.store.ts",
-                "ctype": "miscellaneous",
-                "subtype": "function",
-                "description": "",
-                "args": [],
-                "returnType": "LoginState"
-            },
-            {
-                "name": "createInitialState",
                 "file": "src/app/component/modal/account-edit/state/account-edit.store.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
                 "description": "",
                 "args": [],
                 "returnType": "AccountEditState"
+            },
+            {
+                "name": "createInitialState",
+                "file": "src/app/component/modal/login/state/login.store.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "description": "",
+                "args": [],
+                "returnType": "LoginState"
             },
             {
                 "name": "createInitialState",
@@ -5091,21 +5091,21 @@
             },
             {
                 "name": "createInitialState",
-                "file": "src/app/component/page/account-index/state/account-index.store.ts",
-                "ctype": "miscellaneous",
-                "subtype": "function",
-                "description": "",
-                "args": [],
-                "returnType": "AccountIndexState"
-            },
-            {
-                "name": "createInitialState",
                 "file": "src/app/component/page/form/state/form.store.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
                 "description": "",
                 "args": [],
                 "returnType": "FormState"
+            },
+            {
+                "name": "createInitialState",
+                "file": "src/app/component/page/account-index/state/account-index.store.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "description": "",
+                "args": [],
+                "returnType": "AccountIndexState"
             },
             {
                 "name": "createInitialState",
@@ -5244,16 +5244,6 @@
                     "type": "literal type"
                 }
             ],
-            "src/environments/environment.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/environments/environment.ts",
-                    "type": "object",
-                    "defaultValue": "{\n  production: false,\n  firebase: {\n    apiKey: 'AIzaSyDRLhr6CzG6KrIH0zc0SHqFPVVodWBao5Q',\n    authDomain: 'angular-template-a2ff7.firebaseapp.com',\n    databaseURL: 'https://angular-template-a2ff7.firebaseio.com',\n    projectId: 'angular-template-a2ff7',\n    storageBucket: 'angular-template-a2ff7.appspot.com',\n    messagingSenderId: '91476180592',\n    appId: '1:91476180592:web:e79e4d2eb18afb170f7eb5',\n    measurementId: 'G-0826YHHZ66'\n  }\n}"
-                }
-            ],
             "src/environments/environment.prod.ts": [
                 {
                     "name": "environment",
@@ -5262,6 +5252,16 @@
                     "file": "src/environments/environment.prod.ts",
                     "type": "object",
                     "defaultValue": "{\n  production: true,\n  firebase: {\n    apiKey: 'AIzaSyDRLhr6CzG6KrIH0zc0SHqFPVVodWBao5Q',\n    authDomain: 'angular-template-a2ff7.firebaseapp.com',\n    databaseURL: 'https://angular-template-a2ff7.firebaseio.com',\n    projectId: 'angular-template-a2ff7',\n    storageBucket: 'angular-template-a2ff7.appspot.com',\n    messagingSenderId: '91476180592',\n    appId: '1:91476180592:web:e79e4d2eb18afb170f7eb5',\n    measurementId: 'G-0826YHHZ66'\n  }\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false,\n  firebase: {\n    apiKey: 'AIzaSyDRLhr6CzG6KrIH0zc0SHqFPVVodWBao5Q',\n    authDomain: 'angular-template-a2ff7.firebaseapp.com',\n    databaseURL: 'https://angular-template-a2ff7.firebaseio.com',\n    projectId: 'angular-template-a2ff7',\n    storageBucket: 'angular-template-a2ff7.appspot.com',\n    messagingSenderId: '91476180592',\n    appId: '1:91476180592:web:e79e4d2eb18afb170f7eb5',\n    measurementId: 'G-0826YHHZ66'\n  }\n}"
                 }
             ],
             "src/stories/Button.stories.ts": [
@@ -5428,17 +5428,6 @@
                     "returnType": "ModalState"
                 }
             ],
-            "src/app/component/modal/login/state/login.store.ts": [
-                {
-                    "name": "createInitialState",
-                    "file": "src/app/component/modal/login/state/login.store.ts",
-                    "ctype": "miscellaneous",
-                    "subtype": "function",
-                    "description": "",
-                    "args": [],
-                    "returnType": "LoginState"
-                }
-            ],
             "src/app/component/modal/account-edit/state/account-edit.store.ts": [
                 {
                     "name": "createInitialState",
@@ -5448,6 +5437,17 @@
                     "description": "",
                     "args": [],
                     "returnType": "AccountEditState"
+                }
+            ],
+            "src/app/component/modal/login/state/login.store.ts": [
+                {
+                    "name": "createInitialState",
+                    "file": "src/app/component/modal/login/state/login.store.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "description": "",
+                    "args": [],
+                    "returnType": "LoginState"
                 }
             ],
             "src/app/component/modal/signin/state/signin.store.ts": [
@@ -5461,17 +5461,6 @@
                     "returnType": "SigninState"
                 }
             ],
-            "src/app/component/page/account-index/state/account-index.store.ts": [
-                {
-                    "name": "createInitialState",
-                    "file": "src/app/component/page/account-index/state/account-index.store.ts",
-                    "ctype": "miscellaneous",
-                    "subtype": "function",
-                    "description": "",
-                    "args": [],
-                    "returnType": "AccountIndexState"
-                }
-            ],
             "src/app/component/page/form/state/form.store.ts": [
                 {
                     "name": "createInitialState",
@@ -5481,6 +5470,17 @@
                     "description": "",
                     "args": [],
                     "returnType": "FormState"
+                }
+            ],
+            "src/app/component/page/account-index/state/account-index.store.ts": [
+                {
+                    "name": "createInitialState",
+                    "file": "src/app/component/page/account-index/state/account-index.store.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "description": "",
+                    "args": [],
+                    "returnType": "AccountIndexState"
                 }
             ],
             "src/app/component/page/index/state/index.store.ts": [
