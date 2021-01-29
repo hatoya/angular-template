@@ -6,11 +6,13 @@ describe('TextareaComponent', () => {
   let component: TextareaComponent;
   let fixture: ComponentFixture<TextareaComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [TextareaComponent]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [TextareaComponent]
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TextareaComponent);

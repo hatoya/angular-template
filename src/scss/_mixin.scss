@@ -10,15 +10,13 @@
   }
 }
 
-@mixin block() {
-  display: block;
-  &[hidden] {
+@mixin empty() {
+  &:empty {
     display: none;
   }
 }
 
-@mixin inline-block() {
-  display: inline-block;
+@mixin hidden() {
   &[hidden] {
     display: none;
   }
