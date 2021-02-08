@@ -1,5 +1,5 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -28,8 +28,6 @@ import { AccountIndexComponent } from './component/page/account-index/account-in
 import { FormComponent } from './component/page/form/form.component';
 import { IndexComponent } from './component/page/index/index.component';
 import { ModalLayoutComponent } from './component/template/modal-layout/modal-layout.component';
-import { CustomInterceptor } from './interceptor/custom.interceptor';
-import { SentryService } from './service/sentry.service';
 
 @NgModule({
   declarations: [
@@ -65,15 +63,15 @@ import { SentryService } from './service/sentry.service';
     HttpClientModule
   ],
   providers: [
-    {
-      provide: ErrorHandler,
-      useClass: SentryService
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: CustomInterceptor,
-      multi: true
-    }
+    // {
+    //   provide: ErrorHandler,
+    //   useClass: SentryService
+    // },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: CustomInterceptor,
+    //   multi: true
+    // },
   ],
   bootstrap: [AppComponent]
 })
