@@ -1,3 +1,4 @@
 export const enum ECollection {
-  ACCOUNT = 'account'
+  ACCOUNT = 'account',
+  MAIL = 'mail'
 }
