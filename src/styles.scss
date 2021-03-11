@@ -47,6 +47,7 @@ body {
   line-height: 1.2;
   word-wrap: break-word;
   font-family: $defaultFamily;
+  font-feature-settings: 'palt';
   -webkit-font-smoothing: antialiased;
   background: $backgroundColor;
 }
@@ -131,17 +132,8 @@ table {
 }
 
 fa-icon {
-  .fa-trash {
-    color: $grayColor;
-    cursor: pointer;
-    transition: 0.2s;
-    &:hover {
-      color: $brandColor;
-    }
-  }
-  .fa-link {
-    margin-left: 6px;
-    color: $brandColor;
+  svg {
+    display: block !important;
   }
 }
 
