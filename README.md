@@ -1,31 +1,25 @@
-# AngularTemplate
+# Angular Template
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
+## Getting Super Powers
 
-## Production
+Becoming a super hero is a fairly straight forward process:
 
-https://angular-template-a2ff7.web.app/
+```
+$ give me super-powers
+```
 
-## Development server
+{% hint style="info" %}
+ Super-powers are granted randomly so please submit an issue if you're not happy with yours.
+{% endhint %}
 
-Run `npm start` for a dev server. Navigate to `http://localhost:8888/`. The app will automatically reload if you change any of the source files.
+Once you're strong enough, save the world:
 
-## Code scaffolding
+{% code title="hello.sh" %}
+```bash
+# Ain't no code for that yet, sorry
+echo 'You got to trust me on this, I saved the world'
+```
+{% endcode %}
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
