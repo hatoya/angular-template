@@ -1,6 +1,7 @@
 @import '../../../../scss/import.scss';
 
 ::ng-deep app-button {
+  @include hidden;
   display: table;
 }
 
@@ -45,7 +46,24 @@
       opacity: 1;
     }
   }
-  &.-flat & {
+  &.-option & {
+    &__button {
+      color: #757575;
+      background: #d7dcdf;
+      &:hover {
+        background: #c3ccd1;
+      }
+    }
+  }
+  &.-warning & {
+    &__button {
+      background: $warningColor;
+      &:hover {
+        background: #dd3124;
+      }
+    }
+  }
+  &.-text & {
     &__button {
       color: #8f9cb1;
       background: none;
