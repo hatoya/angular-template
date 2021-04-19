@@ -5,12 +5,7 @@
 }
 
 .checkbox {
-  &__label {
-    @include label;
-  }
-  &__sub {
-    @include sub;
-  }
+  @include form;
   &__wrapper {
     display: flex;
     flex-wrap: wrap;
