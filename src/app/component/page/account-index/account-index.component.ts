@@ -16,7 +16,7 @@ import { AccountIndexService } from './state/account-index.service';
 export class AccountIndexComponent implements OnInit, OnDestroy {
   formGroup: FormGroup;
   accountSubscription: Subscription;
-  dateFormat = EDateFormat.DAYTIME;
+  dateFormat = EDateFormat.TIME;
 
   constructor(
     private formBuilder: FormBuilder,
