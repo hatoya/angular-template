@@ -28,6 +28,7 @@ import { SigninComponent } from './component/modal/signin/signin.component';
 import { AccountIndexComponent } from './component/page/account-index/account-index.component';
 import { FormComponent } from './component/page/form/form.component';
 import { IndexComponent } from './component/page/index/index.component';
+import { SampleComponent } from './component/page/sample/sample.component';
 import { ModalLayoutComponent } from './component/template/modal-layout/modal-layout.component';
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     ModalLayoutComponent,
     AccountEditComponent,
     OptionComponent,
-    RadioboxComponent
+    RadioboxComponent,
+    SampleComponent
   ],
   imports: [
     BrowserModule,
