@@ -43,10 +43,6 @@ export class TextComponent implements ControlValueAccessor, OnInit {
     this.required = validator ? validator({} as AbstractControl)?.required || false : false;
   }
 
-  emit() {
-    this.changeDetectorRef.detectChanges();
-  }
-
   get isDateType() {
     return this.type === EFormType.DATE;
   }
@@ -77,7 +73,7 @@ export class TextComponent implements ControlValueAccessor, OnInit {
   writeValue(value: any) {
     if (this.element) {
       this.element.nativeElement.value = value;
-      this.emit();
+      this.changeDetectorRef.detectChanges();
     }
   }
 
