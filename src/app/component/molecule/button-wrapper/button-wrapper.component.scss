@@ -1,0 +1,37 @@
+@import '../../../../scss/import.scss';
+
+::ng-deep {
+  app-button-wrapper {
+    display: block;
+  }
+}
+
+.buttonWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &__left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    @include not-first-child {
+      margin-left: 16px;
+    }
+  }
+  &__center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include child {
+      margin: 0 8px;
+    }
+  }
+  &__right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    @include not-first-child {
+      margin-left: 16px;
+    }
+  }
+}

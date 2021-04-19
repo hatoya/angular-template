@@ -24,6 +24,7 @@ import { TableComponent } from './component/atom/table/table.component';
 import { TextComponent } from './component/atom/text/text.component';
 import { TextareaComponent } from './component/atom/textarea/textarea.component';
 import { ModalComponent } from './component/modal/modal.component';
+import { ButtonWrapperComponent } from './component/molecule/button-wrapper/button-wrapper.component';
 import { IndexComponent } from './component/page/index/index.component';
 import { SampleComponent } from './component/page/sample/sample.component';
 import { ModalLayoutComponent } from './component/template/modal-layout/modal-layout.component';
@@ -43,7 +44,8 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     OptionComponent,
     RadioboxComponent,
     SampleComponent,
-    TableComponent
+    TableComponent,
+    ButtonWrapperComponent
   ],
   imports: [
     BrowserModule,
