@@ -22,7 +22,6 @@ import { SelectComponent } from './component/atom/select/select.component';
 import { TextComponent } from './component/atom/text/text.component';
 import { TextareaComponent } from './component/atom/textarea/textarea.component';
 import { ModalComponent } from './component/modal/modal.component';
-import { AccountIndexComponent } from './component/page/account-index/account-index.component';
 import { IndexComponent } from './component/page/index/index.component';
 import { SampleComponent } from './component/page/sample/sample.component';
 import { ModalLayoutComponent } from './component/template/modal-layout/modal-layout.component';
@@ -38,7 +37,6 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     ButtonComponent,
     CheckboxComponent,
     ModalComponent,
-    AccountIndexComponent,
     ModalLayoutComponent,
     OptionComponent,
     RadioboxComponent,
