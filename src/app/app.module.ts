@@ -1,4 +1,5 @@
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
@@ -59,6 +60,9 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     AngularFireAnalyticsModule
   ],
   providers: [
+    DatePipe,
+    ScreenTrackingService,
+    UserTrackingService
     // {
     //   provide: ErrorHandler,
     //   useClass: SentryService
@@ -68,8 +72,6 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     //   useClass: CustomInterceptor,
     //   multi: true
     // },
-    ScreenTrackingService,
-    UserTrackingService
   ],
   bootstrap: [AppComponent]
 })
