@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-account-edit',
-  templateUrl: './account-edit.component.html',
-  styleUrls: ['./account-edit.component.scss'],
+  selector: 'app-sample',
+  templateUrl: './sample.component.html',
+  styleUrls: ['./sample.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AccountEditComponent implements OnInit {
+export class SampleComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}

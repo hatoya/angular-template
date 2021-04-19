@@ -21,13 +21,9 @@ import { RadioboxComponent } from './component/atom/radiobox/radiobox.component'
 import { SelectComponent } from './component/atom/select/select.component';
 import { TextComponent } from './component/atom/text/text.component';
 import { TextareaComponent } from './component/atom/textarea/textarea.component';
-import { AccountEditComponent } from './component/modal/account-edit/account-edit.component';
-import { LoginComponent } from './component/modal/login/login.component';
 import { ModalComponent } from './component/modal/modal.component';
-import { SigninComponent } from './component/modal/signin/signin.component';
-import { AccountIndexComponent } from './component/page/account-index/account-index.component';
-import { FormComponent } from './component/page/form/form.component';
 import { IndexComponent } from './component/page/index/index.component';
+import { SampleComponent } from './component/page/sample/sample.component';
 import { ModalLayoutComponent } from './component/template/modal-layout/modal-layout.component';
 
 @NgModule({
@@ -35,20 +31,16 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     AppComponent,
     IndexComponent,
     LoadingComponent,
-    FormComponent,
     TextComponent,
     TextareaComponent,
     SelectComponent,
     ButtonComponent,
     CheckboxComponent,
     ModalComponent,
-    AccountIndexComponent,
-    SigninComponent,
-    LoginComponent,
     ModalLayoutComponent,
-    AccountEditComponent,
     OptionComponent,
-    RadioboxComponent
+    RadioboxComponent,
+    SampleComponent
   ],
   imports: [
     BrowserModule,

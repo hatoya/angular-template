@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
-import { LoginStore } from './login.store';
+import { SampleStore } from './sample.store';
 
 @Injectable({ providedIn: 'root' })
-export class LoginService {
-  constructor(private loginStore: LoginStore, private http: HttpClient) {}
+export class SampleService {
+  constructor(private sampleStore: SampleStore, private http: HttpClient) {}
 }
