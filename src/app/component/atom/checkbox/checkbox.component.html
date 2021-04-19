@@ -1,9 +1,10 @@
-<div class="checkbox">
+<div class="checkbox" [class.-fixed]="layout === 'fixed'">
   <p class="checkbox__label" [class.-required]="required" *ngIf="label !== null">{{ label }}</p>
-  <p class="checkbox__sub" *ngIf="sub !== null">{{ sub }}</p>
   <div class="checkbox__wrapper">
     <label class="checkbox__wrapper-list" *ngFor="let option of options">
-      <input #checkbox type="checkbox" [name]="control.name" [value]="option.value" (change)="changValue()" /><p>{{ option.label }}</p>
+      <input #checkbox type="checkbox" [name]="control?.name" [value]="option.value" [disabled]="isDisabled" (change)="changValue()" />
+      <fa-icon [icon]="checkbox.checked ? faCheckSquare : faSquare"></fa-icon>
+      <p>{{ option.label }}</p>
     </label>
   </div>
 </div>

@@ -1,5 +1,6 @@
-import { Component, ElementRef, Input, OnInit, Self, ViewChildren } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, Optional, Self, ViewChildren } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
+import { faCheckSquare, faSquare } from '@fortawesome/pro-regular-svg-icons';
 import { IOption } from 'src/app/model/option.model';
 
 @Component({
@@ -9,22 +10,27 @@ import { IOption } from 'src/app/model/option.model';
 })
 export class CheckboxComponent implements ControlValueAccessor, OnInit {
   @Input() label = null;
-  @Input() sub = null;
   @Input() options: IOption<any, any>[] = [];
+  @Input() layout = 'default';
+  @Input() isDisabled = false;
 
   @ViewChildren('checkbox') elements: ElementRef[] = [];
 
   required = false;
+  faSquare = faSquare;
+  faCheckSquare = faCheckSquare;
 
   onChange: (value: any) => void;
   onTouched: (value: any) => void;
 
-  constructor(@Self() public control: NgControl) {
-    this.control.valueAccessor = this;
+  constructor(@Self() @Optional() public control: NgControl, private changeDetectorRef: ChangeDetectorRef) {
+    if (this.control) {
+      this.control.valueAccessor = this;
+    }
   }
 
   ngOnInit(): void {
-    const validator = this.control.control.validator;
+    const validator = this.control?.control.validator;
     this.required = validator ? validator({} as AbstractControl)?.required || false : false;
   }
 
@@ -41,6 +47,7 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   writeValue(values: any[]) {
     setTimeout(() => {
       this.elements.map(element => element.nativeElement).forEach(element => (element.checked = values.includes(element.value)));
+      this.changeDetectorRef.detectChanges();
     });
   }
 
