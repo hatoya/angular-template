@@ -1,7 +1,0 @@
-@import '../../../../scss/import.scss';
-
-.signin {
-  @include not-first-child {
-    margin-top: 20px;
-  }
-}

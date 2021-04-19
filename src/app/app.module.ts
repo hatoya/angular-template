@@ -21,10 +21,7 @@ import { RadioboxComponent } from './component/atom/radiobox/radiobox.component'
 import { SelectComponent } from './component/atom/select/select.component';
 import { TextComponent } from './component/atom/text/text.component';
 import { TextareaComponent } from './component/atom/textarea/textarea.component';
-import { AccountEditComponent } from './component/modal/account-edit/account-edit.component';
-import { LoginComponent } from './component/modal/login/login.component';
 import { ModalComponent } from './component/modal/modal.component';
-import { SigninComponent } from './component/modal/signin/signin.component';
 import { AccountIndexComponent } from './component/page/account-index/account-index.component';
 import { IndexComponent } from './component/page/index/index.component';
 import { SampleComponent } from './component/page/sample/sample.component';
@@ -42,10 +39,7 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     CheckboxComponent,
     ModalComponent,
     AccountIndexComponent,
-    SigninComponent,
-    LoginComponent,
     ModalLayoutComponent,
-    AccountEditComponent,
     OptionComponent,
     RadioboxComponent,
     SampleComponent
