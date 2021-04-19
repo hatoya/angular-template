@@ -1,6 +1,7 @@
 @import '../../../../scss/import.scss';
 
 ::ng-deep app-radiobox {
+  @include hidden;
   display: block;
 }
 
@@ -10,35 +11,49 @@
   }
   &__wrapper {
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    align-items: center;
     @include not-first-child {
-      margin-left: 4px;
+      margin-left: 24px;
     }
   }
   &__wrapper-list {
-    width: 100%;
     input {
       display: none;
       &:checked {
         & + label {
-          color: white;
-          background: black;
+          fa-icon {
+            color: $brandColor;
+            &:nth-of-type(1) {
+              display: none;
+            }
+            &:nth-of-type(2) {
+              display: block;
+            }
+          }
         }
       }
     }
     label {
-      display: block;
-      width: 100%;
-      line-height: 42px;
-      font-size: 12px;
+      display: flex;
+      align-items: center;
       text-align: center;
-      color: black;
-      background: #f2f4f7;
-      border-radius: 4px;
       cursor: pointer;
-      @include sp-only {
+    }
+    fa-icon {
+      font-size: 20px;
+      color: $borderColor;
+      background: white;
+      border-radius: 50%;
+      &:nth-of-type(2) {
+        display: none;
       }
+    }
+    span {
+      @include empty;
+      line-height: 32px;
+      margin-left: 8px;
+      font-size: 14px;
+      white-space: nowrap;
     }
   }
 }
