@@ -26,7 +26,6 @@ import { LoginComponent } from './component/modal/login/login.component';
 import { ModalComponent } from './component/modal/modal.component';
 import { SigninComponent } from './component/modal/signin/signin.component';
 import { AccountIndexComponent } from './component/page/account-index/account-index.component';
-import { FormComponent } from './component/page/form/form.component';
 import { IndexComponent } from './component/page/index/index.component';
 import { SampleComponent } from './component/page/sample/sample.component';
 import { ModalLayoutComponent } from './component/template/modal-layout/modal-layout.component';
@@ -36,7 +35,6 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     AppComponent,
     IndexComponent,
     LoadingComponent,
-    FormComponent,
     TextComponent,
     TextareaComponent,
     SelectComponent,
