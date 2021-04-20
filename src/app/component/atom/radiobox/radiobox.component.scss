@@ -11,12 +11,12 @@
   }
   &__wrapper {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    @include not-first-child {
-      margin-left: 24px;
-    }
+    margin: -4px 0;
   }
   &__wrapper-list {
+    margin: 4px 24px 4px 0;
     input {
       display: none;
       &:checked {
