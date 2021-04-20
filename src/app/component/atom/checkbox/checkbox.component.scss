@@ -12,16 +12,13 @@
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    margin: 0 0 -4px;
-    @include not-last-child {
-      margin-right: 24px;
-    }
+    margin: -4px 0;
   }
   &__wrapper-list {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin: 4px 0;
+    margin: 4px 24px 4px 0;
     font-size: 14px;
     cursor: pointer;
     input {
