@@ -1,10 +1,19 @@
-<div class="textarea">
-  <p class="textarea__label" [class.-required]="required" *ngIf="label">{{ label }}</p>
-  <textarea
-    #textarea
-    [class.-error]="control.touched && control.invalid"
-    [placeholder]="placeholder"
-    (input)="onChange(textarea.value)"
-    (blur)="onTouched(textarea.value)"
-  ></textarea>
+<div class="textarea" [ngClass]="{ '-readonly': isReadOnly, '-disabled': isDisabled }">
+  <p class="textarea__label" [class.-required]="required" *ngIf="label !== null">{{ label }}</p>
+  <div class="textarea__wrapper">
+    <div class="textarea__wrapper-wrapper">
+      <textarea
+        #textarea
+        class="textarea__wrapper-input"
+        [class.-error]="control?.touched && control?.invalid"
+        [placeholder]="placeholder"
+        [disabled]="isDisabled"
+        (input)="onChange(textarea.value)"
+        (blur)="onTouched(textarea.value)"
+        [hidden]="isReadOnly"
+      ></textarea>
+    </div>
+    <p class="textarea__wrapper-readonly" *ngIf="isReadOnly">{{ textarea.value }}</p>
+    <p class="textarea__wrapper-error" *ngIf="control?.touched">{{ this.validationMessageService.getErrorMessage(control.errors) }}</p>
+  </div>
 </div>
