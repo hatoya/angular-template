@@ -1,0 +1,31 @@
+@import '../../../../scss/import.scss';
+
+::ng-deep app-file {
+  @include hidden;
+  display: block;
+}
+
+.file {
+  @include form;
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+  }
+  &__wrapper-label {
+    margin-right: 8px;
+    cursor: pointer;
+    &.-disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+  &__wrapper-input {
+    display: none;
+  }
+  &__wrapper-preview {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
