@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ValidationErrors } from '@angular/forms';
-import { EValidationMessageLabel } from '../enum/validation-message.enum';
+import { EValidationMessage } from '../enum/validation-message.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +8,16 @@ import { EValidationMessageLabel } from '../enum/validation-message.enum';
 export class ValidationMessageService {
   constructor() {}
 
-  getErrorMessage(error: ValidationErrors) {
-    const errors = Object.keys(error || {});
-    return errors.length ? EValidationMessageLabel[errors[0]] : '';
+  convertMessage(errors: any[]) {
+    let message: string = EValidationMessage[errors[0]] || '';
+    Object.entries(errors[1]).forEach(error => (message = message.replace(`\${${error[0]}}`, `${error[1]}`)));
+    return message;
+  }
+
+  getErrorMessage(validationErrors: ValidationErrors) {
+    return Object.entries(validationErrors || {})
+      .map(error => this.convertMessage(error))
+      .filter(error => error)
+      .join('\n');
   }
 }

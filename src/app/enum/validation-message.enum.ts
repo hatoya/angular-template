@@ -1,9 +1,6 @@
-export const enum EValidationMessage {
-  REQUIRED = 'required',
-  EMAIL = 'email'
-}
-
-export enum EValidationMessageLabel {
-  required = '必須項目です',
-  email = '無効なメールアドレスです'
+export enum EValidationMessage {
+  required = 'This field is required',
+  email = 'Email format is incorrect',
+  minlength = 'Expect ${requiredLength} but got ${actualLength}',
+  maxlength = 'Expect ${requiredLength} but got ${actualLength}'
 }
