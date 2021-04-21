@@ -1,37 +1,31 @@
-import { DatePipe } from '@angular/common';
 import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, Optional, Self, ViewChild } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
-import { faCalendarAlt } from '@fortawesome/pro-regular-svg-icons';
-import { EDateFormat } from 'src/app/enum/date-format.enum';
 import { EFormStatus } from 'src/app/enum/form-status.enum';
-import { EFormType } from 'src/app/enum/form-type.enum';
 import { ValidationMessageService } from 'src/app/service/validation-message.service';
 
 @Component({
-  selector: 'app-text',
-  templateUrl: './text.component.html',
-  styleUrls: ['./text.component.scss']
+  selector: 'app-file',
+  templateUrl: './file.component.html',
+  styleUrls: ['./file.component.scss']
 })
-export class TextComponent implements ControlValueAccessor, OnInit {
-  @Input() type = EFormType.TEXT;
+export class FileComponent implements ControlValueAccessor, OnInit {
   @Input() label = null;
-  @Input() placeholder = '';
-  @Input() unit = '';
+  @Input() multiple = false;
+  @Input() accept = '*';
   @Input() status = EFormStatus.EDITABLE;
 
-  @ViewChild('text') element: ElementRef;
+  @ViewChild('file') element: ElementRef;
 
+  innerFiles: File[] = [];
   required = false;
-  faCalendarAlt = faCalendarAlt;
 
   onChange: (value: any) => void;
   onTouched: (value: any) => void;
 
   constructor(
     @Self() @Optional() public control: NgControl,
-    public validationMessageService: ValidationMessageService,
     private changeDetectorRef: ChangeDetectorRef,
-    private datePipe: DatePipe
+    public validationMessageService: ValidationMessageService
   ) {
     if (this.control) {
       this.control.valueAccessor = this;
@@ -43,14 +37,6 @@ export class TextComponent implements ControlValueAccessor, OnInit {
     this.required = validator ? validator({} as AbstractControl)?.required || false : false;
   }
 
-  get isDateType() {
-    return this.type === EFormType.DATE;
-  }
-
-  get isMonthType() {
-    return this.type === EFormType.MONTH;
-  }
-
   get isReadOnly() {
     return this.status === EFormStatus.READONLY;
   }
@@ -59,21 +45,32 @@ export class TextComponent implements ControlValueAccessor, OnInit {
     return this.status === EFormStatus.DISABLED;
   }
 
-  getReadOnlyLabel(value: any) {
-    if (this.type === EFormType.DATE) {
-      return value ? this.datePipe.transform(new Date(value), EDateFormat.DAY) : '';
-    } else if (this.type === EFormType.MONTH) {
-      return value ? this.datePipe.transform(new Date(value), EDateFormat.MONTH) : '';
-    } else {
-      return value;
-    }
+  dragOver(event) {
+    event.preventDefault();
+  }
+
+  drop(event) {
+    event.preventDefault();
+    this.onChange(event.dataTransfer.files);
+  }
+
+  change(files: Blob[]) {
+    this.innerFiles = [].concat(Array.from((files as any) || [])).map(file => {
+      const fileReader = new FileReader();
+      fileReader.addEventListener('load', () => {
+        file.path = fileReader.result;
+        this.changeDetectorRef.detectChanges();
+      });
+      fileReader.readAsDataURL(file);
+      return file;
+    });
+    this.onChange(this.innerFiles);
   }
 
   // ControlValueAccessor
   writeValue(value: any) {
     if (this.element) {
-      this.element.nativeElement.value = value;
-      this.changeDetectorRef.detectChanges();
+      this.innerFiles = value;
     }
   }
 

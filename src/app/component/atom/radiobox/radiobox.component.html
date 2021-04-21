@@ -1,15 +1,19 @@
 <div class="radiobox">
   <p class="radiobox__label" [class.-required]="required" *ngIf="label !== null">{{ label }}</p>
-  <div class="radiobox__wrapper">
-    <div class="radiobox__wrapper-list" *ngFor="let option of options">
+  <ul class="radiobox__wrapper">
+    <li class="radiobox__wrapper-list" [class.-disabled]="option.disabled" *ngFor="let option of options">
       <input
         #radiobox
         type="radio"
-        [name]="control.name"
+        [name]="name"
         [value]="option.value"
-        [id]="control.name + option.value"
+        [id]="name + '-' + option.value"
+        [disabled]="option.disabled"
         (input)="onChange(radiobox.value)"
-      /><label [for]="control.name + option.value">{{ option.label }}</label>
-    </div>
-  </div>
+      /><label [for]="name + '-' + option.value"
+        ><fa-icon [icon]="faCircle"></fa-icon><fa-icon [icon]="faDotCircle"></fa-icon><span>{{ option.label }}</span></label
+      >
+    </li>
+  </ul>
+  <p class="radiobox__error" *ngIf="control?.touched">{{ this.validationMessageService.getErrorMessage(control.errors) }}</p>
 </div>

@@ -1,0 +1,17 @@
+<!-- <app-button-wrapper>
+  <ng-container button-wrapper-left></ng-container>
+  <ng-container button-wrapper-center></ng-container>
+  <ng-container button-wrapper-right></ng-container>
+</app-button-wrapper> -->
+
+<div class="buttonWrapper">
+  <div class="buttonWrapper__left">
+    <ng-content select="[button-wrapper-left]"></ng-content>
+  </div>
+  <div class="buttonWrapper__center">
+    <ng-content select="[button-wrapper-center]"></ng-content>
+  </div>
+  <div class="buttonWrapper__right">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -8,61 +8,47 @@
   &__label {
     @include label;
   }
-  &__sub {
-    @include sub;
-  }
   &__wrapper {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
+    margin: -4px 0;
   }
   &__wrapper-list {
-    position: relative;
-    margin-right: 4px;
-    margin-bottom: 4px;
-    padding: 14px 14px 14px 40px;
-    background: #f2f4f7;
-    border-radius: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 4px 24px 4px 0;
+    font-size: 14px;
     cursor: pointer;
     input {
       display: none;
       &:checked {
-        & + p {
-          &::before {
-            background: black;
-          }
-          &::after {
-            border-color: white;
-          }
+        + fa-icon {
+          color: $brandColor;
+        }
+      }
+      &:disabled {
+        + fa-icon {
+          color: $fontColor;
         }
       }
     }
+    fa-icon {
+      font-size: 20px;
+      color: $borderColor;
+      background: white;
+    }
     p {
-      display: inline-block;
-      line-height: 1.2;
-      font-size: 14px;
-      color: black;
-      &::before {
-        content: '';
-        position: absolute;
-        top: 14px;
-        left: 10px;
-        width: 16px;
-        height: 16px;
-        background: white;
-        border-radius: 4px;
-      }
-      &::after {
-        content: '';
-        position: absolute;
-        top: 16px;
-        left: 15px;
-        width: 4px;
-        height: 8px;
-        border-right: 2px solid #cecece;
-        border-bottom: 2px solid #cecece;
-        transform: rotate(45deg);
-      }
+      margin-left: 8px;
+    }
+  }
+  &__error {
+    @include error;
+  }
+  &.-fixed & {
+    &__wrapper-list {
+      width: 170px;
     }
   }
 }

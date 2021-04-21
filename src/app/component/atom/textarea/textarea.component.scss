@@ -1,24 +1,14 @@
 @import '../../../../scss/import.scss';
 
 ::ng-deep app-textarea {
+  @include hidden;
   display: block;
 }
 
 .textarea {
-  textarea {
-    appearance: none;
-    display: block;
-    width: 100%;
+  @include form();
+  &__wrapper-input {
     height: 120px;
-    padding: 12px;
-    font-size: 14px;
-    font-family: $defaultFamily;
-    border: 1px solid $borderColor;
-    &.-error {
-      border-color: $warningColor;
-    }
-  }
-  &__label {
-    @include label;
+    padding: 8px;
   }
 }
