@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, Optional, Self, ViewChild } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
+import { NgControl } from '@angular/forms';
+import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
 import { EFormStatus } from 'src/app/enum/form-status.enum';
 import { ValidationMessageService } from 'src/app/service/validation-message.service';
 
@@ -8,7 +9,7 @@ import { ValidationMessageService } from 'src/app/service/validation-message.ser
   templateUrl: './textarea.component.html',
   styleUrls: ['./textarea.component.scss']
 })
-export class TextareaComponent implements ControlValueAccessor, OnInit {
+export class TextareaComponent implements ControlValueAccessor<string>, OnInit {
   @Input() type = 'default';
   @Input() label = null;
   @Input() placeholder = '';
@@ -19,7 +20,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   required = false;
 
   onChange: (value: any) => void;
-  onTouched: (value: any) => void;
+  onTouched: () => void;
 
   constructor(
     @Self() @Optional() public control: NgControl,
@@ -33,7 +34,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
 
   ngOnInit(): void {
     const validator = this.control?.control.validator;
-    this.required = validator ? validator({} as AbstractControl)?.required || false : false;
+    this.required = validator ? validator({} as AbstractControl<string>)?.required || false : false;
   }
 
   get isReadOnly() {
