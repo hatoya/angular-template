@@ -1,6 +1,20 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@ngneat/reactive-forms';
 import { IOption } from 'src/app/model/option.model';
+
+interface ISample {
+  text: string;
+  email: string;
+  number: string;
+  date: string;
+  month: string;
+  textarea: string;
+  select: string;
+  checkbox: string[];
+  radiobox: string;
+  files: string[];
+}
 
 @Component({
   selector: 'app-sample',
@@ -8,7 +22,7 @@ import { IOption } from 'src/app/model/option.model';
   styleUrls: ['./sample.component.scss']
 })
 export class SampleComponent implements OnInit, AfterViewInit {
-  formGroup: FormGroup;
+  formGroup: FormGroup<ISample>;
   options: IOption<string, string>[] = [
     { value: 'option1', label: 'Option1' },
     { value: 'option2', label: 'Option2' },
