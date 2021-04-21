@@ -28,4 +28,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
   }
+  &__error {
+    @include error;
+  }
 }

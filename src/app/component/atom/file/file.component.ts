@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, Optional, Self, ViewChild } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
 import { EFormStatus } from 'src/app/enum/form-status.enum';
+import { ValidationMessageService } from 'src/app/service/validation-message.service';
 
 @Component({
   selector: 'app-file',
@@ -21,7 +22,11 @@ export class FileComponent implements ControlValueAccessor, OnInit {
   onChange: (value: any) => void;
   onTouched: (value: any) => void;
 
-  constructor(@Self() @Optional() public control: NgControl, private changeDetectorRef: ChangeDetectorRef) {
+  constructor(
+    @Self() @Optional() public control: NgControl,
+    private changeDetectorRef: ChangeDetectorRef,
+    public validationMessageService: ValidationMessageService
+  ) {
     if (this.control) {
       this.control.valueAccessor = this;
     }

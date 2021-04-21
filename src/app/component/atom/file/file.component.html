@@ -7,4 +7,5 @@
     <p class="file__wrapper-preview" *ngIf="innerFiles.length > 1">{{ innerFiles.length }} files chosen</p>
     <input id="file" class="file__wrapper-input" #file type="file" [multiple]="multiple" [accept]="accept" (change)="change(file.files)" />
   </div>
+  <p class="file__error" *ngIf="control?.touched">{{ this.validationMessageService.getErrorMessage(control.errors) }}</p>
 </div>
