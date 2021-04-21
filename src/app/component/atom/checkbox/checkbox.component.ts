@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, Optional, Self
 import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
 import { faCheckSquare, faSquare } from '@fortawesome/pro-regular-svg-icons';
 import { IOption } from 'src/app/model/option.model';
+import { ValidationMessageService } from 'src/app/service/validation-message.service';
 
 @Component({
   selector: 'app-checkbox',
@@ -23,7 +24,11 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   onChange: (value: any) => void;
   onTouched: (value: any) => void;
 
-  constructor(@Self() @Optional() public control: NgControl, private changeDetectorRef: ChangeDetectorRef) {
+  constructor(
+    @Self() @Optional() public control: NgControl,
+    private changeDetectorRef: ChangeDetectorRef,
+    public validationMessageService: ValidationMessageService
+  ) {
     if (this.control) {
       this.control.valueAccessor = this;
     }

@@ -7,4 +7,5 @@
       <p>{{ option.label }}</p>
     </label>
   </div>
+  <p class="checkbox__error" *ngIf="control?.touched">{{ this.validationMessageService.getErrorMessage(control.errors) }}</p>
 </div>
