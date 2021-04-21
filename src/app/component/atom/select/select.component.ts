@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, Optional, Self, ViewChild } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
+import { NgControl } from '@angular/forms';
 import { faChevronDown } from '@fortawesome/pro-regular-svg-icons';
+import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
 import { EFormStatus } from 'src/app/enum/form-status.enum';
 import { IOption } from 'src/app/model/option.model';
 import { ValidationMessageService } from 'src/app/service/validation-message.service';
@@ -10,7 +11,7 @@ import { ValidationMessageService } from 'src/app/service/validation-message.ser
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss']
 })
-export class SelectComponent implements ControlValueAccessor, OnInit {
+export class SelectComponent implements ControlValueAccessor<string | number>, OnInit {
   @Input() type = 'default';
   @Input() label = null;
   @Input() blank: string = null;
@@ -23,7 +24,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
   faChevronDown = faChevronDown;
 
   onChange: (value: any) => void;
-  onTouched: (value: any) => void;
+  onTouched: () => void;
 
   constructor(
     @Self() @Optional() public control: NgControl,
@@ -37,7 +38,7 @@ export class SelectComponent implements ControlValueAccessor, OnInit {
 
   ngOnInit(): void {
     const validator = this.control?.control.validator;
-    this.required = validator ? validator({} as AbstractControl)?.required || false : false;
+    this.required = validator ? validator({} as AbstractControl<string | number>)?.required || false : false;
   }
 
   emit() {
