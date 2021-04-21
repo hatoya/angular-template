@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, OnInit, Optional, Self, ViewChildren } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
+import { NgControl } from '@angular/forms';
 import { faCircle, faDotCircle } from '@fortawesome/pro-regular-svg-icons';
+import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
 import { IOption } from 'src/app/model/option.model';
 import { ValidationMessageService } from 'src/app/service/validation-message.service';
 
@@ -9,7 +10,7 @@ import { ValidationMessageService } from 'src/app/service/validation-message.ser
   templateUrl: './radiobox.component.html',
   styleUrls: ['./radiobox.component.scss']
 })
-export class RadioboxComponent implements ControlValueAccessor, OnInit {
+export class RadioboxComponent implements ControlValueAccessor<string | number>, OnInit {
   @Input() type = 'default';
   @Input() name = '';
   @Input() label = null;
@@ -22,7 +23,7 @@ export class RadioboxComponent implements ControlValueAccessor, OnInit {
   faDotCircle = faDotCircle;
 
   onChange: (value: any) => void;
-  onTouched: (value: any) => void;
+  onTouched: () => void;
 
   constructor(@Self() @Optional() public control: NgControl, public validationMessageService: ValidationMessageService) {
     if (this.control) {
@@ -32,7 +33,7 @@ export class RadioboxComponent implements ControlValueAccessor, OnInit {
 
   ngOnInit(): void {
     const validator = this.control?.control.validator;
-    this.required = validator ? validator({} as AbstractControl)?.required || false : false;
+    this.required = validator ? validator({} as AbstractControl<string | number>)?.required || false : false;
   }
 
   // ControlValueAccessor
