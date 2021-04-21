@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormBuilder, FormGroup } from '@ngneat/reactive-forms';
+import { IFile } from 'src/app/model/file.model';
 import { IOption } from 'src/app/model/option.model';
 
 interface ISample {
@@ -13,7 +14,7 @@ interface ISample {
   select: string;
   checkbox: string[];
   radiobox: string;
-  files: string[];
+  files: IFile[];
 }
 
 @Component({
