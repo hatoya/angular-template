@@ -56,4 +56,7 @@
       white-space: nowrap;
     }
   }
+  &__error {
+    @include error;
+  }
 }

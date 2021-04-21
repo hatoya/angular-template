@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, OnInit, Optional, Self, ViewChildren } fr
 import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
 import { faCircle, faDotCircle } from '@fortawesome/pro-regular-svg-icons';
 import { IOption } from 'src/app/model/option.model';
+import { ValidationMessageService } from 'src/app/service/validation-message.service';
 
 @Component({
   selector: 'app-radiobox',
@@ -23,7 +24,7 @@ export class RadioboxComponent implements ControlValueAccessor, OnInit {
   onChange: (value: any) => void;
   onTouched: (value: any) => void;
 
-  constructor(@Self() @Optional() public control: NgControl) {
+  constructor(@Self() @Optional() public control: NgControl, public validationMessageService: ValidationMessageService) {
     if (this.control) {
       this.control.valueAccessor = this;
     }
