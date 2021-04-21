@@ -1,7 +1,8 @@
 import { DatePipe } from '@angular/common';
 import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, Optional, Self, ViewChild } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
+import { NgControl } from '@angular/forms';
 import { faCalendarAlt } from '@fortawesome/pro-regular-svg-icons';
+import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
 import { EDateFormat } from 'src/app/enum/date-format.enum';
 import { EFormStatus } from 'src/app/enum/form-status.enum';
 import { EFormType } from 'src/app/enum/form-type.enum';
@@ -12,7 +13,7 @@ import { ValidationMessageService } from 'src/app/service/validation-message.ser
   templateUrl: './text.component.html',
   styleUrls: ['./text.component.scss']
 })
-export class TextComponent implements ControlValueAccessor, OnInit {
+export class TextComponent implements ControlValueAccessor<string | number>, OnInit {
   @Input() type = EFormType.TEXT;
   @Input() label = null;
   @Input() placeholder = '';
@@ -24,8 +25,8 @@ export class TextComponent implements ControlValueAccessor, OnInit {
   required = false;
   faCalendarAlt = faCalendarAlt;
 
-  onChange: (value: any) => void;
-  onTouched: (value: any) => void;
+  onChange: (value: string | number) => void;
+  onTouched: () => void;
 
   constructor(
     @Self() @Optional() public control: NgControl,
@@ -40,7 +41,7 @@ export class TextComponent implements ControlValueAccessor, OnInit {
 
   ngOnInit(): void {
     const validator = this.control?.control.validator;
-    this.required = validator ? validator({} as AbstractControl)?.required || false : false;
+    this.required = validator ? validator({} as AbstractControl<string | number>)?.required || false : false;
   }
 
   get isDateType() {
@@ -59,7 +60,7 @@ export class TextComponent implements ControlValueAccessor, OnInit {
     return this.status === EFormStatus.DISABLED;
   }
 
-  getReadOnlyLabel(value: any) {
+  getReadOnlyLabel(value: string | number) {
     if (this.type === EFormType.DATE) {
       return value ? this.datePipe.transform(new Date(value), EDateFormat.DAY) : '';
     } else if (this.type === EFormType.MONTH) {
@@ -70,7 +71,7 @@ export class TextComponent implements ControlValueAccessor, OnInit {
   }
 
   // ControlValueAccessor
-  writeValue(value: any) {
+  writeValue(value: string | number) {
     if (this.element) {
       this.element.nativeElement.value = value;
       this.changeDetectorRef.detectChanges();

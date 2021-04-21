@@ -10,7 +10,7 @@
         [placeholder]="placeholder"
         [disabled]="isDisabled"
         (input)="onChange(text.value)"
-        (blur)="onTouched(text.value)"
+        (blur)="onTouched()"
         [hidden]="isReadOnly"
       />
       <fa-icon class="text__wrapper-calendar" [icon]="faCalendarAlt" *ngIf="isDateType || isMonthType"></fa-icon>
