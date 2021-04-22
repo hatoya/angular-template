@@ -7,11 +7,7 @@
     {
       "target": "angular-template",
       "public": "dist",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {
           "source": "**",
@@ -31,7 +27,7 @@
       "port": 8080
     },
     "hosting": {
-      "port": 5000
+      "port": 8888
     },
     "auth": {
       "port": 9099
@@ -41,9 +37,7 @@
     }
   },
   "functions": {
-    "predeploy": [
-      "npm --prefix \"$RESOURCE_DIR\" run build"
-    ],
+    "predeploy": ["npm --prefix \"$RESOURCE_DIR\" run build"],
     "source": "functions"
   }
 }
