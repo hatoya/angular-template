@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "emulator": "firebase emulators:start",
+    "start": "ng build --watch & npm run emulator",
     "build": "ng build --aot --prod",
     "test": "ng test --watch",
     "test:cli": "ng test --no-watch",
