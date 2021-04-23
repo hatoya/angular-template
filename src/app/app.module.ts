@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule, SETTINGS } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -66,7 +66,8 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
   providers: [
     DatePipe,
     ScreenTrackingService,
-    UserTrackingService
+    UserTrackingService,
+    { provide: SETTINGS, useValue: environment.production ? undefined : { host: 'localhost:8080', ssl: false } }
     // {
     //   provide: ErrorHandler,
     //   useClass: SentryService
