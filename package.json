@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "emulator": "firebase emulators:start",
-    "start": "ng build --watch & npm run emulator",
+    "start": "ng serve & npm run emulator",
     "build": "ng build --aot --prod",
     "test": "ng test --watch",
     "test:cli": "ng test --no-watch",
