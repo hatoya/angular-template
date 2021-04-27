@@ -51,7 +51,7 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   // ControlValueAccessor
   writeValue(values: any[]) {
     setTimeout(() => {
-      this.elements.map(element => element.nativeElement).forEach(element => (element.checked = values.includes(element.value)));
+      this.elements.map(element => element.nativeElement).forEach(element => (element.checked = (values || []).includes(element.value)));
       this.changeDetectorRef.detectChanges();
     });
   }
