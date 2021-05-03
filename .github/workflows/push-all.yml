@@ -1,15 +1,16 @@
-name: Production
+name: PushAll
 
 on:
   push:
     branches:
-      - 'master'
+      - '**'
+      - '!master'
 
 jobs:
-  Deploy:
+  Test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
       - uses: actions/cache@v2
         id: node_modules_cache
         with:
@@ -22,13 +23,8 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting,firestore:rules
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       - uses: 8398a7/action-slack@v3
-        if: always()
+        if: failure()
         with:
           status: ${{ job.status }}
           fields: repo,author,message,workflow,took
