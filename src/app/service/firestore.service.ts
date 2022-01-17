@@ -1,64 +1,99 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import * as firebase from 'firebase/app';
+import {
+  collection,
+  collectionData,
+  deleteDoc,
+  doc,
+  docData,
+  Firestore,
+  getDocFromServer,
+  getDocsFromCache,
+  getDocsFromServer,
+  loadBundle,
+  namedQuery,
+  query,
+  QueryConstraint,
+  setDoc
+} from '@angular/fire/firestore';
 import { EMPTY, from, of, throwError } from 'rxjs';
-import { expand, map, mergeMap, take } from 'rxjs/operators';
-import { FirestoreQueryBuilder } from '../builder/firestore-query.builder';
+import { expand, map, mergeMap } from 'rxjs/operators';
+import { Struct } from 'superstruct';
 import { ECollection } from '../enum/collection.enum';
-import { EError } from '../enum/error.enum';
-import { createFirestore, IFirestore } from '../model/firestore.model';
+import { EMessage } from '../enum/message.enum';
+import { SFirestore, TFirestore } from '../model/firestore.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirestoreService {
-  constructor(private angularFirestore: AngularFirestore) {}
+  constructor(private firestore: Firestore) {}
 
-  updateTimestamp<T>(item: Partial<T> & Partial<IFirestore>): Partial<T> {
+  get randomId() {
+    return doc(collection(this.firestore, '_')).id;
+  }
+
+  updateTimestamp<T>(item: Partial<T> & Partial<TFirestore>): Partial<T> {
     const now = new Date().getTime();
     item.updated_at = now;
     if (!item.id) {
-      item.id = this.angularFirestore.createId();
+      item.id = this.randomId;
       item.created_at = now;
     }
     return item as T;
   }
 
-  getDocuments<T extends IFirestore>(collection: ECollection, initFunc: (item: Partial<T>) => T, query = new FirestoreQueryBuilder<T>()) {
-    return this.angularFirestore
-      .collection<T>(collection, ref => query.build(ref as firebase.default.firestore.CollectionReference<T>))
-      .valueChanges()
-      .pipe(map(items => items.map(item => initFunc(item))));
+  getDocuments$<T extends TFirestore>(collectionName: ECollection, struct: Struct<T>, queryConstraints: QueryConstraint[] = []) {
+    return from(getDocsFromServer(query(collection(this.firestore, collectionName), ...queryConstraints))).pipe(
+      map(snapshot => snapshot.docs.map(item => struct.mask(item.data())))
+    );
   }
 
-  getAllDocument<T extends IFirestore>(collection: ECollection, initFunc: (item: Partial<T>) => T, query = new FirestoreQueryBuilder<T>()) {
-    return this.getDocuments(collection, initFunc, query).pipe(
-      take(1),
-      expand(arts =>
-        arts.length
-          ? this.getDocuments(collection, initFunc, query.startAfter(arts[arts.length - 1][query.field + '']).limit(100)).pipe(take(1))
-          : EMPTY
-      ),
+  streamDocuments$<T extends TFirestore>(collectionName: ECollection, struct: Struct<T>, queryConstraints: QueryConstraint[] = []) {
+    return from(collectionData(query(collection(this.firestore, collectionName), ...queryConstraints))).pipe(
+      map(items => items.map(item => struct.mask(item)))
+    );
+  }
+
+  getAllDocument$<T extends TFirestore>(collectionName: ECollection, struct: Struct<T>, queryConstraints: QueryConstraint[] = []) {
+    return this.getDocuments$(collectionName, struct, queryConstraints).pipe(
+      expand(items => (items.length ? this.getDocuments$(collectionName, struct, queryConstraints) : EMPTY)),
       mergeMap(items => from(items))
     );
   }
 
-  getDocument<T extends IFirestore>(collection: ECollection, initFunc: (item: Partial<T>) => T, id: string) {
-    return this.angularFirestore
-      .doc<T>(`${collection}/${id}`)
-      .valueChanges()
-      .pipe(
-        mergeMap(item => (item ? of(item) : throwError(EError.E404))),
-        map(item => initFunc(item))
-      );
+  getDocument$<T extends TFirestore>(collectionName: ECollection, struct: Struct<T>, id: string) {
+    return from(getDocFromServer(doc(this.firestore, `${collectionName}/${id}`))).pipe(
+      mergeMap(snapshot => (snapshot.exists ? of(snapshot) : throwError(EMessage.NOT_FOUND))),
+      mergeMap(snapshot => of(struct.mask(snapshot.data())))
+    );
   }
 
-  setDocument<T extends IFirestore>(collection: ECollection, data: Partial<T>) {
+  streamDocument$<T extends TFirestore>(collectionName: ECollection, struct: Struct<T>, id: string) {
+    return from(docData(doc(this.firestore, `${collectionName}/${id}`))).pipe(
+      mergeMap(item => (item ? of(item) : throwError(EMessage.NOT_FOUND))),
+      mergeMap(item => of(struct.mask(item)))
+    );
+  }
+
+  setDocument$<T extends TFirestore>(collectionName: ECollection, data: Partial<T>) {
     const item = this.updateTimestamp<T>(data);
-    return from(this.angularFirestore.doc(`${collection}/${item.id}`).set(item, { merge: true })).pipe(map(() => createFirestore(item)));
+    return from(setDoc<any>(doc(this.firestore, `${collectionName}/${item.id}`), item, { merge: true })).pipe(
+      mergeMap(() => of(SFirestore.mask(item)))
+    );
   }
 
-  deleteDocument(collection: ECollection, id: string) {
-    return from(this.angularFirestore.doc(`${collection}/${id}`).delete());
+  deleteDocument$(collectionName: ECollection, id: string) {
+    return from(deleteDoc(doc(this.firestore, `${collectionName}/${id}`)));
+  }
+
+  loadBundle$(response: any) {
+    return from(loadBundle(this.firestore, response).then());
+  }
+
+  getDocumentsFromBundle$<T extends TFirestore>(collectionName: ECollection, struct: Struct<T>) {
+    return from(namedQuery(this.firestore, collectionName)).pipe(
+      mergeMap(item => getDocsFromCache(item)),
+      map(snapshot => snapshot.docs.map(item => struct.mask(item.data())))
+    );
   }
 }
