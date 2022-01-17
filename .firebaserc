@@ -2,14 +2,5 @@
   "projects": {
     "production": "angular-template-a2ff7",
     "default": "angular-template-a2ff7"
-  },
-  "targets": {
-    "angular-template-a2ff7": {
-      "hosting": {
-        "angular-template": [
-          "angular-template-a2ff7"
-        ]
-      }
-    }
   }
 }
