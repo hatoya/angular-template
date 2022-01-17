@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { connectAuthEmulator, getAuth, provideAuth } from '@angular/fire/auth';
-import { ScreenTrackingService, UserTrackingService } from '@angular/fire/compat/analytics';
 import { connectFirestoreEmulator, getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { connectFunctionsEmulator, getFunctions, provideFunctions } from '@angular/fire/functions';
 import { connectStorageEmulator, getStorage, provideStorage } from '@angular/fire/storage';
@@ -91,9 +90,7 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     HttpClientModule
   ],
   providers: [
-    DatePipe,
-    ScreenTrackingService,
-    UserTrackingService
+    DatePipe
     // {
     //   provide: ErrorHandler,
     //   useClass: SentryService
