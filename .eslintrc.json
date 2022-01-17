@@ -9,6 +9,7 @@
         "createDefaultProgram": true
       },
       "extends": ["plugin:@angular-eslint/recommended", "plugin:@angular-eslint/template/process-inline-templates"],
+      "plugins": ["import", "unused-imports"],
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
@@ -26,7 +27,9 @@
             "style": "kebab-case"
           }
         ],
-        "@angular-eslint/no-empty-lifecycle-method": "off"
+        "@angular-eslint/no-empty-lifecycle-method": "off",
+        "import/order": ["warn", { "alphabetize": { "order": "asc", "caseInsensitive": true } }],
+        "unused-imports/no-unused-imports": "warn"
       }
     },
     {

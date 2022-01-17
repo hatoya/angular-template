@@ -1,0 +1,4 @@
+{
+  "recommendations": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode", "angular.ng-template", "toba.vsfire", "bierner.markdown-mermaid"],
+  "unwantedRecommendations": []
+}
