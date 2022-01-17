@@ -1,5 +1,12 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
+import {
+  Auth,
+  authState,
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+  signOut
+} from '@angular/fire/auth';
 import { from } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -7,21 +14,25 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class FireauthService {
-  constructor(private angularFireAuth: AngularFireAuth) {}
+  constructor(private auth: Auth) {}
 
-  login(email: string, password: string) {
-    return from(this.angularFireAuth.signInWithEmailAndPassword(email, password));
+  login$(email: string, password: string) {
+    return from(signInWithEmailAndPassword(this.auth, email, password));
   }
 
-  logout() {
-    return from(this.angularFireAuth.signOut());
+  logout$() {
+    return from(signOut(this.auth));
   }
 
-  getAuthState() {
-    return this.angularFireAuth.authState;
+  getAuthState$() {
+    return authState(this.auth);
   }
 
-  createAccount(email: string, password: string) {
-    return from(this.angularFireAuth.createUserWithEmailAndPassword(email, password)).pipe(map(item => item.user.uid));
+  createAccount$(email: string, password: string) {
+    return from(createUserWithEmailAndPassword(this.auth, email, password)).pipe(map(item => item.user.uid));
+  }
+
+  sendPasswordResetEmail$(email: string) {
+    return from(sendPasswordResetEmail(this.auth, email));
   }
 }
