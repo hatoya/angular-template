@@ -62,7 +62,7 @@
                 }
               ]
             },
-            "develop": {
+            "development": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
