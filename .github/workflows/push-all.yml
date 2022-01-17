@@ -22,7 +22,7 @@ jobs:
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Build
-        run: npm run build
+        run: npm run build:dev
       - uses: 8398a7/action-slack@v3
         if: failure()
         with:
