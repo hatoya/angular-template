@@ -1,12 +1,11 @@
 {
+  "private": true,
   "name": "functions",
   "scripts": {
     "lint": "eslint --ext .js,.ts .",
-    "build": "npm run remove && tsc",
-    "watch": "npm run remove && tsc --watch",
-    "serve": "npm run build && firebase emulators:start --only functions",
-    "start": "npm run build && (npm run watch & firebase serve --only functions)",
-    "deploy": "firebase deploy --only functions",
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "start": "npm run remove && npm run build && npm run watch",
     "remove": "rm -rf lib"
   },
   "engines": {
@@ -26,6 +25,5 @@
     "eslint-plugin-import": "^2.22.0",
     "firebase-functions-test": "^0.2.0",
     "typescript": "^3.8.0"
-  },
-  "private": true
+  }
 }

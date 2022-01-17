@@ -1,17 +1,17 @@
-import { EAccountAuthority } from '../enum/account-authority.enum';
-import { createFirestore, IFirestore } from './firestore.model';
+import { assign, defaulted, enums, Infer, nullable, partial, string } from 'superstruct';
+import { EAccountRole } from '../enum/account-role.enum';
+import { ETheme } from '../enum/theme.enum';
+import { SFirestore } from './firestore.model';
 
-export interface IAccount extends IFirestore {
-  authority: EAccountAuthority;
-  name: string;
-  email: string;
-}
+export const SAccount = assign(
+  SFirestore,
+  partial({
+    name: defaulted(string(), ''),
+    email: defaulted(string(), ''),
+    phone: defaulted(string(), ''),
+    theme: defaulted(nullable(enums(Object.values(ETheme))), null),
+    role: defaulted(enums(Object.values(EAccountRole)), EAccountRole.MEMBER)
+  })
+);
 
-export function createAccount(item: Partial<IAccount>): IAccount {
-  return {
-    ...createFirestore(item),
-    authority: item.authority || EAccountAuthority.MEMBER,
-    name: item.name || '',
-    email: item.email || ''
-  };
-}
+export type TAccount = Infer<typeof SAccount>;

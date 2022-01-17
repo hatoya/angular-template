@@ -1,11 +1,12 @@
 import { DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAnalyticsModule, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFirestoreModule, SETTINGS } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
+import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { connectAuthEmulator, getAuth, provideAuth } from '@angular/fire/auth';
+import { connectFirestoreEmulator, getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { connectFunctionsEmulator, getFunctions, provideFunctions } from '@angular/fire/functions';
+import { connectStorageEmulator, getStorage, provideStorage } from '@angular/fire/storage';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
@@ -54,20 +55,42 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     AppRoutingModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
     AkitaNgRouterStoreModule,
-    AngularFireModule.initializeApp(environment.firebase, environment.firebase.projectId),
-    AngularFireAuthModule,
-    AngularFirestoreModule,
-    AngularFireStorageModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => {
+      const auth = getAuth();
+      if (!environment.production) {
+        connectAuthEmulator(auth, 'http://localhost:9099', { disableWarnings: true });
+      }
+      return auth;
+    }),
+    provideFirestore(() => {
+      const firestore = getFirestore();
+      if (!environment.production) {
+        connectFirestoreEmulator(firestore, 'localhost', 8080);
+      }
+      return firestore;
+    }),
+    provideStorage(() => {
+      const storage = getStorage();
+      if (!environment.production) {
+        connectStorageEmulator(storage, 'localhost', 9199);
+      }
+      return storage;
+    }),
+    provideFunctions(() => {
+      const functions = getFunctions();
+      if (!environment.production) {
+        connectFunctionsEmulator(functions, 'localhost', 5001);
+      }
+      return functions;
+    }),
+    provideAnalytics(() => getAnalytics()),
     FontAwesomeModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    AngularFireAnalyticsModule
+    HttpClientModule
   ],
   providers: [
-    DatePipe,
-    ScreenTrackingService,
-    UserTrackingService,
-    { provide: SETTINGS, useValue: environment.production ? undefined : { host: 'localhost:8080', ssl: false } }
+    DatePipe
     // {
     //   provide: ErrorHandler,
     //   useClass: SentryService

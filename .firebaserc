@@ -1,5 +1,6 @@
 {
   "projects": {
+    "production": "angular-template-a2ff7",
     "default": "angular-template-a2ff7"
   },
   "targets": {

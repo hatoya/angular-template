@@ -9,24 +9,22 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/cache@v2
-        id: node_modules_cache
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          path: |
-            ~/.npm
-            **/node_modules
-          key: node-${{ hashFiles('**/package-lock.json') }}
-      - name: Install
-        if: steps.node_modules_cache.outputs.cache-hit != 'true'
-        run: npm ci
-      - name: Build
-        run: npm run build
+          node-version: '16'
+          cache: 'npm'
+      - run: npm ci
+      - name: Build App
+        run: npm run build:prod
+      - name: Build Functions
+        run: npm run build:functions
       - uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting,firestore:rules
+          args: deploy --only hosting,functions,firestore:rules
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_ID: production
       - uses: 8398a7/action-slack@v3
         if: always()
         with:

@@ -1,13 +1,10 @@
-export interface IFirestore {
-  id: string;
-  created_at: number;
-  updated_at: number;
-}
+import { defaulted, Infer, nullable, number, partial, string } from 'superstruct';
 
-export function createFirestore(item: Partial<IFirestore>): IFirestore {
-  return {
-    id: item.id || '',
-    created_at: item.created_at || 0,
-    updated_at: item.updated_at || 0
-  };
-}
+export const SFirestore = partial({
+  id: defaulted(string(), ''),
+  teamspirit: defaulted(string(), ''),
+  created_at: defaulted(nullable(number()), null),
+  updated_at: defaulted(nullable(number()), null)
+});
+
+export type TFirestore = Infer<typeof SFirestore>;
