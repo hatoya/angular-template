@@ -19,7 +19,7 @@
     "eslint": "eslint './src/**/*.ts' --fix",
     "lint": "npm run prettier && npm run eslint",
     "e2e": "ng e2e",
-    "deploy": "firebase deploy --only hosting,firestore:rules,functions",
+    "deploy": "firebase deploy --only hosting,functions,firestore:rules",
     "component:page": "func() { ng g component component/page/\"$1\" && ng g af component/page/\"$1\"/\"$1\" --spec --plain --defaults && npm run lint; }; func",
     "component:modal": "func() { ng g component component/modal/\"$1\" && ng g af component/modal/\"$1\"/\"$1\" --spec --plain --defaults && npm run lint; }; func",
     "component:template": "func() { ng g component component/template/\"$1\" && ng g af component/template/\"$1\"/\"$1\" --spec --plain --defaults && npm run lint; }; func",
