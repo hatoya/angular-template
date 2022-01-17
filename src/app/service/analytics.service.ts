@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAnalytics } from '@angular/fire/analytics';
-import { from } from 'rxjs';
+import { Analytics, logEvent } from '@angular/fire/analytics';
 import { EAnalyticsEvent } from '../enum/analytics-event.enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AnalyticsService {
-  constructor(private angularFireAnalytics: AngularFireAnalytics) {}
+  constructor(private analytics: Analytics) {}
 
   logEvent(eventName: EAnalyticsEvent, params: { [key: string]: any }) {
-    return from(this.angularFireAnalytics.logEvent(eventName, params));
+    logEvent(this.analytics, eventName, params);
   }
 }
