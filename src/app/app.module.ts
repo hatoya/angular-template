@@ -17,7 +17,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { ButtonComponent } from './component/atom/button/button.component';
 import { CheckboxComponent } from './component/atom/checkbox/checkbox.component';
-import { DateComponent } from './component/atom/date/date.component';
 import { FileComponent } from './component/atom/file/file.component';
 import { LoadingComponent } from './component/atom/loading/loading.component';
 import { OptionComponent } from './component/atom/option/option.component';
@@ -49,8 +48,7 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     SampleComponent,
     TableComponent,
     ButtonWrapperComponent,
-    FileComponent,
-    DateComponent
+    FileComponent
   ],
   imports: [
     BrowserModule,
