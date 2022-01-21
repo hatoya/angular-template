@@ -20,7 +20,6 @@ import { CheckboxComponent } from './component/atom/checkbox/checkbox.component'
 import { DateComponent } from './component/atom/date/date.component';
 import { FileComponent } from './component/atom/file/file.component';
 import { LoadingComponent } from './component/atom/loading/loading.component';
-import { NumberComponent } from './component/atom/number/number.component';
 import { OptionComponent } from './component/atom/option/option.component';
 import { RadioboxComponent } from './component/atom/radiobox/radiobox.component';
 import { SelectComponent } from './component/atom/select/select.component';
@@ -51,8 +50,7 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     TableComponent,
     ButtonWrapperComponent,
     FileComponent,
-    DateComponent,
-    NumberComponent
+    DateComponent
   ],
   imports: [
     BrowserModule,
