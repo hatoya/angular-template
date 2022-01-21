@@ -11,7 +11,19 @@ import { TableComponent } from './component/atom/table/table.component';
 import { TextareaComponent } from './component/atom/textarea/textarea.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ButtonComponent,
+    CheckboxComponent,
+    FileComponent,
+    InputComponent,
+    LoadingComponent,
+    OptionComponent,
+    RadioboxComponent,
+    SelectComponent,
+    TableComponent,
+    TableComponent,
+    TextareaComponent
+  ],
   imports: [],
   exports: [
     ButtonComponent,
