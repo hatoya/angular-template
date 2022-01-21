@@ -10,7 +10,7 @@
     <ng-content select="[modal-header]"></ng-content>
   </p>
   <div class="loading" *ngIf="loading">
-    <app-loading></app-loading>
+    <lib-loading></lib-loading>
   </div>
   <div class="content" [hidden]="loading">
     <ng-content select="[modal-content]"></ng-content>
@@ -20,7 +20,7 @@
       <ng-content select="[modal-footer-left]"></ng-content>
     </div>
     <div class="button__wrapper">
-      <app-button type="flat" (clickButton)="close()">Cancel</app-button>
+      <lib-button type="flat" (clickButton)="close()">Cancel</lib-button>
       <ng-content select="[modal-footer-right]" *ngIf="!loading"></ng-content>
     </div>
   </div>

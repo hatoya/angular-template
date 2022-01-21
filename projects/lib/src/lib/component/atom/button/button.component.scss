@@ -1,6 +1,6 @@
 @import '../../../../../../../src//scss/import.scss';
 
-::ng-deep app-button {
+::ng-deep lib-button {
   @include hidden;
   display: table;
 }

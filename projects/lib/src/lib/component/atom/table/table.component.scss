@@ -1,7 +1,7 @@
 @import '../../../../../../../src//scss/import.scss';
 
 ::ng-deep {
-  app-table {
+  lib-table {
     @include hidden;
     display: block;
     width: 100%;

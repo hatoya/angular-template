@@ -1,6 +1,6 @@
 @import '../../../../../../../src//scss/import.scss';
 
-::ng-deep app-textarea {
+::ng-deep lib-textarea {
   @include hidden;
   display: block;
 }

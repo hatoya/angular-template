@@ -1,6 +1,6 @@
 @import '../../../../../../../src//scss/import.scss';
 
-::ng-deep app-radiobox {
+::ng-deep lib-radiobox {
   @include hidden;
   display: block;
 }

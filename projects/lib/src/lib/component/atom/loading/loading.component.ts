@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { faCircleNotch } from '@fortawesome/pro-solid-svg-icons';
 
 @Component({
-  selector: 'app-loading',
+  selector: 'lib-loading',
   templateUrl: './loading.component.html',
   styleUrls: ['./loading.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

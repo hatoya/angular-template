@@ -5,7 +5,7 @@ import { IOption } from 'src/app/model/option.model';
 import { ValidationMessageService } from 'src/app/service/validation-message.service';
 
 @Component({
-  selector: 'app-checkbox',
+  selector: 'lib-checkbox',
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss']
 })

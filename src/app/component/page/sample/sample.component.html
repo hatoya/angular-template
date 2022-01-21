@@ -1,16 +1,16 @@
 <div class="sample" [formGroup]="formGroup">
-  <app-input label="TEXT" formControlName="text"></app-input>
-  <app-input label="EMAIL" formControlName="email"></app-input>
-  <app-input type="number" label="NUMBER" unit="UNIT" formControlName="number"></app-input>
-  <app-input type="date" label="DATE" formControlName="date"></app-input>
-  <app-input type="month" label="MONTH" formControlName="month"></app-input>
-  <app-textarea label="TEXTAREA" formControlName="textarea"></app-textarea>
-  <app-select label="SELECT" blank="" [options]="options" formControlName="select"></app-select>
-  <app-checkbox label="CHECKBOX" [options]="options" formControlName="checkbox"></app-checkbox>
-  <app-radiobox name="radiobox" label="RADIOBOX" [options]="options" formControlName="radiobox"></app-radiobox>
-  <app-file label="FILE" formControlName="files"></app-file>
+  <lib-input label="TEXT" formControlName="text"></lib-input>
+  <lib-input label="EMAIL" formControlName="email"></lib-input>
+  <lib-input type="number" label="NUMBER" unit="UNIT" formControlName="number"></lib-input>
+  <lib-input type="date" label="DATE" formControlName="date"></lib-input>
+  <lib-input type="month" label="MONTH" formControlName="month"></lib-input>
+  <lib-textarea label="TEXTAREA" formControlName="textarea"></lib-textarea>
+  <lib-select label="SELECT" blank="" [options]="options" formControlName="select"></lib-select>
+  <lib-checkbox label="CHECKBOX" [options]="options" formControlName="checkbox"></lib-checkbox>
+  <lib-radiobox name="radiobox" label="RADIOBOX" [options]="options" formControlName="radiobox"></lib-radiobox>
+  <lib-file label="FILE" formControlName="files"></lib-file>
   <app-button-wrapper>
-    <app-button type="option">BUTTON</app-button>
-    <app-button (clickButton)="submit()">BUTTON</app-button>
+    <lib-button type="option">BUTTON</lib-button>
+    <lib-button (clickButton)="submit()">BUTTON</lib-button>
   </app-button-wrapper>
 </div>

@@ -5,7 +5,7 @@ import { EFormStatus } from 'src/app/enum/form-status.enum';
 import { ValidationMessageService } from 'src/app/service/validation-message.service';
 
 @Component({
-  selector: 'app-textarea',
+  selector: 'lib-textarea',
   templateUrl: './textarea.component.html',
   styleUrls: ['./textarea.component.scss']
 })

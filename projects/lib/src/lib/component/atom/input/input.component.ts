@@ -9,7 +9,7 @@ import { EFormType } from 'src/app/enum/form-type.enum';
 import { ValidationMessageService } from 'src/app/service/validation-message.service';
 
 @Component({
-  selector: 'app-input',
+  selector: 'lib-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

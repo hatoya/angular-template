@@ -1,7 +1,7 @@
 <div class="file" [ngClass]="{ '-readonly': isReadOnly, '-disabled': isDisabled }">
   <p class="file__label" [class.-required]="required" *ngIf="label !== null">{{ label }}</p>
   <div class="file__wrapper">
-    <label class="file__wrapper-label" [class.-disabled]="isDisabled" for="file"><app-button type="option">Choose File</app-button></label>
+    <label class="file__wrapper-label" [class.-disabled]="isDisabled" for="file"><lib-button type="option">Choose File</lib-button></label>
     <p class="file__wrapper-preview" *ngIf="innerFiles.length == 0">No file choosen</p>
     <p class="file__wrapper-preview" *ngIf="innerFiles.length === 1">{{ innerFiles[0].name }}</p>
     <p class="file__wrapper-preview" *ngIf="innerFiles.length > 1">{{ innerFiles.length }} files chosen</p>

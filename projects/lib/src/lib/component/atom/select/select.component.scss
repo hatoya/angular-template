@@ -1,6 +1,6 @@
 @import '../../../../../../../src//scss/import.scss';
 
-::ng-deep app-select {
+::ng-deep lib-select {
   @include hidden;
   display: block;
 }
