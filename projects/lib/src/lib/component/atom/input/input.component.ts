@@ -5,8 +5,10 @@ import { faCalendarAlt } from '@fortawesome/pro-regular-svg-icons';
 import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
 import { EDateFormat } from 'src/app/enum/date-format.enum';
 import { EFormStatus } from 'src/app/enum/form-status.enum';
-import { EFormType } from 'src/app/enum/form-type.enum';
+import { EInputType } from 'src/app/enum/input-type.enum';
+import { IOption } from 'src/app/model/option.model';
 import { ValidationMessageService } from 'src/app/service/validation-message.service';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'lib-input',
@@ -15,15 +17,21 @@ import { ValidationMessageService } from 'src/app/service/validation-message.ser
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputComponent implements ControlValueAccessor<string>, OnInit {
-  @Input() type = EFormType.TEXT;
+  @Input() type = EInputType.TEXT;
   @Input() label = null;
   @Input() placeholder = '';
   @Input() unit = '';
+  @Input() min = '';
+  @Input() max = '';
+  @Input() list = '';
+  @Input() options: IOption[] = [];
   @Input() status = EFormStatus.EDITABLE;
 
   @ViewChild('text') element: ElementRef;
 
-  required = false;
+  uuid = uuidv4();
+  formStatusEnum = EFormStatus;
+  inputTypeEnum = EInputType;
   faCalendarAlt = faCalendarAlt;
 
   onChange: (value: string) => void;
@@ -40,17 +48,18 @@ export class InputComponent implements ControlValueAccessor<string>, OnInit {
     }
   }
 
-  ngOnInit(): void {
-    const validator = this.control?.control.validator;
-    this.required = validator ? validator({} as AbstractControl<string>)?.required || false : false;
-  }
+  ngOnInit(): void {}
 
-  get isDateType() {
-    return this.type === EFormType.DATE;
+  get isNumberType() {
+    return this.type === EInputType.NUMBER;
   }
 
   get isMonthType() {
-    return this.type === EFormType.MONTH;
+    return this.type === EInputType.MONTH;
+  }
+
+  get isDateType() {
+    return this.type === EInputType.DATE;
   }
 
   get isReadOnly() {
@@ -61,11 +70,16 @@ export class InputComponent implements ControlValueAccessor<string>, OnInit {
     return this.status === EFormStatus.DISABLED;
   }
 
+  get required() {
+    const validator = this.control?.control?.validator;
+    return validator ? validator({} as AbstractControl<string | number>)?.required || false : false;
+  }
+
   getReadOnlyLabel(value: string | number) {
-    if (this.type === EFormType.DATE) {
-      return value ? this.datePipe.transform(new Date(value), EDateFormat.DAY) : '';
-    } else if (this.type === EFormType.MONTH) {
+    if (this.isMonthType) {
       return value ? this.datePipe.transform(new Date(value), EDateFormat.MONTH) : '';
+    } else if (this.isDateType) {
+      return value ? this.datePipe.transform(new Date(value), EDateFormat.DAY) : '';
     } else {
       return value;
     }
