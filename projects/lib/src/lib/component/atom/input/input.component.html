@@ -1,11 +1,11 @@
-<div class="text" [ngClass]="{ '-readonly': isReadOnly, '-disabled': isDisabled }">
-  <p class="text__label" [class.-required]="required">{{ label }}</p>
-  <div class="text__content">
-    <div class="text__body">
-      <div class="text__body-wrapper">
+<div class="input" [ngClass]="{ '-readonly': isReadOnly, '-disabled': isDisabled }">
+  <p class="input__label" [class.-required]="required">{{ label }}</p>
+  <div class="input__content">
+    <div class="input__body">
+      <div class="input__body-wrapper">
         <input
           #text
-          class="text__body-input"
+          class="input__body-input"
           [class.-error]="control?.touched && control?.invalid"
           [type]="type"
           [placeholder]="placeholder"
@@ -17,19 +17,16 @@
           (blur)="onTouched()"
           [hidden]="isReadOnly"
         />
-        <p
-          class="text__body-preview"
-          [class.-error]="control?.touched && control?.invalid"
-          *ngIf="type === inputTypeEnum.NUMBER && status !== formStatusEnum.READONLY"
-          >{{ text.value | number }}</p
-        >
+        <p class="input__body-preview" [class.-error]="control?.touched && control?.invalid" *ngIf="isNumberType && !isReadOnly">{{
+          text.value | number
+        }}</p>
       </div>
       <!-- <app-datalist [uuid]="uuid" [options]="options"></app-datalist> -->
-      <fa-icon class="text__body-calendar" [icon]="faCalendarAlt" *ngIf="isDateType || isMonthType"></fa-icon>
-      <p class="text__body-unit" *ngIf="!isReadOnly">{{ unit }}</p>
+      <fa-icon class="input__body-calendar" [icon]="faCalendarAlt" *ngIf="isDateType || isMonthType"></fa-icon>
+      <p class="input__body-unit" *ngIf="!isReadOnly">{{ unit }}</p>
     </div>
-    <p class="text__readonly" *ngIf="isReadOnly && isNumberType">{{ getReadOnlyLabel(text.value) | number }}{{ unit }}</p>
-    <p class="text__readonly" *ngIf="isReadOnly && !isNumberType">{{ getReadOnlyLabel(text.value) }}{{ unit }}</p>
-    <p class="text__error" *ngIf="control?.touched">{{ this.validationMessageService.getErrorMessage(control.errors) }}</p>
+    <p class="input__readonly" *ngIf="isReadOnly && isNumberType">{{ getReadOnlyLabel(text.value) | number }}{{ unit }}</p>
+    <p class="input__readonly" *ngIf="isReadOnly && !isNumberType">{{ getReadOnlyLabel(text.value) }}{{ unit }}</p>
+    <p class="input__error" *ngIf="control?.touched">{{ this.validationMessageService.getErrorMessage(control.errors) }}</p>
   </div>
 </div>
