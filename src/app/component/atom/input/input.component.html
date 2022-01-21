@@ -1,1 +1,22 @@
-<p>input works!</p>
+<div class="input" [ngClass]="{ '-readonly': isReadOnly, '-disabled': isDisabled }">
+  <p class="input__label" [class.-required]="required" *ngIf="label !== null">{{ label }}</p>
+  <div class="input__wrapper">
+    <div class="input__wrapper-wrapper">
+      <input
+        #text
+        class="input__wrapper-input"
+        [class.-error]="control?.touched && control?.invalid"
+        [type]="type"
+        [placeholder]="placeholder"
+        [disabled]="isDisabled"
+        (input)="onChange(text.value)"
+        (blur)="onTouched()"
+        [hidden]="isReadOnly"
+      />
+      <fa-icon class="input__wrapper-calendar" [icon]="faCalendarAlt" *ngIf="isDateType || isMonthType"></fa-icon>
+      <p class="input__wrapper-unit">{{ unit }}</p>
+    </div>
+    <p class="input__wrapper-readonly" *ngIf="isReadOnly">{{ getReadOnlyLabel(text.value) }}</p>
+    <p class="input__wrapper-error" *ngIf="control?.touched">{{ this.validationMessageService.getErrorMessage(control.errors) }}</p>
+  </div>
+</div>
