@@ -6,6 +6,12 @@
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
+    "paths": {
+      "lib": [
+        "dist/lib/lib",
+        "dist/lib"
+      ]
+    },
     "experimentalDecorators": true,
     "module": "es2020",
     "moduleResolution": "node",
