@@ -1,4 +1,8 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ButtonComponent } from './component/atom/button/button.component';
 import { CheckboxComponent } from './component/atom/checkbox/checkbox.component';
 import { FileComponent } from './component/atom/file/file.component';
@@ -24,7 +28,7 @@ import { TextareaComponent } from './component/atom/textarea/textarea.component'
     TableComponent,
     TextareaComponent
   ],
-  imports: [],
+  imports: [BrowserModule, BrowserAnimationsModule, ReactiveFormsModule, FontAwesomeModule],
   exports: [
     ButtonComponent,
     CheckboxComponent,
