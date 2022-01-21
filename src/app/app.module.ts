@@ -12,6 +12,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { LibModule } from 'projects/lib/src/public-api';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
@@ -60,7 +61,8 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     provideAnalytics(() => getAnalytics()),
     FontAwesomeModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    LibModule.forRoot(environment)
   ],
   providers: [
     DatePipe
