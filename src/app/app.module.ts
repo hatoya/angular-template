@@ -24,7 +24,6 @@ import { OptionComponent } from './component/atom/option/option.component';
 import { RadioboxComponent } from './component/atom/radiobox/radiobox.component';
 import { SelectComponent } from './component/atom/select/select.component';
 import { TableComponent } from './component/atom/table/table.component';
-import { TextComponent } from './component/atom/text/text.component';
 import { TextareaComponent } from './component/atom/textarea/textarea.component';
 import { ModalComponent } from './component/modal/modal.component';
 import { ButtonWrapperComponent } from './component/molecule/button-wrapper/button-wrapper.component';
@@ -37,7 +36,6 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     AppComponent,
     IndexComponent,
     LoadingComponent,
-    TextComponent,
     TextareaComponent,
     SelectComponent,
     ButtonComponent,
@@ -55,7 +53,7 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
   imports: [
     BrowserModule,
     AppRoutingModule,
-    environment.production ? [] : AkitaNgDevtools.forRoot(),
+    ...(environment.production ? [] : [AkitaNgDevtools.forRoot()]),
     AkitaNgRouterStoreModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => {
