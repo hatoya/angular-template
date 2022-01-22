@@ -17,9 +17,9 @@ import {
 } from '@angular/fire/firestore';
 import { EMPTY, from, of, throwError } from 'rxjs';
 import { expand, map, mergeMap } from 'rxjs/operators';
+import { ECollection } from 'src/app/enum/collection.enum';
+import { EMessage } from 'src/app/enum/message.enum';
 import { Struct } from 'superstruct';
-import { ECollection } from '../enum/collection.enum';
-import { EMessage } from '../enum/message.enum';
 import { SFirestore, TFirestore } from '../model/firestore.model';
 
 @Injectable({
