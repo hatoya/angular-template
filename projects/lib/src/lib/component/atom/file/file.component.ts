@@ -1,10 +1,10 @@
 import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, Optional, Self, ViewChild } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
-import { IFile } from 'src/app/model/file.model';
 import { ValidationMessageService } from 'src/app/service/validation-message.service';
 import { EFormLayout } from '../../../enum/form-layout.enum';
 import { EFormStatus } from '../../../enum/form-status.enum';
+import { IFile } from '../../../model/file.model';
 
 @Component({
   selector: 'lib-file',
