@@ -2,10 +2,10 @@ import { Component, ElementRef, Input, OnInit, Optional, Self, ViewChildren } fr
 import { NgControl } from '@angular/forms';
 import { faCircle, faDotCircle } from '@fortawesome/pro-regular-svg-icons';
 import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
-import { ValidationMessageService } from 'src/app/service/validation-message.service';
 import { EFormLayout } from '../../../enum/form-layout.enum';
 import { EFormStatus } from '../../../enum/form-status.enum';
 import { IOption } from '../../../model/option.model';
+import { ValidationMessageService } from '../../../service/validation-message.service';
 
 @Component({
   selector: 'lib-radiobox',

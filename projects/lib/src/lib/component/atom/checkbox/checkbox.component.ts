@@ -1,10 +1,10 @@
 import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, Optional, Self, ViewChildren } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
 import { faCheckSquare, faSquare } from '@fortawesome/pro-regular-svg-icons';
-import { ValidationMessageService } from 'src/app/service/validation-message.service';
 import { EFormLayout } from '../../../enum/form-layout.enum';
 import { EFormStatus } from '../../../enum/form-status.enum';
 import { IOption } from '../../../model/option.model';
+import { ValidationMessageService } from '../../../service/validation-message.service';
 
 @Component({
   selector: 'lib-checkbox',

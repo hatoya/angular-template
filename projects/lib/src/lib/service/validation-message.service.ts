@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ValidationErrors } from '@angular/forms';
-import { EValidation } from '../enum/validation.enum';
+import { EValidation } from 'src/app/enum/validation.enum';
 
 @Injectable({
   providedIn: 'root'
