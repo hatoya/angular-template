@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, Optional, Self, ViewChildren } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
 import { faCheckSquare, faSquare } from '@fortawesome/pro-regular-svg-icons';
+import { EFormStatus } from 'src/app/enum/form-status.enum';
 import { IOption } from 'src/app/model/option.model';
 import { ValidationMessageService } from 'src/app/service/validation-message.service';
 
@@ -12,8 +13,8 @@ import { ValidationMessageService } from 'src/app/service/validation-message.ser
 export class CheckboxComponent implements ControlValueAccessor, OnInit {
   @Input() label = null;
   @Input() options: IOption<any, any>[] = [];
+  @Input() status = EFormStatus.EDITABLE;
   @Input() layout = 'default';
-  @Input() isDisabled = false;
 
   @ViewChildren('checkbox') elements: ElementRef[] = [];
 
@@ -46,6 +47,14 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
         .filter(element => element.checked)
         .map(element => element.value)
     );
+  }
+
+  get isReadOnly() {
+    return this.status === EFormStatus.READONLY;
+  }
+
+  get isDisabled() {
+    return this.status === EFormStatus.DISABLED;
   }
 
   // ControlValueAccessor
