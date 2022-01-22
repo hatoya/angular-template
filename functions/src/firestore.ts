@@ -3,9 +3,9 @@ import { logger } from 'firebase-functions/v1';
 import { from, of, throwError } from 'rxjs';
 import { map, mergeMap, tap } from 'rxjs/operators';
 import { Struct } from 'superstruct';
+import { TFirestore } from '../../projects/lib/src/lib/model/firestore.model';
 import { ECollection } from '../../src/app/enum/collection.enum';
 import { EMessage } from '../../src/app/enum/message.enum';
-import { TFirestore } from '../../src/app/model/firestore.model';
 
 export function randomId(adminFirestore: firestore.Firestore) {
   return adminFirestore.collection('_').doc().id;
