@@ -15,7 +15,7 @@
     align-items: center;
     justify-content: flex-start;
     @include not-first-child {
-      margin-left: 16px;
+      margin-left: 8px;
     }
   }
   &__center {
@@ -31,7 +31,7 @@
     align-items: center;
     justify-content: flex-end;
     @include not-first-child {
-      margin-left: 16px;
+      margin-left: 8px;
     }
   }
 }
