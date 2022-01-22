@@ -11,7 +11,9 @@ import { AppService } from './state/app.service';
 export class AppComponent implements OnInit, OnDestroy {
   constructor(public query: AppQuery, private service: AppService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    document.documentElement.setAttribute('theme', 'light');
+  }
 
   ngOnDestroy() {
     this.service.resetStore();
