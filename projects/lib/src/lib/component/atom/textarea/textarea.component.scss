@@ -7,7 +7,7 @@
 
 .textarea {
   @include form();
-  &__wrapper-input {
+  &__body-input {
     height: 120px;
     padding: 8px;
   }
