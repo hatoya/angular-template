@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { EButtonType } from 'src/app/enum/button-type.enum';
+import { EButtonType } from '../../../enum/button-type.enum';
 
 @Component({
   selector: 'lib-button',

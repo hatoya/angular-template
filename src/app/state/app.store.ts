@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
-import { EAccountAuthority, EAccountAuthorityLabel } from '../enum/account-authority.enum';
+import { EAccountAuthority, EAccountAuthorityLabel } from 'projects/lib/src/lib/enum/account-authority.enum';
 import { IOption } from '../model/option.model';
 
 export interface AppState {
