@@ -1,4 +1,4 @@
-<div class="textarea" [ngClass]="{ '-readonly': isReadOnly, '-disabled': isDisabled }">
+<div class="textarea" [ngClass]="{ '-readonly': isReadOnly, '-disabled': isDisabled, '-side': isSideLayout }">
   <p class="textarea__label" [class.-required]="required" *ngIf="label !== null">{{ label }}</p>
   <div class="textarea__content">
     <div class="textarea__body">

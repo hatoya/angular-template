@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, Optional, Self, ViewChild } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
+import { EFormLayout } from 'src/app/enum/form-layout.enum';
 import { EFormStatus } from 'src/app/enum/form-status.enum';
 import { IFile } from 'src/app/model/file.model';
 import { ValidationMessageService } from 'src/app/service/validation-message.service';
@@ -15,12 +16,11 @@ export class FileComponent implements ControlValueAccessor<IFile[]>, OnInit {
   @Input() multiple = false;
   @Input() accept = '*';
   @Input() status = EFormStatus.EDITABLE;
+  @Input() layout = EFormLayout.DEFAULT;
 
   @ViewChild('file') element: ElementRef;
 
   innerFiles: File[] = [];
-  required = false;
-
   onChange: (value: any) => void;
   onTouched: () => void;
 
@@ -34,9 +34,11 @@ export class FileComponent implements ControlValueAccessor<IFile[]>, OnInit {
     }
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  get required() {
     const validator = this.control?.control.validator;
-    this.required = validator ? validator({} as AbstractControl<IFile[]>)?.required || false : false;
+    return validator ? validator({} as AbstractControl<IFile[]>)?.required || false : false;
   }
 
   get isReadOnly() {
@@ -45,6 +47,10 @@ export class FileComponent implements ControlValueAccessor<IFile[]>, OnInit {
 
   get isDisabled() {
     return this.status === EFormStatus.DISABLED;
+  }
+
+  get isSideLayout() {
+    return this.layout === EFormLayout.SIDE;
   }
 
   dragOver(event) {

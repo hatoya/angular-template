@@ -1,4 +1,4 @@
-<div class="select" [ngClass]="{ '-readonly': isReadOnly, '-disabled': isDisabled }">
+<div class="select" [ngClass]="{ '-readonly': isReadOnly, '-disabled': isDisabled, '-side': isSideLayout }">
   <p class="select__label" [class.-required]="required">{{ label }}</p>
   <div class="select__content">
     <div class="select__body">

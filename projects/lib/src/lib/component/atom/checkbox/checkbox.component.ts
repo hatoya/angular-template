@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, Optional, Self, ViewChildren } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NgControl } from '@angular/forms';
 import { faCheckSquare, faSquare } from '@fortawesome/pro-regular-svg-icons';
+import { EFormLayout } from 'src/app/enum/form-layout.enum';
 import { EFormStatus } from 'src/app/enum/form-status.enum';
 import { IOption } from 'src/app/model/option.model';
 import { ValidationMessageService } from 'src/app/service/validation-message.service';
@@ -14,11 +15,10 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   @Input() label = null;
   @Input() options: IOption<any, any>[] = [];
   @Input() status = EFormStatus.EDITABLE;
-  @Input() layout = 'default';
+  @Input() layout = EFormLayout.DEFAULT;
 
   @ViewChildren('checkbox') elements: ElementRef[] = [];
 
-  required = false;
   faSquare = faSquare;
   faCheckSquare = faCheckSquare;
 
@@ -35,9 +35,23 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
     }
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  get required() {
     const validator = this.control?.control.validator;
-    this.required = validator ? validator({} as AbstractControl)?.required || false : false;
+    return validator ? validator({} as AbstractControl)?.required || false : false;
+  }
+
+  get isReadOnly() {
+    return this.status === EFormStatus.READONLY;
+  }
+
+  get isDisabled() {
+    return this.status === EFormStatus.DISABLED;
+  }
+
+  get isSideLayout() {
+    return this.layout === EFormLayout.SIDE;
   }
 
   changValue() {
@@ -47,14 +61,6 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
         .filter(element => element.checked)
         .map(element => element.value)
     );
-  }
-
-  get isReadOnly() {
-    return this.status === EFormStatus.READONLY;
-  }
-
-  get isDisabled() {
-    return this.status === EFormStatus.DISABLED;
   }
 
   // ControlValueAccessor

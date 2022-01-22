@@ -4,6 +4,7 @@ import { NgControl } from '@angular/forms';
 import { faCalendarAlt } from '@fortawesome/pro-regular-svg-icons';
 import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
 import { EDateFormat } from 'src/app/enum/date-format.enum';
+import { EFormLayout } from 'src/app/enum/form-layout.enum';
 import { EFormStatus } from 'src/app/enum/form-status.enum';
 import { EInputType } from 'src/app/enum/input-type.enum';
 import { IOption } from 'src/app/model/option.model';
@@ -26,6 +27,7 @@ export class InputComponent implements ControlValueAccessor<string>, OnInit {
   @Input() list = '';
   @Input() options: IOption[] = [];
   @Input() status = EFormStatus.EDITABLE;
+  @Input() layout = EFormLayout.DEFAULT;
 
   @ViewChild('text') element: ElementRef;
 
@@ -50,6 +52,11 @@ export class InputComponent implements ControlValueAccessor<string>, OnInit {
 
   ngOnInit(): void {}
 
+  get required() {
+    const validator = this.control?.control?.validator;
+    return validator ? validator({} as AbstractControl<string | number>)?.required || false : false;
+  }
+
   get isNumberType() {
     return this.type === EInputType.NUMBER;
   }
@@ -70,9 +77,8 @@ export class InputComponent implements ControlValueAccessor<string>, OnInit {
     return this.status === EFormStatus.DISABLED;
   }
 
-  get required() {
-    const validator = this.control?.control?.validator;
-    return validator ? validator({} as AbstractControl<string | number>)?.required || false : false;
+  get isSideLayout() {
+    return this.layout === EFormLayout.SIDE;
   }
 
   getReadOnlyLabel(value: string | number) {

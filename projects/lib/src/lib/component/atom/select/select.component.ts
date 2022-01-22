@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, Optional, Self
 import { NgControl } from '@angular/forms';
 import { faChevronDown } from '@fortawesome/pro-regular-svg-icons';
 import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
+import { EFormLayout } from 'src/app/enum/form-layout.enum';
 import { EFormStatus } from 'src/app/enum/form-status.enum';
 import { IOption } from 'src/app/model/option.model';
 import { ValidationMessageService } from 'src/app/service/validation-message.service';
@@ -17,10 +18,10 @@ export class SelectComponent implements ControlValueAccessor<string | number>, O
   @Input() blank: string = null;
   @Input() options: IOption<any, any>[] = [];
   @Input() status = EFormStatus.EDITABLE;
+  @Input() layout = EFormLayout.DEFAULT;
 
   @ViewChild('select') element: ElementRef;
 
-  required = false;
   faChevronDown = faChevronDown;
 
   onChange: (value: any) => void;
@@ -36,13 +37,15 @@ export class SelectComponent implements ControlValueAccessor<string | number>, O
     }
   }
 
-  ngOnInit(): void {
-    const validator = this.control?.control.validator;
-    this.required = validator ? validator({} as AbstractControl<string | number>)?.required || false : false;
-  }
+  ngOnInit(): void {}
 
   emit() {
     this.changeDetectorRef.detectChanges();
+  }
+
+  get required() {
+    const validator = this.control?.control.validator;
+    return validator ? validator({} as AbstractControl<string>)?.required || false : false;
   }
 
   get isReadOnly() {
@@ -51,6 +54,10 @@ export class SelectComponent implements ControlValueAccessor<string | number>, O
 
   get isDisabled() {
     return this.status === EFormStatus.DISABLED;
+  }
+
+  get isSideLayout() {
+    return this.layout === EFormLayout.SIDE;
   }
 
   getOptionLabel(value: any) {

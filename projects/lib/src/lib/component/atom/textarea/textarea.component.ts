@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, Optional, Self, ViewChild } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
+import { EFormLayout } from 'src/app/enum/form-layout.enum';
 import { EFormStatus } from 'src/app/enum/form-status.enum';
 import { ValidationMessageService } from 'src/app/service/validation-message.service';
 
@@ -14,10 +15,9 @@ export class TextareaComponent implements ControlValueAccessor<string>, OnInit {
   @Input() label = null;
   @Input() placeholder = '';
   @Input() status = EFormStatus.EDITABLE;
+  @Input() layout = EFormLayout.DEFAULT;
 
   @ViewChild('textarea') element: ElementRef;
-
-  required = false;
 
   onChange: (value: any) => void;
   onTouched: () => void;
@@ -32,9 +32,11 @@ export class TextareaComponent implements ControlValueAccessor<string>, OnInit {
     }
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  get required() {
     const validator = this.control?.control.validator;
-    this.required = validator ? validator({} as AbstractControl<string>)?.required || false : false;
+    return validator ? validator({} as AbstractControl<string>)?.required || false : false;
   }
 
   get isReadOnly() {
@@ -43,6 +45,10 @@ export class TextareaComponent implements ControlValueAccessor<string>, OnInit {
 
   get isDisabled() {
     return this.status === EFormStatus.DISABLED;
+  }
+
+  get isSideLayout() {
+    return this.layout === EFormLayout.SIDE;
   }
 
   // ControlValueAccessor
