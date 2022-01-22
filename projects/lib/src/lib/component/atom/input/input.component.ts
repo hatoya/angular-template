@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit, ChangeDetectionStrategy, Input, ViewChild, ElementRef, Self, Optional, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, Self, Optional, ChangeDetectorRef } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { faCalendarAlt } from '@fortawesome/pro-regular-svg-icons';
 import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
@@ -14,8 +14,7 @@ import { v4 as uuidv4 } from 'uuid';
 @Component({
   selector: 'lib-input',
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./input.component.scss']
 })
 export class InputComponent implements ControlValueAccessor<string>, OnInit {
   @Input() type = EInputType.TEXT;
