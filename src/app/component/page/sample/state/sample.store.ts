@@ -1,13 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
+import { IOption } from 'src/app/model/option.model';
 
 export interface SampleState {
-  key: string;
+  options: IOption[];
+  loading: boolean;
+  sending: boolean;
 }
 
 export function createInitialState(): SampleState {
   return {
-    key: ''
+    options: [
+      { value: 'option1', label: 'Option1' },
+      { value: 'option2', label: 'Option2' },
+      { value: 'option3', label: 'Option3' },
+      { value: 'option4', label: 'Option4' }
+    ],
+    loading: true,
+    sending: false
   };
 }
 

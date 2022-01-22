@@ -1,16 +1,16 @@
-<div class="sample" [formGroup]="formGroup">
+<div class="sample" [formGroup]="formGroup" *ngIf="query.select() | async as state">
   <lib-input label="TEXT" formControlName="text"></lib-input>
   <lib-input label="EMAIL" formControlName="email"></lib-input>
   <lib-input type="number" label="NUMBER" unit="UNIT" formControlName="number"></lib-input>
   <lib-input type="date" label="DATE" formControlName="date"></lib-input>
   <lib-input type="month" label="MONTH" formControlName="month"></lib-input>
   <lib-textarea label="TEXTAREA" formControlName="textarea"></lib-textarea>
-  <lib-select label="SELECT" blank="" [options]="options" formControlName="select"></lib-select>
-  <lib-checkbox label="CHECKBOX" [options]="options" formControlName="checkbox"></lib-checkbox>
-  <lib-radiobox name="radiobox" label="RADIOBOX" [options]="options" formControlName="radiobox"></lib-radiobox>
+  <lib-select label="SELECT" blank="" [options]="state.options" formControlName="select"></lib-select>
+  <lib-checkbox label="CHECKBOX" [options]="state.options" formControlName="checkbox"></lib-checkbox>
+  <lib-radiobox name="radiobox" label="RADIOBOX" [options]="state.options" formControlName="radiobox"></lib-radiobox>
   <lib-file label="FILE" formControlName="files"></lib-file>
   <app-button-wrapper>
-    <lib-button type="option">BUTTON</lib-button>
-    <lib-button (clickButton)="submit()">BUTTON</lib-button>
+    <lib-button type="option" (clickButton)="createFormGroup()">Reset</lib-button>
+    <lib-button [isDisabled]="state.sending" (clickButton)="submit()">Submit</lib-button>
   </app-button-wrapper>
 </div>
