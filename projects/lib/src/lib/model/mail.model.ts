@@ -1,5 +1,5 @@
+import { EMailTemplate } from 'src/app/enum/mail-template.enum';
 import { any, array, assign, defaulted, enums, Infer, nullable, partial, string } from 'superstruct';
-import { EMailTemplate } from '../enum/mail-template.enum';
 import { SFirestore } from './firestore.model';
 
 export const SMail = assign(
