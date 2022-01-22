@@ -16,7 +16,7 @@
     font-size: 12px;
     text-align: center;
     white-space: pre;
-    color: white;
+    color: var(--color-text-primary);
     background: #191919;
     border-radius: 6px;
     transform: translate(-50%, 0);
@@ -26,18 +26,32 @@
     transition: 0.2s;
   }
   &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     line-height: 30px;
-    padding: 0 18px;
-    font-size: 12px;
+    padding: 0 16px;
+    font-size: 14px;
+    font-weight: bold;
     text-align: center;
     white-space: nowrap;
-    color: white;
-    background: $brandColor;
+    color: var(--color-btn-primary-text);
+    background: var(--color-btn-primary-bg);
+    border: 1px solid var(--color-btn-primary-border);
     border-radius: 6px;
-    transition: 0.3s;
+    transition: 0.2s;
     cursor: pointer;
+    &:hover {
+      background: #2ea043;
+      border-color: #3fb950;
+    }
     &::selection {
       background: none;
+    }
+    ::ng-deep {
+      fa-icon {
+        margin-left: 8px;
+      }
     }
   }
   &:hover & {
@@ -47,38 +61,64 @@
   }
   &.-option & {
     &__button {
-      color: #757575;
-      background: #d7dcdf;
+      font-weight: normal;
+      color: var(--color-text-primary);
+      background: var(--color-btn-bg);
+      border: 1px solid var(--color-border-primary);
       &:hover {
-        background: #c3ccd1;
+        background: var(--color-btn-hover-bg);
+        border-color: var(--color-btn-hover-border);
       }
     }
   }
   &.-warning & {
     &__button {
-      background: $warningColor;
+      color: var(--color-btn-danger-text);
+      background: var(--color-btn-bg);
+      border: 1px solid var(--color-border-primary);
       &:hover {
-        background: #dd3124;
+        color: var(--color-btn-danger-hover-text);
+        background: var(--color-btn-danger-hover-bg);
+        border-color: var(--color-btn-danger-hover-border);
       }
     }
   }
   &.-text & {
     &__button {
-      color: #8f9cb1;
+      padding: 0;
+      line-height: 1;
+      font-weight: normal;
+      color: var(--color-text-link);
       background: none;
-      box-shadow: none;
+      border: none;
       &:hover {
-        background: rgba(#8f9cb1, 0.08);
+        text-decoration: underline;
       }
     }
   }
   &.-disabled {
-    pointer-events: none;
+    cursor: not-allowed;
   }
   &.-disabled & {
     &__button {
-      background: #8f9cb1;
-      box-shadow: none;
+      color: var(--color-btn-primary-disabled-text);
+      background: var(--color-btn-primary-disabled-bg);
+      border-color: var(--color-btn-primary-disabled-border);
+      pointer-events: none;
+    }
+  }
+  &.-disabled.-option & {
+    &__button {
+      color: var(--color-text-disabled);
+      background: var(--color-input-disabled-bg);
+      border-color: var(--color-input-disabled-border);
+    }
+  }
+  &.-disabled.-warning & {
+    &__button {
+      color: var(--color-btn-danger-disabled-text);
+      background: var(--color-input-disabled-bg);
+      border-color: var(--color-input-disabled-border);
     }
   }
 }

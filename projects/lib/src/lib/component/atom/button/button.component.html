@@ -1,6 +1,11 @@
 <div
   class="button"
-  [ngClass]="{ '-option': type === 'option', '-warning': type === 'warning', '-text': type === 'text', '-disabled': isDisabled }"
+  [ngClass]="{
+    '-option': type === buttonTypeEnum.OPTION,
+    '-warning': type === buttonTypeEnum.WARNING,
+    '-text': type === buttonTypeEnum.TEXT,
+    '-disabled': isDisabled
+  }"
 >
   <p class="button__popup" *ngIf="popup">{{ popup }}</p>
   <p class="button__button" (click)="click()">
