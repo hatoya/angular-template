@@ -9,7 +9,7 @@ import { EFormLayout } from '../../../enum/form-layout.enum';
 import { EFormStatus } from '../../../enum/form-status.enum';
 import { EInputType } from '../../../enum/input-type.enum';
 import { IOption } from '../../../model/option.model';
-import { ValidationMessageService } from '../../../service/validation-message.service';
+import { ValidationService } from '../../../service/validation.service';
 
 @Component({
   selector: 'lib-input',
@@ -40,7 +40,7 @@ export class InputComponent implements ControlValueAccessor<string>, OnInit {
 
   constructor(
     @Self() @Optional() public control: NgControl,
-    public validationMessageService: ValidationMessageService,
+    public validationMessageService: ValidationService,
     private changeDetectorRef: ChangeDetectorRef,
     private datePipe: DatePipe
   ) {

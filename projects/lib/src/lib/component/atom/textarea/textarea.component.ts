@@ -3,7 +3,7 @@ import { NgControl } from '@angular/forms';
 import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
 import { EFormLayout } from '../../../enum/form-layout.enum';
 import { EFormStatus } from '../../../enum/form-status.enum';
-import { ValidationMessageService } from '../../../service/validation-message.service';
+import { ValidationService } from '../../../service/validation.service';
 
 @Component({
   selector: 'lib-textarea',
@@ -24,7 +24,7 @@ export class TextareaComponent implements ControlValueAccessor<string>, OnInit {
 
   constructor(
     @Self() @Optional() public control: NgControl,
-    public validationMessageService: ValidationMessageService,
+    public validationMessageService: ValidationService,
     private changeDetectorRef: ChangeDetectorRef
   ) {
     if (this.control) {

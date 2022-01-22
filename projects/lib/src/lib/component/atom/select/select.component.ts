@@ -5,7 +5,7 @@ import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
 import { EFormLayout } from '../../../enum/form-layout.enum';
 import { EFormStatus } from '../../../enum/form-status.enum';
 import { IOption } from '../../../model/option.model';
-import { ValidationMessageService } from '../../../service/validation-message.service';
+import { ValidationService } from '../../../service/validation.service';
 
 @Component({
   selector: 'lib-select',
@@ -29,7 +29,7 @@ export class SelectComponent implements ControlValueAccessor<string | number>, O
 
   constructor(
     @Self() @Optional() public control: NgControl,
-    public validationMessageService: ValidationMessageService,
+    public validationMessageService: ValidationService,
     private changeDetectorRef: ChangeDetectorRef
   ) {
     if (this.control) {

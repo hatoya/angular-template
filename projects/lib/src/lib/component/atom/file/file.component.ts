@@ -4,7 +4,7 @@ import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
 import { EFormLayout } from '../../../enum/form-layout.enum';
 import { EFormStatus } from '../../../enum/form-status.enum';
 import { IFile } from '../../../model/file.model';
-import { ValidationMessageService } from '../../../service/validation-message.service';
+import { ValidationService } from '../../../service/validation.service';
 
 @Component({
   selector: 'lib-file',
@@ -27,7 +27,7 @@ export class FileComponent implements ControlValueAccessor<IFile[]>, OnInit {
   constructor(
     @Self() @Optional() public control: NgControl,
     private changeDetectorRef: ChangeDetectorRef,
-    public validationMessageService: ValidationMessageService
+    public validationMessageService: ValidationService
   ) {
     if (this.control) {
       this.control.valueAccessor = this;

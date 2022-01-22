@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ValidationMessageService } from './validation-message.service';
+import { ValidationService } from './validation.service';
 
 describe('ValidationMessageService', () => {
-  let service: ValidationMessageService;
+  let service: ValidationService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ValidationMessageService);
+    service = TestBed.inject(ValidationService);
   });
 
   it('should be created', () => {

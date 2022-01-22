@@ -5,7 +5,7 @@ import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
 import { EFormLayout } from '../../../enum/form-layout.enum';
 import { EFormStatus } from '../../../enum/form-status.enum';
 import { IOption } from '../../../model/option.model';
-import { ValidationMessageService } from '../../../service/validation-message.service';
+import { ValidationService } from '../../../service/validation.service';
 
 @Component({
   selector: 'lib-radiobox',
@@ -28,7 +28,7 @@ export class RadioboxComponent implements ControlValueAccessor<string | number>,
   onChange: (value: any) => void;
   onTouched: () => void;
 
-  constructor(@Self() @Optional() public control: NgControl, public validationMessageService: ValidationMessageService) {
+  constructor(@Self() @Optional() public control: NgControl, public validationMessageService: ValidationService) {
     if (this.control) {
       this.control.valueAccessor = this;
     }

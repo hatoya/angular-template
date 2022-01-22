@@ -4,7 +4,7 @@ import { faCheckSquare, faSquare } from '@fortawesome/pro-regular-svg-icons';
 import { EFormLayout } from '../../../enum/form-layout.enum';
 import { EFormStatus } from '../../../enum/form-status.enum';
 import { IOption } from '../../../model/option.model';
-import { ValidationMessageService } from '../../../service/validation-message.service';
+import { ValidationService } from '../../../service/validation.service';
 
 @Component({
   selector: 'lib-checkbox',
@@ -28,7 +28,7 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   constructor(
     @Self() @Optional() public control: NgControl,
     private changeDetectorRef: ChangeDetectorRef,
-    public validationMessageService: ValidationMessageService
+    public validationMessageService: ValidationService
   ) {
     if (this.control) {
       this.control.valueAccessor = this;

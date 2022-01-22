@@ -5,7 +5,7 @@ import { EValidation } from 'src/app/enum/validation.enum';
 @Injectable({
   providedIn: 'root'
 })
-export class ValidationMessageService {
+export class ValidationService {
   constructor() {}
 
   convertMessage(errors: any[]) {
