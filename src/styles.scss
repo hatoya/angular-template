@@ -44,14 +44,14 @@ td {
 body {
   height: 100%;
   width: 100%;
-  color: $fontColor;
   font-size: 14px;
-  line-height: 1.2;
-  word-wrap: break-word;
   font-family: $defaultFamily;
   font-feature-settings: 'palt';
   -webkit-font-smoothing: antialiased;
-  background: $backgroundColor;
+  line-height: 1.2;
+  word-wrap: break-word;
+  color: var(--color-text-secondary);
+  background: var(--color-bg-canvas);
 }
 
 h1,
