@@ -6,23 +6,23 @@
 }
 
 .radiobox {
-  &__label {
-    @include label;
-  }
+  @include form();
   &__wrapper {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin: -4px 0;
   }
   &__wrapper-list {
-    margin: 4px 24px 4px 0;
+    display: flex;
+    align-items: center;
+    height: 32px;
+    margin-right: 16px;
     input {
       display: none;
       &:checked {
         & + label {
           fa-icon {
-            color: $brandColor;
+            color: var(--color-text-link);
             &:nth-of-type(1) {
               display: none;
             }
@@ -37,12 +37,12 @@
       display: flex;
       align-items: center;
       text-align: center;
+      color: var(--color-text-primary);
       cursor: pointer;
     }
     fa-icon {
       font-size: 20px;
-      color: $borderColor;
-      background: white;
+      color: var(--color-border-primary);
       border-radius: 50%;
       &:nth-of-type(2) {
         display: none;
@@ -56,7 +56,14 @@
       white-space: nowrap;
     }
   }
-  &__error {
-    @include error;
+  &.-disabled,
+  &.-readonly {
+    cursor: not-allowed;
+    label {
+      pointer-events: none;
+    }
+    fa-icon {
+      color: var(--color-border-primary) !important;
+    }
   }
 }
