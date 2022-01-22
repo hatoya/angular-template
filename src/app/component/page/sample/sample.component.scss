@@ -1,7 +1,9 @@
 @import '../../../../scss/import.scss';
 
 .sample {
-  padding: 16px;
+  width: 800px;
+  margin: 0 auto;
+  padding: 16px 0;
   @include not-first-child {
     margin-top: 16px;
   }
