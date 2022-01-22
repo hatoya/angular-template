@@ -1,6 +1,7 @@
 @import '../../../../../../../src//scss/import.scss';
 
 ::ng-deep lib-checkbox {
+  @include hidden;
   display: block;
 }
 
@@ -16,7 +17,8 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin: 4px 24px 4px 0;
+    height: 32px;
+    margin-right: 16px;
     font-size: 14px;
     cursor: pointer;
     input {
