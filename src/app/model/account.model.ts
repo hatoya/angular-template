@@ -1,7 +1,7 @@
-import { ETheme } from 'projects/lib/src/lib/enum/theme.enum';
-import { SFirestore } from 'projects/lib/src/lib/model/firestore.model';
 import { assign, defaulted, enums, Infer, nullable, partial, string } from 'superstruct';
 import { EAccountRole } from '../enum/account-role.enum';
+import { ETheme } from '../enum/theme.enum';
+import { SFirestore } from './firestore.model';
 
 export const SAccount = assign(
   SFirestore,

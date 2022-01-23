@@ -1,4 +1,4 @@
-import { Timestamp } from '@angular/fire/firestore';
+import { Timestamp } from 'firebase/firestore';
 import { defaulted, Infer, nullable, partial, string, instance } from 'superstruct';
 
 export const SFirestore = partial({

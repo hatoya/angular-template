@@ -1,15 +1,16 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
     "baseUrl": "./",
-    "module": "commonjs",
+    "outDir": "lib",
+    "target": "es2017",
+    "module": "ES6",
     "noImplicitReturns": true,
     "noUnusedLocals": true,
-    "outDir": "lib",
     "sourceMap": true,
     "strict": true,
-    "target": "es2017",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "typeRoots": ["node_modules/@types"]
   },
-  "compileOnSave": true,
   "include": ["src", "../src/app/enum", "../src/app/model"]
 }

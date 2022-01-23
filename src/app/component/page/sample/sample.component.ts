@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@ngneat/reactive-forms';
 import { EFormLayout } from 'src/app/enum/form-layout.enum';
+import { EInputType } from 'src/app/enum/input-type.enum';
 import { SampleQuery } from './state/sample.query';
 import { ISample, SampleService } from './state/sample.service';
 import { SampleStore } from './state/sample.store';
@@ -13,6 +14,7 @@ import { SampleStore } from './state/sample.store';
 export class SampleComponent implements OnInit, AfterViewInit, OnDestroy {
   formGroup: FormGroup<ISample>;
   formLayoutEnum = EFormLayout;
+  inputTypeEnum = EInputType;
 
   constructor(public query: SampleQuery, private service: SampleService, private store: SampleStore) {
     this.createFormGroup();

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
-import { IOption } from 'src/app/component/modal/option.model';
+import { IOption } from 'src/app/model/option.model';
 
 export interface SampleState {
   options: IOption[];

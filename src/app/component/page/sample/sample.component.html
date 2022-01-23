@@ -1,9 +1,9 @@
 <div class="sample" [formGroup]="formGroup" *ngIf="query.select() | async as state">
   <lib-input label="TEXT" formControlName="text"></lib-input>
   <lib-input label="EMAIL" formControlName="email"></lib-input>
-  <lib-input type="number" label="NUMBER" unit="UNIT" formControlName="number"></lib-input>
-  <lib-input type="date" label="DATE" formControlName="date"></lib-input>
-  <lib-input type="month" label="MONTH" formControlName="month"></lib-input>
+  <lib-input [type]="inputTypeEnum.NUMBER" label="NUMBER" unit="UNIT" formControlName="number"></lib-input>
+  <lib-input [type]="inputTypeEnum.DATE" label="DATE" formControlName="date"></lib-input>
+  <lib-input [type]="inputTypeEnum.MONTH" label="MONTH" formControlName="month"></lib-input>
   <lib-textarea label="TEXTAREA" formControlName="textarea"></lib-textarea>
   <lib-select label="SELECT" blank="" [options]="state.options" formControlName="select"></lib-select>
   <lib-checkbox label="CHECKBOX" [options]="state.options" formControlName="checkbox"></lib-checkbox>

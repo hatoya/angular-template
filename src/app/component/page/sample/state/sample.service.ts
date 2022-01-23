@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormBuilder } from '@ngneat/reactive-forms';
-import { IFile } from 'src/app/component/modal/file.model';
+import { IFile } from 'src/app/model/file.model';
 import { SampleStore } from './sample.store';
 
 export interface ISample extends Partial<any> {

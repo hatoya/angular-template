@@ -3,8 +3,8 @@ import { NgControl } from '@angular/forms';
 import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
 import { EFormLayout } from '../../../enum/form-layout.enum';
 import { EFormStatus } from '../../../enum/form-status.enum';
+import { IFile } from '../../../model/file.model';
 import { ValidationService } from '../../../service/validation.service';
-import { IFile } from '../../modal/file.model';
 
 @Component({
   selector: 'lib-file',
@@ -62,7 +62,7 @@ export class FileComponent implements ControlValueAccessor<IFile[]>, OnInit {
     this.onChange(event.dataTransfer.files);
   }
 
-  change(files: Blob[]) {
+  change(files: FileList) {
     this.innerFiles = [].concat(Array.from((files as any) || [])).map(file => {
       const fileReader = new FileReader();
       fileReader.addEventListener('load', () => {
