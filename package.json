@@ -7,7 +7,7 @@
     "start:functions": "cd functions && npm start",
     "start:emulator": "npm run build:functions && npm run kill && npm run emulator",
     "kill": "lsof -t -i:9099 -i:5001 -i:8080 -i:5001 -i:9199 -i:8085 -i:4444 | xargs kill -9",
-    "emulator": "firebase emulators:start --import ./saved_data --only auth,firestore,storage,functions,pubsub --project default",
+    "emulator": "firebase emulators:start --import ./saved_data --only auth,firestore,storage,functions --project default",
     "emulator:export": "firebase emulators:export ./saved_data --force --project default",
     "emulator:import": "firebase emulators:import ./saved_data --project default",
     "build:functions": "cd functions && npm run build",
