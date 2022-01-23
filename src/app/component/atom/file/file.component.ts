@@ -7,7 +7,7 @@ import { IFile } from '../../../model/file.model';
 import { ValidationService } from '../../../service/validation.service';
 
 @Component({
-  selector: 'lib-file',
+  selector: 'app-file',
   templateUrl: './file.component.html',
   styleUrls: ['./file.component.scss']
 })

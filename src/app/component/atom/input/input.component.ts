@@ -11,7 +11,7 @@ import { IOption } from '../../../model/option.model';
 import { ValidationService } from '../../../service/validation.service';
 
 @Component({
-  selector: 'lib-input',
+  selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss']
 })

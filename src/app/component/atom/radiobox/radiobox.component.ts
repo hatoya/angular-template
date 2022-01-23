@@ -8,7 +8,7 @@ import { IOption } from '../../../model/option.model';
 import { ValidationService } from '../../../service/validation.service';
 
 @Component({
-  selector: 'lib-radiobox',
+  selector: 'app-radiobox',
   templateUrl: './radiobox.component.html',
   styleUrls: ['./radiobox.component.scss']
 })

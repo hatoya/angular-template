@@ -1,16 +1,16 @@
 <div class="sample" [formGroup]="formGroup" *ngIf="query.select() | async as state">
-  <lib-input label="TEXT" formControlName="text"></lib-input>
-  <lib-input label="EMAIL" formControlName="email"></lib-input>
-  <lib-input [type]="inputTypeEnum.NUMBER" label="NUMBER" unit="UNIT" formControlName="number"></lib-input>
-  <lib-input [type]="inputTypeEnum.DATE" label="DATE" formControlName="date"></lib-input>
-  <lib-input [type]="inputTypeEnum.MONTH" label="MONTH" formControlName="month"></lib-input>
-  <lib-textarea label="TEXTAREA" formControlName="textarea"></lib-textarea>
-  <lib-select label="SELECT" blank="" [options]="state.options" formControlName="select"></lib-select>
-  <lib-checkbox label="CHECKBOX" [options]="state.options" formControlName="checkbox"></lib-checkbox>
-  <lib-radiobox name="radiobox" label="RADIOBOX" [options]="state.options" formControlName="radiobox"></lib-radiobox>
-  <lib-file label="FILE" formControlName="files"></lib-file>
+  <app-input label="TEXT" formControlName="text"></app-input>
+  <app-input label="EMAIL" formControlName="email"></app-input>
+  <app-input [type]="inputTypeEnum.NUMBER" label="NUMBER" unit="UNIT" formControlName="number"></app-input>
+  <app-input [type]="inputTypeEnum.DATE" label="DATE" formControlName="date"></app-input>
+  <app-input [type]="inputTypeEnum.MONTH" label="MONTH" formControlName="month"></app-input>
+  <app-textarea label="TEXTAREA" formControlName="textarea"></app-textarea>
+  <app-select label="SELECT" blank="" [options]="state.options" formControlName="select"></app-select>
+  <app-checkbox label="CHECKBOX" [options]="state.options" formControlName="checkbox"></app-checkbox>
+  <app-radiobox name="radiobox" label="RADIOBOX" [options]="state.options" formControlName="radiobox"></app-radiobox>
+  <app-file label="FILE" formControlName="files"></app-file>
   <app-button-wrapper>
-    <lib-button type="option" (clickButton)="createFormGroup()">Reset</lib-button>
-    <lib-button [isDisabled]="state.sending" (clickButton)="submit()">Submit</lib-button>
+    <app-button type="option" (clickButton)="createFormGroup()">Reset</app-button>
+    <app-button [isDisabled]="state.sending" (clickButton)="submit()">Submit</app-button>
   </app-button-wrapper>
 </div>

@@ -7,7 +7,7 @@ import { IOption } from '../../../model/option.model';
 import { ValidationService } from '../../../service/validation.service';
 
 @Component({
-  selector: 'lib-checkbox',
+  selector: 'app-checkbox',
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss']
 })

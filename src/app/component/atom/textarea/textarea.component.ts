@@ -6,7 +6,7 @@ import { EFormStatus } from '../../../enum/form-status.enum';
 import { ValidationService } from '../../../service/validation.service';
 
 @Component({
-  selector: 'lib-textarea',
+  selector: 'app-textarea',
   templateUrl: './textarea.component.html',
   styleUrls: ['./textarea.component.scss']
 })

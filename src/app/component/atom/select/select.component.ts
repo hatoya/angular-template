@@ -8,7 +8,7 @@ import { IOption } from '../../../model/option.model';
 import { ValidationService } from '../../../service/validation.service';
 
 @Component({
-  selector: 'lib-select',
+  selector: 'app-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss']
 })

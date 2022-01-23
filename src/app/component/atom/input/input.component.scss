@@ -1,6 +1,6 @@
 @import '../../../../scss/import.scss';
 
-::ng-deep lib-input {
+::ng-deep app-input {
   @include hidden;
   display: block;
 }
