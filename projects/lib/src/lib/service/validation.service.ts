@@ -1,15 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { ValidationErrors } from '@angular/forms';
-import { EValidation } from 'src/app/enum/validation.enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ValidationService {
-  constructor() {}
+  constructor(@Inject('validation') private validation) {}
 
   convertMessage(errors: any[]) {
-    let message: string = EValidation[errors[0]] || '';
+    let message: string = this.validation[errors[0]] || '';
     Object.entries(errors[1]).forEach(error => (message = message.replace(`\${${error[0]}}`, `${error[1]}`)));
     return message;
   }
