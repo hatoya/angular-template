@@ -17,6 +17,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { ButtonComponent } from './component/atom/button/button.component';
 import { CheckboxComponent } from './component/atom/checkbox/checkbox.component';
+import { DatalistComponent } from './component/atom/datalist/datalist.component';
 import { FileComponent } from './component/atom/file/file.component';
 import { InputComponent } from './component/atom/input/input.component';
 import { LoadingComponent } from './component/atom/loading/loading.component';
@@ -48,7 +49,8 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     RadioboxComponent,
     SelectComponent,
     TableComponent,
-    TextareaComponent
+    TextareaComponent,
+    DatalistComponent
   ],
   imports: [
     BrowserModule,
