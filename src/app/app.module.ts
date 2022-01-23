@@ -21,6 +21,7 @@ import { ButtonWrapperComponent } from './component/molecule/button-wrapper/butt
 import { IndexComponent } from './component/page/index/index.component';
 import { SampleComponent } from './component/page/sample/sample.component';
 import { ModalLayoutComponent } from './component/template/modal-layout/modal-layout.component';
+import { EValidation } from './enum/validation.enum';
 
 @NgModule({
   declarations: [AppComponent, IndexComponent, ModalComponent, ModalLayoutComponent, SampleComponent, ButtonWrapperComponent],
@@ -62,7 +63,7 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     FontAwesomeModule,
     ReactiveFormsModule,
     HttpClientModule,
-    LibModule.forRoot(environment)
+    LibModule.forRoot(environment, EValidation)
   ],
   providers: [
     DatePipe
