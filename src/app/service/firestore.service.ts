@@ -13,15 +13,14 @@ import {
   namedQuery,
   query,
   QueryConstraint,
-  setDoc,
-  Timestamp
+  setDoc
 } from '@angular/fire/firestore';
 import { EMPTY, from, of, throwError } from 'rxjs';
 import { expand, map, mergeMap } from 'rxjs/operators';
 import { Struct } from 'superstruct';
-import { SFirestore, TFirestore } from '../component/modal/firestore.model';
 import { ECollection } from '../enum/collection.enum';
 import { EMessage } from '../enum/message.enum';
+import { SFirestore, TFirestore } from '../model/firestore.model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +33,7 @@ export class FirestoreService {
   }
 
   updateTimestamp<T>(item: Partial<T> & Partial<TFirestore>): Partial<T> {
-    const now = Timestamp.now();
+    const now = new Date().getTime();
     item.updated_at = now;
     if (!item.id) {
       item.id = this.randomId;
