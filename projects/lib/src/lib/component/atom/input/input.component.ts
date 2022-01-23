@@ -3,7 +3,6 @@ import { Component, OnInit, Input, ViewChild, ElementRef, Self, Optional, Change
 import { NgControl } from '@angular/forms';
 import { faCalendarAlt } from '@fortawesome/pro-regular-svg-icons';
 import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
-import { EDateFormat } from 'src/app/enum/date-format.enum';
 import { v4 as uuidv4 } from 'uuid';
 import { EFormLayout } from '../../../enum/form-layout.enum';
 import { EFormStatus } from '../../../enum/form-status.enum';
@@ -82,9 +81,9 @@ export class InputComponent implements ControlValueAccessor<string>, OnInit {
 
   getReadOnlyLabel(value: string | number) {
     if (this.isMonthType) {
-      return value ? this.datePipe.transform(new Date(value), EDateFormat.MONTH) : '';
+      return value ? this.datePipe.transform(new Date(value), 'yyyy年M月') : '';
     } else if (this.isDateType) {
-      return value ? this.datePipe.transform(new Date(value), EDateFormat.DAY) : '';
+      return value ? this.datePipe.transform(new Date(value), 'yyyy年M月d日') : '';
     } else {
       return value;
     }
