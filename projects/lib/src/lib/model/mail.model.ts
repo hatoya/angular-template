@@ -1,5 +1,4 @@
-import { EMailTemplate } from 'src/app/enum/mail-template.enum';
-import { any, array, assign, defaulted, enums, Infer, nullable, partial, string } from 'superstruct';
+import { any, array, assign, defaulted, Infer, partial, string } from 'superstruct';
 import { SFirestore } from './firestore.model';
 
 export const SMail = assign(
@@ -8,7 +7,7 @@ export const SMail = assign(
     toUids: defaulted(array(string()), []),
     ccUids: defaulted(array(string()), []),
     template: partial({
-      name: defaulted(nullable(enums(Object.values(EMailTemplate))), null),
+      name: defaulted(string(), ''),
       data: defaulted(any(), {})
     })
   })
