@@ -12,7 +12,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { LibModule } from 'projects/lib/src/public-api';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
@@ -21,7 +20,6 @@ import { ButtonWrapperComponent } from './component/molecule/button-wrapper/butt
 import { IndexComponent } from './component/page/index/index.component';
 import { SampleComponent } from './component/page/sample/sample.component';
 import { ModalLayoutComponent } from './component/template/modal-layout/modal-layout.component';
-import { EValidation } from './enum/validation.enum';
 
 @NgModule({
   declarations: [AppComponent, IndexComponent, ModalComponent, ModalLayoutComponent, SampleComponent, ButtonWrapperComponent],
@@ -62,8 +60,7 @@ import { EValidation } from './enum/validation.enum';
     provideAnalytics(() => getAnalytics()),
     FontAwesomeModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    LibModule.forRoot(environment, EValidation)
+    HttpClientModule
   ],
   providers: [
     DatePipe
