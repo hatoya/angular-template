@@ -44,13 +44,17 @@ import { TextareaComponent } from './component/atom/textarea/textarea.component'
   ]
 })
 export class LibModule {
-  public static forRoot(environment: any): ModuleWithProviders<any> {
+  public static forRoot(environment: any, validation: any): ModuleWithProviders<any> {
     return {
       ngModule: LibModule,
       providers: [
         {
           provide: 'environment',
           useValue: environment
+        },
+        {
+          provide: 'validation',
+          useValue: validation
         }
       ]
     };
