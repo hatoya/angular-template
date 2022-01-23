@@ -13,7 +13,8 @@ import {
   namedQuery,
   query,
   QueryConstraint,
-  setDoc
+  setDoc,
+  Timestamp
 } from '@angular/fire/firestore';
 import { EMPTY, from, of, throwError } from 'rxjs';
 import { expand, map, mergeMap } from 'rxjs/operators';
@@ -31,7 +32,7 @@ export class FirestoreService {
   }
 
   updateTimestamp<T>(item: Partial<T> & Partial<TFirestore>): Partial<T> {
-    const now = new Date().getTime();
+    const now = Timestamp.now();
     item.updated_at = now;
     if (!item.id) {
       item.id = this.randomId;

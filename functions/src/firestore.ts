@@ -1,5 +1,6 @@
 import { firestore, storage } from 'firebase-admin';
 import { logger } from 'firebase-functions/v1';
+import { Timestamp } from 'firebase/firestore';
 import { from, of, throwError } from 'rxjs';
 import { map, mergeMap, tap } from 'rxjs/operators';
 import { Struct } from 'superstruct';
@@ -12,7 +13,7 @@ export function randomId(adminFirestore: firestore.Firestore) {
 }
 
 export function updateTimestamp(adminFirestore: firestore.Firestore, item: Partial<TFirestore>) {
-  const now = new Date().getTime();
+  const now = Timestamp.now();
   item.updated_at = now;
   if (!item.id) {
     item.id = randomId(adminFirestore);
