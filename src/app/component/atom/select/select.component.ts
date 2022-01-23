@@ -4,8 +4,8 @@ import { faChevronDown } from '@fortawesome/pro-regular-svg-icons';
 import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
 import { EFormLayout } from '../../../enum/form-layout.enum';
 import { EFormStatus } from '../../../enum/form-status.enum';
-import { IOption } from '../../../model/option.model';
 import { ValidationService } from '../../../service/validation.service';
+import { IOption } from '../../modal/option.model';
 
 @Component({
   selector: 'lib-select',

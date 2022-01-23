@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@ngneat/reactive-forms';
-import { EFormLayout } from 'projects/lib/src/lib/enum/form-layout.enum';
+import { EFormLayout } from 'src/app/enum/form-layout.enum';
 import { SampleQuery } from './state/sample.query';
 import { ISample, SampleService } from './state/sample.service';
 import { SampleStore } from './state/sample.store';

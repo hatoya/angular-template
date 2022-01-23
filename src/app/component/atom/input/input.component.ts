@@ -7,8 +7,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { EFormLayout } from '../../../enum/form-layout.enum';
 import { EFormStatus } from '../../../enum/form-status.enum';
 import { EInputType } from '../../../enum/input-type.enum';
-import { IOption } from '../../../model/option.model';
 import { ValidationService } from '../../../service/validation.service';
+import { IOption } from '../../modal/option.model';
 
 @Component({
   selector: 'lib-input',

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { ETheme } from 'projects/lib/src/lib/enum/theme.enum';
+import { ETheme } from './enum/theme.enum';
 import { AppQuery } from './state/app.query';
 import { AppService } from './state/app.service';
 
