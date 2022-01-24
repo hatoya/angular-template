@@ -9,6 +9,7 @@ import { connectFunctionsEmulator, getFunctions, provideFunctions } from '@angul
 import { connectStorageEmulator, getStorage, provideStorage } from '@angular/fire/storage';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -91,7 +92,8 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     provideAnalytics(() => getAnalytics()),
     FontAwesomeModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [
     DatePipe
