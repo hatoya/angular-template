@@ -1,20 +1,22 @@
-<div class="select" [ngClass]="{ '-readonly': isReadOnly }">
-  <p class="select__label" [class.-required]="required" *ngIf="label">{{ label }}</p>
-  <div class="select__wrapper">
-    <select
-      #select
-      class="select__wrapper-input"
-      [disabled]="!options.length || isDisabled"
-      [class.-error]="control?.touched && control?.invalid"
-      (change)="onChange(select.value)"
-      (blur)="onTouched()"
-      [hidden]="isReadOnly"
-    >
-      <option value="" *ngIf="blank !== null">{{ blank }}</option>
-      <option [value]="option.value" *ngFor="let option of options">{{ option.label }}</option>
-    </select>
-    <fa-icon class="select__wrapper-icon" [icon]="faChevronDown"></fa-icon>
-    <p class="select__wrapper-readonly" *ngIf="isReadOnly">{{ getOptionLabel(select.value) }}</p>
-    <p class="select__wrapper-error" *ngIf="control?.touched">{{ this.validationMessageService.getErrorMessage(control.errors) }}</p>
+<div class="select" [ngClass]="{ '-readonly': isReadOnly, '-disabled': isDisabled, '-side': isSideLayout }">
+  <p class="select__label" [class.-required]="required">{{ label }}</p>
+  <div class="select__content">
+    <div class="select__body">
+      <select
+        #select
+        class="select__body-input"
+        [disabled]="!options.length || isDisabled"
+        [class.-error]="control?.touched && control?.invalid"
+        (change)="onChange(select.value)"
+        (blur)="onTouched()"
+        [hidden]="isReadOnly"
+      >
+        <option value="" *ngIf="blank !== null">{{ blank }}</option>
+        <option [value]="option.value" *ngFor="let option of options">{{ option.label }}</option>
+      </select>
+      <fa-icon class="select__body-icon" [icon]="faChevronDown"></fa-icon>
+    </div>
+    <p class="select__readonly" *ngIf="isReadOnly">{{ getOptionLabel(select.value) }}</p>
+    <p class="select__error" *ngIf="control?.touched">{{ this.validationMessageService.getErrorMessage(control.errors) }}</p>
   </div>
 </div>

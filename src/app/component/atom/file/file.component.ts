@@ -1,9 +1,10 @@
 import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, Optional, Self, ViewChild } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
-import { EFormStatus } from 'src/app/enum/form-status.enum';
-import { IFile } from 'src/app/model/file.model';
-import { ValidationMessageService } from 'src/app/service/validation-message.service';
+import { EFormLayout } from '../../../enum/form-layout.enum';
+import { EFormStatus } from '../../../enum/form-status.enum';
+import { IFile } from '../../../model/file.model';
+import { ValidationService } from '../../../service/validation.service';
 
 @Component({
   selector: 'app-file',
@@ -15,28 +16,29 @@ export class FileComponent implements ControlValueAccessor<IFile[]>, OnInit {
   @Input() multiple = false;
   @Input() accept = '*';
   @Input() status = EFormStatus.EDITABLE;
+  @Input() layout = EFormLayout.DEFAULT;
 
   @ViewChild('file') element: ElementRef;
 
   innerFiles: File[] = [];
-  required = false;
-
   onChange: (value: any) => void;
   onTouched: () => void;
 
   constructor(
     @Self() @Optional() public control: NgControl,
     private changeDetectorRef: ChangeDetectorRef,
-    public validationMessageService: ValidationMessageService
+    public validationMessageService: ValidationService
   ) {
     if (this.control) {
       this.control.valueAccessor = this;
     }
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  get required() {
     const validator = this.control?.control.validator;
-    this.required = validator ? validator({} as AbstractControl<IFile[]>)?.required || false : false;
+    return validator ? validator({} as AbstractControl<IFile[]>)?.required || false : false;
   }
 
   get isReadOnly() {
@@ -45,6 +47,10 @@ export class FileComponent implements ControlValueAccessor<IFile[]>, OnInit {
 
   get isDisabled() {
     return this.status === EFormStatus.DISABLED;
+  }
+
+  get isSideLayout() {
+    return this.layout === EFormLayout.SIDE;
   }
 
   dragOver(event) {
@@ -56,7 +62,7 @@ export class FileComponent implements ControlValueAccessor<IFile[]>, OnInit {
     this.onChange(event.dataTransfer.files);
   }
 
-  change(files: Blob[]) {
+  change(files: FileList) {
     this.innerFiles = [].concat(Array.from((files as any) || [])).map(file => {
       const fileReader = new FileReader();
       fileReader.addEventListener('load', () => {

@@ -1,13 +1,13 @@
 @import '../../../../scss/import.scss';
 
-::ng-deep app-text {
+::ng-deep app-input {
   @include hidden;
   display: block;
 }
 
-.text {
+.input {
   @include form();
-  &__wrapper-input {
+  &__body-input {
     &[type='date'],
     &[type='month'] {
       padding-right: 16px;
@@ -22,25 +22,12 @@
       }
     }
     &[type='number'] {
-      width: 120px;
       min-width: auto;
       text-align: right;
       &::-webkit-outer-spin-button,
       &::-webkit-inner-spin-button {
         display: none;
       }
-    }
-  }
-  &__wrapper-calendar {
-    position: absolute;
-    top: 50%;
-    right: 8px;
-    transform: translate(0, -50%);
-    pointer-events: none;
-  }
-  &.-readonly & {
-    &__wrapper-calendar {
-      display: none;
     }
   }
 }

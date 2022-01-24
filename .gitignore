@@ -49,6 +49,7 @@ Thumbs.db
 # Firebase
 /.firebase
 *.log
+/saved_data
 
 # Storybook
 /storybook-static

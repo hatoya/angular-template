@@ -60,16 +60,19 @@
 
 @mixin label() {
   @include empty;
-  margin-bottom: 4px;
-  font-size: 12px;
+  margin-bottom: 8px;
+  line-height: 1;
+  font-size: 14px;
+  font-weight: bold;
   white-space: nowrap;
+  color: var(--color-text-primary);
   &.-required {
     &::after {
       content: '*';
       display: inline-block;
       margin-left: 4px;
       font-weight: bold;
-      color: $warningColor;
+      color: var(--color-text-danger);
     }
   }
 }
@@ -84,20 +87,20 @@
   padding: 0 8px;
   font-size: 14px;
   font-family: $defaultFamily;
-  color: $fontColor;
-  border: 1px solid $borderColor;
-  border-radius: 3px;
+  color: var(--color-text-primary);
+  background: var(--color-input-contrast-bg);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 6px;
   &:focus {
-    border-color: $brandColor;
+    border-color: var(--color-text-link);
   }
   &:disabled {
-    color: #9e9e9e;
-    background: #f5f5f5;
+    color: var(--color-text-disabled);
     opacity: 1;
     cursor: not-allowed;
   }
   &.-error {
-    border-color: $warningColor;
+    border-color: var(--color-text-danger);
   }
 }
 
@@ -105,10 +108,8 @@
   min-width: 140px;
   min-height: 32px;
   line-height: 1.3;
-  padding: 6px 8px;
+  padding: 6px 0;
   white-space: nowrap;
-  border: 1px solid rgba(black, 0);
-  border-bottom-color: $borderColor;
 }
 
 @mixin error() {
@@ -117,34 +118,56 @@
   margin-top: 4px;
   font-size: 10px;
   white-space: pre-wrap;
-  color: $warningColor;
+  color: var(--color-text-danger);
 }
 
 @mixin form() {
   &__label {
     @include label;
   }
-  &__wrapper {
-    position: relative;
+  &__content {
   }
-  &__wrapper-wrapper {
+  &__body {
     display: flex;
     align-items: center;
     position: relative;
   }
-  &__wrapper-input {
-    @include input;
+  &__body-wrapper {
+    position: relative;
+    width: 100%;
   }
-  &__wrapper-unit {
+  &__body-input {
+    @include input;
+    &:focus + * {
+      opacity: 0;
+    }
+  }
+  &__body-preview {
+    @include input();
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 30px;
+    text-align: right;
+    pointer-events: none;
+  }
+  &__body-calendar {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translate(0, -50%);
+    pointer-events: none;
+  }
+  &__body-unit {
     @include empty;
     margin-left: 4px;
     font-size: 12px;
     white-space: nowrap;
   }
-  &__wrapper-readonly {
+  &__readonly {
     @include readonly;
   }
-  &__wrapper-error {
+  &__error {
     @include error;
   }
   &.-readonly & {
@@ -153,9 +176,31 @@
         display: none;
       }
     }
+    &__body-calendar {
+      display: none;
+    }
   }
-  &.-disabled {
-    color: #9e9e9e;
+  &.-disabled & {
+    &__body-preview {
+      color: var(--color-text-disabled);
+    }
+  }
+  &.-side {
+    display: flex;
+    align-items: flex-start;
+  }
+  &.-side & {
+    &__label {
+      width: 140px;
+      margin: 0;
+      line-height: 32px;
+      &:empty {
+        display: block;
+      }
+    }
+    &__content {
+      width: calc(100% - 140px);
+    }
   }
 }
 

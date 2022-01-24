@@ -1,16 +1,16 @@
-<div class="sample" [formGroup]="formGroup">
-  <app-text label="TEXT" formControlName="text"></app-text>
-  <app-text label="EMAIL" formControlName="email"></app-text>
-  <app-text type="number" label="NUMBER" unit="UNIT" formControlName="number"></app-text>
-  <app-text type="date" label="DATE" formControlName="date"></app-text>
-  <app-text type="month" label="MONTH" formControlName="month"></app-text>
+<div class="sample" [formGroup]="formGroup" *ngIf="query.select() | async as state">
+  <app-input label="TEXT" formControlName="text"></app-input>
+  <app-input label="EMAIL" formControlName="email"></app-input>
+  <app-input [type]="inputTypeEnum.NUMBER" label="NUMBER" unit="UNIT" formControlName="number"></app-input>
+  <app-input [type]="inputTypeEnum.DATE" label="DATE" formControlName="date"></app-input>
+  <app-input [type]="inputTypeEnum.MONTH" label="MONTH" formControlName="month"></app-input>
   <app-textarea label="TEXTAREA" formControlName="textarea"></app-textarea>
-  <app-select label="SELECT" blank="" [options]="options" formControlName="select"></app-select>
-  <app-checkbox label="CHECKBOX" [options]="options" formControlName="checkbox"></app-checkbox>
-  <app-radiobox name="radiobox" label="RADIOBOX" [options]="options" formControlName="radiobox"></app-radiobox>
+  <app-select label="SELECT" blank="" [options]="state.options" formControlName="select"></app-select>
+  <app-checkbox label="CHECKBOX" [options]="state.options" formControlName="checkbox"></app-checkbox>
+  <app-radiobox name="radiobox" label="RADIOBOX" [options]="state.options" formControlName="radiobox"></app-radiobox>
   <app-file label="FILE" formControlName="files"></app-file>
   <app-button-wrapper>
-    <app-button type="option">BUTTON</app-button>
-    <app-button (clickButton)="submit()">BUTTON</app-button>
+    <app-button type="option" (clickButton)="createFormGroup()">Reset</app-button>
+    <app-button [isDisabled]="state.sending" (clickButton)="submit()">Submit</app-button>
   </app-button-wrapper>
 </div>

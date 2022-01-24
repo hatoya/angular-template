@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ETheme } from './enum/theme.enum';
 import { AppQuery } from './state/app.query';
 import { AppService } from './state/app.service';
 
@@ -11,7 +12,9 @@ import { AppService } from './state/app.service';
 export class AppComponent implements OnInit, OnDestroy {
   constructor(public query: AppQuery, private service: AppService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    document.documentElement.setAttribute('theme', ETheme.LIGHT);
+  }
 
   ngOnDestroy() {
     this.service.resetStore();

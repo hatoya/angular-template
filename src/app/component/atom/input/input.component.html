@@ -1,0 +1,32 @@
+<div class="input" [ngClass]="{ '-readonly': isReadOnly, '-disabled': isDisabled, '-side': isSideLayout }">
+  <p class="input__label" [class.-required]="required">{{ label }}</p>
+  <div class="input__content">
+    <div class="input__body">
+      <div class="input__body-wrapper">
+        <input
+          #text
+          class="input__body-input"
+          [class.-error]="control?.touched && control?.invalid"
+          [type]="type"
+          [placeholder]="placeholder"
+          [attr.list]="list || uuid"
+          [attr.min]="min"
+          [attr.max]="max"
+          [disabled]="isDisabled"
+          (input)="onChange(text.value)"
+          (blur)="onTouched()"
+          [hidden]="isReadOnly"
+        />
+        <p class="input__body-preview" [class.-error]="control?.touched && control?.invalid" *ngIf="isNumberType && !isReadOnly">{{
+          text.value | number
+        }}</p>
+      </div>
+      <app-datalist [uuid]="uuid" [options]="options"></app-datalist>
+      <fa-icon class="input__body-calendar" [icon]="faCalendarAlt" *ngIf="isDateType || isMonthType"></fa-icon>
+      <p class="input__body-unit" *ngIf="!isReadOnly">{{ unit }}</p>
+    </div>
+    <p class="input__readonly" *ngIf="isReadOnly && isNumberType">{{ getReadOnlyLabel(text.value) | number }}{{ unit }}</p>
+    <p class="input__readonly" *ngIf="isReadOnly && !isNumberType">{{ getReadOnlyLabel(text.value) }}{{ unit }}</p>
+    <p class="input__error" *ngIf="control?.touched">{{ this.validationMessageService.getErrorMessage(control.errors) }}</p>
+  </div>
+</div>

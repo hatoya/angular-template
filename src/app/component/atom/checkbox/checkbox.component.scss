@@ -1,13 +1,12 @@
 @import '../../../../scss/import.scss';
 
 ::ng-deep app-checkbox {
+  @include hidden;
   display: block;
 }
 
 .checkbox {
-  &__label {
-    @include label;
-  }
+  @include form;
   &__wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -18,38 +17,37 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin: 4px 24px 4px 0;
+    height: 32px;
+    margin-right: 16px;
     font-size: 14px;
     cursor: pointer;
     input {
       display: none;
       &:checked {
         + fa-icon {
-          color: $brandColor;
+          color: var(--color-text-link);
         }
       }
       &:disabled {
         + fa-icon {
-          color: $fontColor;
+          color: var(--color-text-secondary);
         }
       }
     }
     fa-icon {
       width: 20px;
       font-size: 20px;
-      color: $borderColor;
-      background: white;
+      color: var(--color-border-primary);
     }
     p {
+      color: var(--color-text-primary);
       margin-left: 8px;
     }
   }
-  &__error {
-    @include error;
-  }
-  &.-fixed & {
+  &.-readonly &,
+  &.-disabled & {
     &__wrapper-list {
-      width: 170px;
+      pointer-events: none;
     }
   }
 }

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { EButtonType } from '../../../enum/button-type.enum';
 
 @Component({
   selector: 'app-button',
@@ -12,6 +13,8 @@ export class ButtonComponent implements OnInit {
   @Input() isDisabled = false;
 
   @Output() clickButton = new EventEmitter();
+
+  buttonTypeEnum = EButtonType;
 
   constructor() {}
 

@@ -1,4 +1,4 @@
-import { defaulted, Infer, nullable, number, partial, string } from 'superstruct';
+import { defaulted, Infer, nullable, partial, string, number } from 'superstruct';
 
 export const SFirestore = partial({
   id: defaulted(string(), ''),

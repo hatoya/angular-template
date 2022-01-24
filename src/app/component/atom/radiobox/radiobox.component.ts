@@ -2,8 +2,10 @@ import { Component, ElementRef, Input, OnInit, Optional, Self, ViewChildren } fr
 import { NgControl } from '@angular/forms';
 import { faCircle, faDotCircle } from '@fortawesome/pro-regular-svg-icons';
 import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
-import { IOption } from 'src/app/model/option.model';
-import { ValidationMessageService } from 'src/app/service/validation-message.service';
+import { EFormLayout } from '../../../enum/form-layout.enum';
+import { EFormStatus } from '../../../enum/form-status.enum';
+import { IOption } from '../../../model/option.model';
+import { ValidationService } from '../../../service/validation.service';
 
 @Component({
   selector: 'app-radiobox',
@@ -15,25 +17,40 @@ export class RadioboxComponent implements ControlValueAccessor<string | number>,
   @Input() name = '';
   @Input() label = null;
   @Input() options: IOption<any, any>[] = [];
+  @Input() status = EFormStatus.EDITABLE;
+  @Input() layout = EFormLayout.DEFAULT;
 
   @ViewChildren('radiobox') elements: ElementRef[] = [];
 
-  required = false;
   faCircle = faCircle;
   faDotCircle = faDotCircle;
 
   onChange: (value: any) => void;
   onTouched: () => void;
 
-  constructor(@Self() @Optional() public control: NgControl, public validationMessageService: ValidationMessageService) {
+  constructor(@Self() @Optional() public control: NgControl, public validationMessageService: ValidationService) {
     if (this.control) {
       this.control.valueAccessor = this;
     }
   }
 
-  ngOnInit(): void {
-    const validator = this.control?.control.validator;
-    this.required = validator ? validator({} as AbstractControl<string | number>)?.required || false : false;
+  ngOnInit(): void {}
+
+  get required() {
+    const validator = this.control?.control?.validator;
+    return validator ? validator({} as AbstractControl<string | number>)?.required || false : false;
+  }
+
+  get isReadOnly() {
+    return this.status === EFormStatus.READONLY;
+  }
+
+  get isDisabled() {
+    return this.status === EFormStatus.DISABLED;
+  }
+
+  get isSideLayout() {
+    return this.layout === EFormLayout.SIDE;
   }
 
   // ControlValueAccessor

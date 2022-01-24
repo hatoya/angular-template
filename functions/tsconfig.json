@@ -1,19 +1,15 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
-    "module": "commonjs",
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
     "outDir": "lib",
+    "module": "commonjs",
+    "target": "es2017",
+    "noImplicitReturns": true,
+    "noUnusedLocals": false,
     "sourceMap": true,
     "strict": true,
-    "target": "es2017",
     "skipLibCheck": true
   },
-  "compileOnSave": true,
-  "include": [
-    "src",
-    "../src/app/enum",
-    "../src/app/model"
-  ]
+  "include": ["src", "../src/app/enum", "../src/app/model"]
 }
