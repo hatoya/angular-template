@@ -30,6 +30,7 @@ import { ModalComponent } from './component/modal/modal.component';
 import { ButtonWrapperComponent } from './component/molecule/button-wrapper/button-wrapper.component';
 import { IndexComponent } from './component/page/index/index.component';
 import { SampleComponent } from './component/page/sample/sample.component';
+import { SnackbarComponent } from './component/snackbar/snackbar.component';
 import { ModalLayoutComponent } from './component/template/modal-layout/modal-layout.component';
 
 @NgModule({
@@ -50,7 +51,8 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     SelectComponent,
     TableComponent,
     TextareaComponent,
-    DatalistComponent
+    DatalistComponent,
+    SnackbarComponent
   ],
   imports: [
     BrowserModule,
