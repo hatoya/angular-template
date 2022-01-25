@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormBuilder } from '@ngneat/reactive-forms';
+import { IInputRange, InputRangeService } from 'src/app/component/molecule/input-range/state/input-range.service';
 import { IFile } from 'src/app/model/file.model';
 import { SampleStore } from './sample.store';
 
@@ -11,6 +12,7 @@ export interface ISample extends Partial<any> {
   number: string;
   date: string;
   month: string;
+  inputRange: IInputRange;
   textarea: string;
   select: string;
   checkbox: string[];
@@ -20,7 +22,7 @@ export interface ISample extends Partial<any> {
 
 @Injectable({ providedIn: 'root' })
 export class SampleService {
-  constructor(private store: SampleStore, private formBuilder: FormBuilder) {}
+  constructor(private store: SampleStore, private formBuilder: FormBuilder, private inputRangeService: InputRangeService) {}
 
   createFormGroup() {
     return this.formBuilder.group<ISample>({
@@ -30,6 +32,7 @@ export class SampleService {
       number: ['', [Validators.required]],
       date: ['', [Validators.required]],
       month: ['', [Validators.required]],
+      inputRange: this.inputRangeService.createFormGroup(),
       textarea: ['', [Validators.required]],
       select: ['', [Validators.required]],
       checkbox: [[], [Validators.required]],
