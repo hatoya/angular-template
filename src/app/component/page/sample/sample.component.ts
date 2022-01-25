@@ -49,8 +49,6 @@ export class SampleComponent implements OnInit, AfterViewInit, OnDestroy {
       scroll(0, 0);
       return;
     }
-    this.store.update({ sending: false });
     console.log(this.formGroup.value);
-    this.store.update({ sending: true });
   }
 }
