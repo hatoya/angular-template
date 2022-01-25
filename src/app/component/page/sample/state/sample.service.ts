@@ -3,6 +3,7 @@ import { Validators } from '@angular/forms';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { IInputRange, InputRangeService } from 'src/app/component/molecule/input-range/state/input-range.service';
 import { IFile } from 'src/app/model/file.model';
+import { CustomValidators } from 'src/app/service/custom-validator.service';
 import { SampleStore } from './sample.store';
 
 export interface ISample extends Partial<any> {
@@ -32,7 +33,7 @@ export class SampleService {
       number: ['', [Validators.required]],
       date: ['', [Validators.required]],
       month: ['', [Validators.required]],
-      inputRange: this.inputRangeService.createFormGroup(),
+      inputRange: this.inputRangeService.createFormGroup([Validators.required], [Validators.required], [CustomValidators.dateRange()]),
       textarea: ['', [Validators.required]],
       select: ['', [Validators.required]],
       checkbox: [[], [Validators.required]],
