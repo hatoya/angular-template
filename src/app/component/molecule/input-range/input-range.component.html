@@ -5,5 +5,7 @@
     <div class="inputRange__wrapper-dash">〜</div>
     <app-input [type]="type" [unit]="unit" [status]="status" formControlName="to"></app-input>
   </div>
-  <p class="inputRange__error" *ngIf="formGroup.touched">{{ validationService.getErrorMessage(formGroup.errors) }}</p>
+  <p class="inputRange__error" *ngIf="formGroup.touched && !fromControl.errors && !toControl.errors">{{
+    validationService.getErrorMessage(formGroup.errors)
+  }}</p>
 </div>

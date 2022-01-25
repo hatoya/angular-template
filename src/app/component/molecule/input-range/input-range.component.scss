@@ -24,4 +24,7 @@
     font-size: 10px;
     text-align: center;
   }
+  &__error {
+    @include error;
+  }
 }

@@ -35,6 +35,14 @@ export class InputRangeComponent implements OnInit {
     return this.controlContainer.control as FormGroup<IInputRange>;
   }
 
+  get fromControl() {
+    return this.formGroup.controls.from;
+  }
+
+  get toControl() {
+    return this.formGroup.controls.to;
+  }
+
   get isReadOnly() {
     return this.status === EFormStatus.READONLY;
   }
