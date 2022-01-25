@@ -24,6 +24,7 @@ import { InputComponent } from './component/atom/input/input.component';
 import { LoadingComponent } from './component/atom/loading/loading.component';
 import { OptionComponent } from './component/atom/option/option.component';
 import { RadioboxComponent } from './component/atom/radiobox/radiobox.component';
+import { RangeComponent } from './component/atom/range/range.component';
 import { SelectComponent } from './component/atom/select/select.component';
 import { TableComponent } from './component/atom/table/table.component';
 import { TextareaComponent } from './component/atom/textarea/textarea.component';
@@ -53,7 +54,8 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     TableComponent,
     TextareaComponent,
     DatalistComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    RangeComponent
   ],
   imports: [
     BrowserModule,
