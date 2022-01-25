@@ -9,6 +9,14 @@
   <app-checkbox label="CHECKBOX" [options]="state.options" formControlName="checkbox"></app-checkbox>
   <app-radiobox name="radiobox" label="RADIOBOX" [options]="state.options" formControlName="radiobox"></app-radiobox>
   <app-file label="FILE" formControlName="files"></app-file>
+  <!-- <div class="sample__wrapper">
+    <app-input label="TEXT" formControlName="text"></app-input>
+    <app-checkbox label="CHECKBOX" [options]="state.options" formControlName="checkbox"></app-checkbox>
+  </div> -->
+  <!-- <div class="sample__wrapper">
+    <app-input label="TEXT" formControlName="text"></app-input>
+    <app-radiobox name="radiobox" label="RADIOBOX" [options]="state.options" formControlName="radiobox"></app-radiobox>
+  </div> -->
   <app-button-wrapper>
     <app-button type="option" (clickButton)="createFormGroup()">Reset</app-button>
     <app-button [isDisabled]="state.sending" (clickButton)="submit()">Submit</app-button>
