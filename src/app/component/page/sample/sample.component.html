@@ -2,14 +2,14 @@
   <app-input label="Text" formControlName="text"></app-input>
   <app-input label="List" [options]="state.options" formControlName="list"></app-input>
   <app-input label="Email" formControlName="email"></app-input>
-  <app-input [type]="inputTypeEnum.NUMBER" label="Number" unit="UNIT" formControlName="number"></app-input>
-  <app-input [type]="inputTypeEnum.DATE" label="Date" formControlName="date"></app-input>
-  <app-input [type]="inputTypeEnum.MONTH" label="Month" formControlName="month"></app-input>
+  <app-input label="Number" [type]="inputTypeEnum.NUMBER" unit="UNIT" formControlName="number"></app-input>
+  <app-input label="Date" [type]="inputTypeEnum.DATE" formControlName="date"></app-input>
+  <app-input label="Month" [type]="inputTypeEnum.MONTH" formControlName="month"></app-input>
   <app-input-range></app-input-range>
   <app-textarea label="Textarea" formControlName="textarea"></app-textarea>
   <app-select label="Select" blank="" [options]="state.options" formControlName="select"></app-select>
   <app-checkbox label="Checkbox" [options]="state.options" formControlName="checkbox"></app-checkbox>
-  <app-radiobox name="radiobox" label="Radiobox" [options]="state.options" formControlName="radiobox"></app-radiobox>
+  <app-radiobox label="Radiobox" name="radiobox" [options]="state.options" formControlName="radiobox"></app-radiobox>
   <app-file label="File" formControlName="files"></app-file>
   <!-- <div class="sample__wrapper">
     <app-input label="Text" formControlName="text"></app-input>
