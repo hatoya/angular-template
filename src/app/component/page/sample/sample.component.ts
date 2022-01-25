@@ -31,7 +31,7 @@ export class SampleComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    this.formGroup.patchValue({ text: 'TEXT' });
+    this.formGroup.patchValue({ text: 'text' });
   }
 
   ngOnDestroy(): void {

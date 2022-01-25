@@ -6,6 +6,7 @@ import { SampleStore } from './sample.store';
 
 export interface ISample extends Partial<any> {
   text: string;
+  list: string;
   email: string;
   number: string;
   date: string;
@@ -24,6 +25,7 @@ export class SampleService {
   createFormGroup() {
     return this.formBuilder.group<ISample>({
       text: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
+      list: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       number: ['', [Validators.required]],
       date: ['', [Validators.required]],
