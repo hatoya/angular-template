@@ -50,5 +50,6 @@ export class SampleComponent implements OnInit, AfterViewInit, OnDestroy {
       return;
     }
     console.log(this.formGroup.value);
+    this.snackbarService.pushSuccessMessage();
   }
 }
