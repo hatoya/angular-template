@@ -29,6 +29,7 @@ import { TableComponent } from './component/atom/table/table.component';
 import { TextareaComponent } from './component/atom/textarea/textarea.component';
 import { ModalComponent } from './component/modal/modal.component';
 import { ButtonWrapperComponent } from './component/molecule/button-wrapper/button-wrapper.component';
+import { InputRangeComponent } from './component/molecule/input-range/input-range.component';
 import { IndexComponent } from './component/page/index/index.component';
 import { SampleComponent } from './component/page/sample/sample.component';
 import { SnackbarComponent } from './component/snackbar/snackbar.component';
@@ -53,7 +54,8 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     TableComponent,
     TextareaComponent,
     DatalistComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    InputRangeComponent
   ],
   imports: [
     BrowserModule,
