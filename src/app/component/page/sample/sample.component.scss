@@ -7,4 +7,12 @@
   @include not-first-child {
     margin-top: 16px;
   }
+  &__wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    * {
+      width: calc(50% - 8px);
+    }
+  }
 }

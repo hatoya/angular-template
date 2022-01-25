@@ -1,0 +1,18 @@
+<ul class="snackbar" *ngIf="query.select() | async as state">
+  <ng-container *ngFor="let message of state.messages; let i = index">
+    <ng-container>
+      <li class="snackbar__list" @openClose>
+        <div class="snackbar__list-status -{{ message.type }}">
+          <fa-icon [icon]="faInfo" *ngIf="message.type === messageTypeEnum.INFORMATION"></fa-icon>
+          <fa-icon [icon]="faCheck" *ngIf="message.type === messageTypeEnum.SUCCESS"></fa-icon>
+          <fa-icon [icon]="faExclamationTriangle" *ngIf="message.type === messageTypeEnum.WARNING"></fa-icon>
+          <fa-icon [icon]="faTimes" *ngIf="message.type === messageTypeEnum.ERROR"></fa-icon>
+        </div>
+        <div class="snackbar__list-title">{{ message.message }}</div>
+        <div class="snackbar__list-close" (click)="service.deleteMessage(message.id)">
+          <fa-icon [icon]="faTimes"></fa-icon>
+        </div>
+      </li>
+    </ng-container>
+  </ng-container>
+</ul>

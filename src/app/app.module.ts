@@ -9,6 +9,7 @@ import { connectFunctionsEmulator, getFunctions, provideFunctions } from '@angul
 import { connectStorageEmulator, getStorage, provideStorage } from '@angular/fire/storage';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -28,8 +29,10 @@ import { TableComponent } from './component/atom/table/table.component';
 import { TextareaComponent } from './component/atom/textarea/textarea.component';
 import { ModalComponent } from './component/modal/modal.component';
 import { ButtonWrapperComponent } from './component/molecule/button-wrapper/button-wrapper.component';
+import { InputRangeComponent } from './component/molecule/input-range/input-range.component';
 import { IndexComponent } from './component/page/index/index.component';
 import { SampleComponent } from './component/page/sample/sample.component';
+import { SnackbarComponent } from './component/snackbar/snackbar.component';
 import { ModalLayoutComponent } from './component/template/modal-layout/modal-layout.component';
 
 @NgModule({
@@ -50,7 +53,9 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     SelectComponent,
     TableComponent,
     TextareaComponent,
-    DatalistComponent
+    DatalistComponent,
+    SnackbarComponent,
+    InputRangeComponent
   ],
   imports: [
     BrowserModule,
@@ -89,7 +94,8 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     provideAnalytics(() => getAnalytics()),
     FontAwesomeModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [
     DatePipe

@@ -58,6 +58,14 @@
   }
 }
 
+@mixin wrapper() {
+  background: var(--color-bg-canvas);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 6px;
+  box-shadow: var(--color-shadow-large);
+  overflow: hidden;
+}
+
 @mixin label() {
   @include empty;
   margin-bottom: 8px;
