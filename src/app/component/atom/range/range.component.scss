@@ -1,0 +1,10 @@
+@import '../../../../scss/import.scss';
+
+::ng-deep app-range {
+  @include hidden;
+  display: block;
+}
+
+.range {
+  @include form();
+}

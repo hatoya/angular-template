@@ -1,1 +1,21 @@
-<p>range works!</p>
+<div class="range" [ngClass]="{ '-readonly': isReadOnly, '-disabled': isDisabled, '-side': isSideLayout }">
+  <p class="range__label" [class.-required]="required">{{ label }}</p>
+  <div class="range__body">
+    <div class="input__body-wrapper">
+      <input
+        #input
+        class="input__body-input"
+        [class.-error]="control?.touched && control?.invalid"
+        type="range"
+        [attr.min]="min"
+        [attr.max]="max"
+        [attr.step]="step"
+        [disabled]="isDisabled"
+        (input)="onChange(input.value)"
+        (blur)="onTouched()"
+        [hidden]="isReadOnly"
+      />
+    </div>
+  </div>
+  <p class="range__error" *ngIf="control?.touched">{{ this.validationService.getErrorMessage(control.errors) }}</p>
+</div>
