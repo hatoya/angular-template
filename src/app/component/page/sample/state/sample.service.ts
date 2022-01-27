@@ -18,6 +18,7 @@ export interface ISample extends Partial<any> {
   select: string;
   checkbox: string[];
   radiobox: string;
+  range: string;
   files: IFile[];
 }
 
@@ -38,6 +39,7 @@ export class SampleService {
       select: ['', [Validators.required]],
       checkbox: [[], [Validators.required]],
       radiobox: ['', [Validators.required]],
+      range: ['', [Validators.required]],
       files: [[], [Validators.required]]
     });
   }
