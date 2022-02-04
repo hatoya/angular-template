@@ -7,4 +7,28 @@
 
 .range {
   @include form();
+  &__body-wrapper {
+    padding: 12px 0;
+  }
+  &__body-input {
+    height: 8px;
+    padding: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    &:focus {
+      border-color: var(--color-border-primary);
+    }
+    &::-webkit-slider-thumb {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background: var(--color-text-link);
+      border-radius: 50%;
+    }
+    &:disabled {
+      &::-webkit-slider-thumb {
+        background: var(--color-border-primary);
+      }
+    }
+  }
 }
