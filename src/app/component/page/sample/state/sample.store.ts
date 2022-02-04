@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
+import { EFormStatus } from 'src/app/enum/form-status.enum';
 import { IOption } from 'src/app/model/option.model';
 
 export interface SampleState {
+  statuses: IOption<EFormStatus, EFormStatus>[];
   options: IOption[];
   loading: boolean;
   sending: boolean;
@@ -10,6 +12,11 @@ export interface SampleState {
 
 export function createInitialState(): SampleState {
   return {
+    statuses: [
+      { value: EFormStatus.EDITABLE, label: EFormStatus.EDITABLE },
+      { value: EFormStatus.DISABLED, label: EFormStatus.DISABLED },
+      { value: EFormStatus.READONLY, label: EFormStatus.READONLY }
+    ],
     options: [
       { value: 'option1', label: 'Option1' },
       { value: 'option2', label: 'Option2' },

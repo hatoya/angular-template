@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@ngneat/reactive-forms';
 import { EFormLayout } from 'src/app/enum/form-layout.enum';
+import { EFormStatus } from 'src/app/enum/form-status.enum';
 import { EInputType } from 'src/app/enum/input-type.enum';
 import { SnackbarService } from '../../snackbar/state/snackbar.service';
 import { SampleQuery } from './state/sample.query';
@@ -16,6 +17,7 @@ export class SampleComponent implements OnInit, AfterViewInit, OnDestroy {
   formGroup: FormGroup<ISample>;
   formLayoutEnum = EFormLayout;
   inputTypeEnum = EInputType;
+  formStatusEnum = EFormStatus;
 
   constructor(
     public query: SampleQuery,
@@ -31,11 +33,15 @@ export class SampleComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    this.formGroup.patchValue({ text: 'text' });
+    this.formGroup.patchValue({ status: EFormStatus.EDITABLE, text: 'text' });
   }
 
   ngOnDestroy(): void {
     this.store.reset();
+  }
+
+  get status() {
+    return this.formGroup.value.status;
   }
 
   createFormGroup() {
