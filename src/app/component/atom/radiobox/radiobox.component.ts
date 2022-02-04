@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, OnInit, Optional, Self, ViewChildren } fr
 import { NgControl } from '@angular/forms';
 import { faCircle, faDotCircle } from '@fortawesome/pro-regular-svg-icons';
 import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
+import { v4 as uuidv4 } from 'uuid';
 import { EFormLayout } from '../../../enum/form-layout.enum';
 import { EFormStatus } from '../../../enum/form-status.enum';
 import { IOption } from '../../../model/option.model';
@@ -14,7 +15,7 @@ import { ValidationService } from '../../../service/validation.service';
 })
 export class RadioboxComponent implements ControlValueAccessor<string | number>, OnInit {
   @Input() type = 'default';
-  @Input() name = '';
+  @Input() name = uuidv4();
   @Input() label = null;
   @Input() options: IOption<any, any>[] = [];
   @Input() status = EFormStatus.EDITABLE;
