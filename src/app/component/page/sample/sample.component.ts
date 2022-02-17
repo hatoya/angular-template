@@ -49,13 +49,13 @@ export class SampleComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   submit() {
+    console.log(this.formGroup.value);
     if (this.formGroup.invalid) {
       this.snackbarService.pushValidationMessage();
       this.formGroup.markAllAsTouched();
       scroll(0, 0);
       return;
     }
-    console.log(this.formGroup.value);
     this.snackbarService.pushSuccessMessage();
   }
 }
