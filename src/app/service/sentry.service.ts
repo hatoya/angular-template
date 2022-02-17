@@ -1,6 +1,6 @@
 import { ErrorHandler, Injectable } from '@angular/core';
 import * as Sentry from '@sentry/angular';
-import { IAccount } from '../model/account.model';
+import { TAccount } from '../model/account.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class SentryService implements ErrorHandler {
     Sentry.captureException(error.error || error.message || error.originalError || error);
   }
 
-  setUser(account: IAccount) {
-    Sentry.setUser(account ? { id: account.id, email: account.email, username: account.name, authority: account.authority } : null);
+  setUser(account: TAccount) {
+    Sentry.setUser(account ? { id: account.id, email: account.email, username: account.name, role: account.role } : null);
   }
 }
