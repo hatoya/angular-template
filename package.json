@@ -13,7 +13,7 @@
     "build:functions": "cd functions && npm run build",
     "build:prod": "ng build -c production",
     "build:dev": "ng build -c development",
-    "test": "jest service.spec.ts --watch-all",
+    "test": "jest service.spec.ts --watch",
     "test:cli": "jest service.spec.ts",
     "prettier": "prettier 'src/**/*.*' --write --loglevel warn",
     "eslint": "eslint './src/**/*.ts' --fix",
