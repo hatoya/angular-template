@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { ControlsOf, FormArray, FormBuilder, FormControl } from '@ngneat/reactive-forms';
 import { IInputRange, InputRangeService } from '../../../../component/molecule/input-range/state/input-range.service';
 import { EFormStatus } from '../../../../enum/form-status.enum';
-import { IFile } from '../../../../model/file.model';
 import { CustomValidators } from '../../../../service/custom-validator.service';
 import { SampleStore } from './sample.store';
 
@@ -21,7 +20,7 @@ export interface ISample {
   checkbox: string[];
   radiobox: string;
   range: string;
-  files: IFile[];
+  // files: IFile[];
 }
 
 @Injectable({ providedIn: 'root' })
@@ -29,21 +28,21 @@ export class SampleService {
   constructor(private store: SampleStore, private formBuilder: FormBuilder, private inputRangeService: InputRangeService) {}
 
   createFormGroup() {
-    return this.formBuilder.group<ISample>({
-      status: [null, []],
-      text: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
-      list: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      number: ['', [Validators.required]],
-      date: ['', [Validators.required]],
-      month: ['', [Validators.required]],
+    return this.formBuilder.group<ControlsOf<ISample>>({
+      status: new FormControl(null, []),
+      text: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+      list: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      number: new FormControl('', [Validators.required]),
+      date: new FormControl('', [Validators.required]),
+      month: new FormControl('', [Validators.required]),
       inputRange: this.inputRangeService.createFormGroup([Validators.required], [Validators.required], [CustomValidators.dateRange()]),
-      textarea: ['', [Validators.required]],
-      select: ['', [Validators.required]],
-      checkbox: [[], [Validators.required]],
-      radiobox: ['', [Validators.required]],
-      range: ['', [Validators.required]],
-      files: [[], [Validators.required]]
+      textarea: new FormControl('', [Validators.required]),
+      select: new FormControl('', [Validators.required]),
+      checkbox: new FormArray([new FormControl('', [Validators.required])]),
+      radiobox: new FormControl('', [Validators.required]),
+      range: new FormControl('', [Validators.required])
+      // files: new FormArray([new FormControl(null, [Validators.required])])
     });
   }
 }

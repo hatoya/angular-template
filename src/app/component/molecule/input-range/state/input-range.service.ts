@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, ValidatorFn } from '@ngneat/reactive-forms';
+import { ValidatorFn } from '@angular/forms';
+import { FormBuilder, FormControl, ControlsOf } from '@ngneat/reactive-forms';
 import { InputRangeStore } from './input-range.store';
 
 export interface IInputRange {
@@ -12,6 +13,9 @@ export class InputRangeService {
   constructor(private store: InputRangeStore, private formBuilder: FormBuilder) {}
 
   createFormGroup(fromValidators: ValidatorFn[] = [], toValidators: ValidatorFn[] = [], formGroupValidators: ValidatorFn[] = []) {
-    return this.formBuilder.group<IInputRange>({ from: ['', fromValidators], to: ['', toValidators] }, { validators: formGroupValidators });
+    return this.formBuilder.group<ControlsOf<IInputRange>>(
+      { from: new FormControl('', fromValidators), to: new FormControl('', toValidators) },
+      { validators: formGroupValidators }
+    );
   }
 }
