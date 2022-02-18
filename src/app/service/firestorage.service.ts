@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { getDownloadURL, ref, Storage, uploadBytes } from '@angular/fire/storage';
-import { Observable } from 'rxjs';
 import { from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { v4 as uuidv4 } from 'uuid';
@@ -17,10 +16,12 @@ export class FirestorageService {
   }
 
   upload(fileType: EFileType, file: File) {
-    return from(uploadBytes(ref(this.storage, `${fileType}/${uuidv4()}/${file.name}`), file)).pipe(map(snapshot => snapshot.ref.fullPath));
+    return from(uploadBytes(ref(this.storage, `${fileType}/${uuidv4()}/${file.name}`), file)).pipe(
+      map((snapshot: any) => snapshot.ref.fullPath)
+    );
   }
 
-  getDownloadUrl$(path: string): Observable<string> {
+  getDownloadUrl$(path: string) {
     return from(getDownloadURL(ref(this.storage, path)));
   }
 }
