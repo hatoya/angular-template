@@ -13,8 +13,8 @@ describe('SampleService', () => {
       imports: [HttpClientTestingModule]
     });
 
-    sampleService = TestBed.get(SampleService);
-    sampleStore = TestBed.get(SampleStore);
+    sampleService = TestBed.inject(SampleService);
+    sampleStore = TestBed.inject(SampleStore);
   });
 
   it('should be created', () => {

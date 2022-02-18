@@ -13,8 +13,8 @@ describe('ModalService', () => {
       imports: [HttpClientTestingModule]
     });
 
-    modalService = TestBed.get(ModalService);
-    modalStore = TestBed.get(ModalStore);
+    modalService = TestBed.inject(ModalService);
+    modalStore = TestBed.inject(ModalStore);
   });
 
   it('should be created', () => {

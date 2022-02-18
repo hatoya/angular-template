@@ -13,8 +13,8 @@ describe('AppService', () => {
       imports: [HttpClientTestingModule]
     });
 
-    appService = TestBed.get(AppService);
-    appStore = TestBed.get(AppStore);
+    appService = TestBed.inject(AppService);
+    appStore = TestBed.inject(AppStore);
   });
 
   it('should be created', () => {

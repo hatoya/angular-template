@@ -13,8 +13,8 @@ describe('SnackbarService', () => {
       imports: [HttpClientTestingModule]
     });
 
-    snackbarService = TestBed.get(SnackbarService);
-    snackbarStore = TestBed.get(SnackbarStore);
+    snackbarService = TestBed.inject(SnackbarService);
+    snackbarStore = TestBed.inject(SnackbarStore);
   });
 
   it('should be created', () => {

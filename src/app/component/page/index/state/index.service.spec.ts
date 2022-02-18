@@ -13,8 +13,8 @@ describe('IndexService', () => {
       imports: [HttpClientTestingModule]
     });
 
-    indexService = TestBed.get(IndexService);
-    indexStore = TestBed.get(IndexStore);
+    indexService = TestBed.inject(IndexService);
+    indexStore = TestBed.inject(IndexStore);
   });
 
   it('should be created', () => {
