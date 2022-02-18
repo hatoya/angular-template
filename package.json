@@ -13,7 +13,7 @@
     "build:functions": "cd functions && npm run build",
     "build:prod": "ng build -c production",
     "build:dev": "ng build -c development",
-    "test": "npx jest --watch",
+    "test": "npx jest --watchAll",
     "test:cli": "npx jest --runInBand",
     "prettier": "prettier 'src/**/*.*' --write --loglevel warn",
     "eslint": "eslint './src/**/*.ts' --fix",
