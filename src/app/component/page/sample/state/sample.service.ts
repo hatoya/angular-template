@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { ControlsOf, FormArray, FormBuilder, FormControl } from '@ngneat/reactive-forms';
+import { ControlsOf, FormBuilder, FormControl } from '@ngneat/reactive-forms';
+import { IFile } from 'src/app/model/file.model';
 import { IInputRange, InputRangeService } from '../../../../component/molecule/input-range/state/input-range.service';
 import { EFormStatus } from '../../../../enum/form-status.enum';
 import { CustomValidators } from '../../../../service/custom-validator.service';
@@ -20,7 +21,7 @@ export interface ISample {
   checkbox: string[];
   radiobox: string;
   range: string;
-  // files: IFile[];
+  files: IFile[];
 }
 
 @Injectable({ providedIn: 'root' })
@@ -39,10 +40,10 @@ export class SampleService {
       inputRange: this.inputRangeService.createFormGroup([Validators.required], [Validators.required], [CustomValidators.dateRange()]),
       textarea: new FormControl('', [Validators.required]),
       select: new FormControl('', [Validators.required]),
-      checkbox: new FormArray([new FormControl('', [Validators.required])]),
+      checkbox: new FormControl([], [Validators.required]) as any, // TODO
       radiobox: new FormControl('', [Validators.required]),
-      range: new FormControl('', [Validators.required])
-      // files: new FormArray([new FormControl(null, [Validators.required])])
+      range: new FormControl('', [Validators.required]),
+      files: new FormControl([], [Validators.required]) as any // TODO
     });
   }
 }
