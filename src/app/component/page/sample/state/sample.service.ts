@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormBuilder } from '@ngneat/reactive-forms';
-import { IInputRange, InputRangeService } from 'src/app/component/molecule/input-range/state/input-range.service';
-import { EFormStatus } from 'src/app/enum/form-status.enum';
-import { IFile } from 'src/app/model/file.model';
-import { CustomValidators } from 'src/app/service/custom-validator.service';
+import { IInputRange, InputRangeService } from '../../../../component/molecule/input-range/state/input-range.service';
+import { EFormStatus } from '../../../../enum/form-status.enum';
+import { IFile } from '../../../../model/file.model';
+import { CustomValidators } from '../../../../service/custom-validator.service';
 import { SampleStore } from './sample.store';
 
 export interface ISample {

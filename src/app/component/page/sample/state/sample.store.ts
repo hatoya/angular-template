@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
-import { EFormStatus } from 'src/app/enum/form-status.enum';
-import { IOption } from 'src/app/model/option.model';
+import { EFormStatus } from '../../../../enum/form-status.enum';
+import { IOption } from '../../../../model/option.model';
 
 export interface SampleState {
   statuses: IOption<EFormStatus, EFormStatus>[];
