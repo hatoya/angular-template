@@ -1,8 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { Observable } from 'rxjs';
 import { ModalQuery } from './state/modal.query';
 import { ModalService } from './state/modal.service';
-import { ModalState } from './state/modal.store';
+import { ModalStore } from './state/modal.store';
 
 @Component({
   selector: 'app-modal',
@@ -12,13 +11,9 @@ import { ModalState } from './state/modal.store';
 })
 export class ModalComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('inner', { read: ViewContainerRef, static: false }) vcr;
-
-  store$: Observable<ModalState>;
   component = null;
 
-  constructor(private service: ModalService, private query: ModalQuery) {
-    this.store$ = this.query.select();
-  }
+  constructor(private service: ModalService, public query: ModalQuery, private store: ModalStore) {}
 
   ngOnInit(): void {}
 
@@ -27,14 +22,10 @@ export class ModalComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.service.resetStore();
+    this.store.reset();
   }
 
   close() {
     this.service.close();
-  }
-
-  submit() {
-    this.service.submit();
   }
 }

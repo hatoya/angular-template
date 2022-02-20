@@ -8,9 +8,9 @@ export class ModalService {
   component = null;
   submit$: Subject<void> = new Subject();
 
-  constructor(private modalStore: ModalStore, private resolver: ComponentFactoryResolver) {}
+  constructor(private store: ModalStore, private resolver: ComponentFactoryResolver) {}
 
-  open(data) {
+  open(data: any) {
     if (!data) {
       return;
     }
@@ -19,25 +19,12 @@ export class ModalService {
     if (this.component) {
       this.component.destroy();
     }
-    this.updateOpened(true);
+    this.store.update({ opened: true });
     this.component = component;
   }
 
   close() {
-    this.resetStore();
+    this.store.reset();
     this.component.destroy();
-  }
-
-  submit() {
-    this.submit$.next();
-  }
-
-  // Akita
-  updateOpened(opened: boolean) {
-    this.modalStore.update({ opened });
-  }
-
-  resetStore() {
-    this.modalStore.reset();
   }
 }

@@ -1,4 +1,4 @@
-<ng-container *ngIf="store$ | async as state">
+<ng-container *ngIf="query.select() | async as state">
   <div class="modal" [ngClass]="{ '-on': state.opened }">
     <div class="modal__filter" (click)="close()"></div>
     <div class="modal__content">
