@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
 import { ETheme } from './enum/theme.enum';
 import { AppQuery } from './state/app.query';
 import { AppService } from './state/app.service';
+import { AppStore } from './state/app.store';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +11,13 @@ import { AppService } from './state/app.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit, OnDestroy {
-  constructor(public query: AppQuery, private service: AppService) {}
+  constructor(public query: AppQuery, private service: AppService, private store: AppStore) {}
 
   ngOnInit() {
     document.documentElement.setAttribute('theme', ETheme.LIGHT);
   }
 
   ngOnDestroy() {
-    this.service.resetStore();
+    this.store.reset();
   }
 }
