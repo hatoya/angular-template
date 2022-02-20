@@ -10,10 +10,4 @@ describe('ModalStore', () => {
   it('should create an instance', () => {
     expect(store).toBeTruthy();
   });
-
-  describe('', () => {});
-
-  describe('', () => {});
-
-  describe('', () => {});
 });
