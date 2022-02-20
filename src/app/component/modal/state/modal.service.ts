@@ -1,30 +1,26 @@
 import { ComponentFactoryResolver, Injectable, ViewContainerRef } from '@angular/core';
-import { Subject } from 'rxjs';
 import { ModalStore } from './modal.store';
 
 @Injectable({ providedIn: 'root' })
 export class ModalService {
   vcr: ViewContainerRef;
-  component = null;
-  submit$: Subject<void> = new Subject();
+  componentRef = null;
 
   constructor(private store: ModalStore, private resolver: ComponentFactoryResolver) {}
 
-  open(data: any) {
-    if (!data) {
+  open(component: any) {
+    if (!component) {
       return;
     }
-    const factory = this.resolver.resolveComponentFactory(data);
-    const component = this.vcr.createComponent(factory);
-    if (this.component) {
-      this.component.destroy();
-    }
+    const factory = this.resolver.resolveComponentFactory(component);
+    const componentRef = this.vcr.createComponent(factory);
+    this.componentRef?.destroy();
     this.store.update({ opened: true });
-    this.component = component;
+    this.componentRef = componentRef;
   }
 
   close() {
     this.store.reset();
-    this.component.destroy();
+    this.componentRef?.destroy();
   }
 }

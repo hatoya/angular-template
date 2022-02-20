@@ -12,12 +12,27 @@ describe('ModalService', () => {
       providers: [ModalService, ModalStore],
       imports: [HttpClientTestingModule]
     });
-
     modalService = TestBed.inject(ModalService);
     modalStore = TestBed.inject(ModalStore);
   });
 
   it('should be created', () => {
     expect(modalService).toBeDefined();
+  });
+
+  describe('open', () => {
+    it('should be working', () => {
+      // exercise
+      modalService.open(null);
+      // verify
+    });
+  });
+
+  describe('close', () => {
+    it('should be working', () => {
+      // exercise
+      modalService.close();
+      // verify
+    });
   });
 });
