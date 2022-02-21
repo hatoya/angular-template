@@ -26,28 +26,13 @@ describe('SampleService', () => {
     expect(sampleService).toBeDefined();
   });
 
-  it('form valid', () => {
-    const formGroup = sampleService.createFormGroup();
-    formGroup.patchValue({
-      text: 'aaaaaa',
-      list: 'aaa',
-      email: 'aaa@aaa.aaa',
-      number: 'aaa',
-      date: '2022-01-01',
-      month: '2022-01',
-      inputRange: { from: '2022-01-01', to: '2022-01-01' },
-      textarea: 'aaa',
-      select: 'aaa',
-      checkbox: ['aaa'],
-      radiobox: 'aaa',
-      range: '50',
-      files: [{}]
+  describe('createFormGroup', () => {
+    it('should be working', () => {
+      // exercise
+      const formGroup = sampleService.createFormGroup();
+      // verify
+      expect(formGroup.value.text).toBe('');
+      expect(formGroup.valid).toBeFalsy();
     });
-    expect(formGroup.valid).toBeTruthy();
-  });
-
-  it('form invalid', () => {
-    const formGroup = sampleService.createFormGroup();
-    expect(formGroup.valid).toBeFalsy();
   });
 });
