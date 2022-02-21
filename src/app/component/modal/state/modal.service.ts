@@ -1,19 +1,19 @@
-import { ComponentFactoryResolver, Injectable, ViewContainerRef } from '@angular/core';
+import { ComponentFactoryResolver, ComponentRef, Injectable, ViewContainerRef } from '@angular/core';
 import { ModalStore } from './modal.store';
 
 @Injectable({ providedIn: 'root' })
 export class ModalService {
-  vcr: ViewContainerRef;
-  componentRef = null;
+  viewContainerRef: ViewContainerRef;
+  componentRef: ComponentRef<any> = null;
 
-  constructor(private store: ModalStore, private resolver: ComponentFactoryResolver) {}
+  constructor(public store: ModalStore, public resolver: ComponentFactoryResolver) {}
 
   open(component: any) {
     if (!component) {
       return;
     }
     const factory = this.resolver.resolveComponentFactory(component);
-    const componentRef = this.vcr.createComponent(factory);
+    const componentRef = this.viewContainerRef?.createComponent(factory);
     this.componentRef?.destroy();
     this.store.update({ opened: true });
     this.componentRef = componentRef;

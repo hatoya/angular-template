@@ -10,15 +10,14 @@ import { ModalStore } from './state/modal.store';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ModalComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('inner', { read: ViewContainerRef, static: false }) vcr;
-  component = null;
+  @ViewChild('inner', { read: ViewContainerRef, static: false }) viewContainerRef: ViewContainerRef;
 
   constructor(private service: ModalService, public query: ModalQuery, private store: ModalStore) {}
 
   ngOnInit(): void {}
 
   ngAfterViewInit() {
-    this.service.vcr = this.vcr;
+    this.service.viewContainerRef = this.viewContainerRef;
   }
 
   ngOnDestroy() {
