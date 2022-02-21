@@ -10,7 +10,7 @@ module.exports = {
   },
   collectCoverage: true,
   collectCoverageFrom: ['**/*.service.ts'],
-  coveragePathIgnorePatterns: ['/node_modules/', '/src/app/service/'],
+  coveragePathIgnorePatterns: ['/node_modules/', '/src/app/service/', 'src/app/component/modal'],
   coverageThreshold: {
     global: {
       branches: 80,
