@@ -13,13 +13,15 @@
     "build:functions": "cd functions && npm run build",
     "build:prod": "ng build -c production",
     "build:dev": "ng build -c development",
+    "build:storybook": "npm run docs:json && build-storybook",
     "test": "jest service.spec.ts --watch",
     "test:cli": "jest service.spec.ts",
     "prettier": "prettier 'src/**/*.*' --write --loglevel warn",
     "eslint": "eslint './src/**/*.ts' --fix",
     "lint": "npm run prettier && npm run eslint",
     "e2e": "ng e2e",
-    "deploy": "firebase deploy --only hosting,functions,firestore:rules",
+    "firestore:indexes:export": "firebase firestore:indexes > firestore.indexes.json",
+    "deploy": "firebase deploy --only hosting,functions,firestore:rules,firestore:indexes",
     "component:page": "func() { ng g component component/page/\"$1\" --skip-tests && ng g af component/page/\"$1\"/\"$1\" --spec --plain --defaults && npm run lint; }; func",
     "component:modal": "func() { ng g component component/modal/\"$1\" --skip-tests && ng g af component/modal/\"$1\"/\"$1\" --spec --plain --defaults && npm run lint; }; func",
     "component:template": "func() { ng g component component/template/\"$1\" --skip-tests && ng g af component/template/\"$1\"/\"$1\" --spec --plain --defaults && npm run lint; }; func",
@@ -28,8 +30,7 @@
     "service": "func() { ng g service service/\"$1\"  && npm run lint; }; func",
     "pipe": "func() { ng g pipe pipe/\"$1\"  && npm run lint; }; func",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
-    "storybook": "npm run docs:json && start-storybook --ci -p 7777",
-    "build:storybook": "npm run docs:json && build-storybook"
+    "storybook": "npm run docs:json && start-storybook --ci -p 7777"
   },
   "workspaces": [
     "functions"
