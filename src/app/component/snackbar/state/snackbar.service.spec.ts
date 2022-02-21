@@ -2,12 +2,16 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { EMessageType } from 'src/app/enum/message-type.enum';
 import { EMessage } from 'src/app/enum/message.enum';
+import { SnackbarQuery } from './snackbar.query';
 import { SnackbarService } from './snackbar.service';
 import { SnackbarStore } from './snackbar.store';
+
+jest.useFakeTimers();
 
 describe('SnackbarService', () => {
   let snackbarService: SnackbarService;
   let snackbarStore: SnackbarStore;
+  let snackbarQuery: SnackbarQuery;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -17,6 +21,7 @@ describe('SnackbarService', () => {
 
     snackbarService = TestBed.inject(SnackbarService);
     snackbarStore = TestBed.inject(SnackbarStore);
+    snackbarQuery = TestBed.inject(SnackbarQuery);
   });
 
   it('should be created', () => {
@@ -29,9 +34,12 @@ describe('SnackbarService', () => {
       // exercise
       snackbarService.pushMessage(message);
       // verify
-      expect(snackbarStore.getValue().messages).toHaveLength(1);
-      expect(snackbarStore.getValue().messages[0].type).toBe(message.type);
-      expect(snackbarStore.getValue().messages[0].message).toBe(message.message);
+      expect(snackbarQuery.getValue().messages).toHaveLength(1);
+      expect(snackbarQuery.getValue().messages[0]?.type).toBe(message.type);
+      expect(snackbarQuery.getValue().messages[0]?.message).toBe(message.message);
+      expect(snackbarQuery.getValue().messages[0]?.lifespan).toBe(5000);
+      jest.runAllTimers();
+      expect(snackbarQuery.getValue().messages).toHaveLength(0);
     });
   });
 
@@ -46,7 +54,7 @@ describe('SnackbarService', () => {
       // exercise
       snackbarService.deleteMessage(message.id);
       // verify
-      expect(snackbarStore.getValue().messages).toHaveLength(0);
+      expect(snackbarQuery.getValue().messages).toHaveLength(0);
     });
 
     it('return', () => {
@@ -62,9 +70,9 @@ describe('SnackbarService', () => {
       // exercise
       snackbarService.pushSuccessMessage();
       // verify
-      expect(snackbarStore.getValue().messages).toHaveLength(1);
-      expect(snackbarStore.getValue().messages[0].type).toBe(EMessageType.SUCCESS);
-      expect(snackbarStore.getValue().messages[0].message).toEqual(EMessage.SUCCESS);
+      expect(snackbarQuery.getValue().messages).toHaveLength(1);
+      expect(snackbarQuery.getValue().messages[0].type).toBe(EMessageType.SUCCESS);
+      expect(snackbarQuery.getValue().messages[0].message).toEqual(EMessage.SUCCESS);
     });
   });
 
@@ -73,9 +81,9 @@ describe('SnackbarService', () => {
       // exercise
       snackbarService.pushValidationMessage();
       // verify
-      expect(snackbarStore.getValue().messages).toHaveLength(1);
-      expect(snackbarStore.getValue().messages[0].type).toBe(EMessageType.ERROR);
-      expect(snackbarStore.getValue().messages[0].message).toEqual(EMessage.VALIDATION_ERROR);
+      expect(snackbarQuery.getValue().messages).toHaveLength(1);
+      expect(snackbarQuery.getValue().messages[0].type).toBe(EMessageType.ERROR);
+      expect(snackbarQuery.getValue().messages[0].message).toEqual(EMessage.VALIDATION_ERROR);
     });
   });
 
@@ -84,9 +92,9 @@ describe('SnackbarService', () => {
       // exercise
       snackbarService.pushBrokenMessage();
       // verify
-      expect(snackbarStore.getValue().messages).toHaveLength(1);
-      expect(snackbarStore.getValue().messages[0].type).toBe(EMessageType.ERROR);
-      expect(snackbarStore.getValue().messages[0].message).toEqual(EMessage.BROKEN);
+      expect(snackbarQuery.getValue().messages).toHaveLength(1);
+      expect(snackbarQuery.getValue().messages[0].type).toBe(EMessageType.ERROR);
+      expect(snackbarQuery.getValue().messages[0].message).toEqual(EMessage.BROKEN);
     });
   });
 });
