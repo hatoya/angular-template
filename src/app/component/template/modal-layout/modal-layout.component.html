@@ -20,7 +20,7 @@
       <ng-content select="[modal-footer-left]"></ng-content>
     </div>
     <div class="button__wrapper">
-      <app-button type="flat" (clickButton)="close()">Cancel</app-button>
+      <app-button [type]="buttonTypeEnum.OPTION" (clickButton)="modalService.close()">Cancel</app-button>
       <ng-content select="[modal-footer-right]" *ngIf="!loading"></ng-content>
     </div>
   </div>

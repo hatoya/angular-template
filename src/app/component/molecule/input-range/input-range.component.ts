@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
 import { ControlContainer } from '@angular/forms';
-import { AbstractControl, FormGroup } from '@ngneat/reactive-forms';
+import { ControlsOf, FormControl, FormGroup } from '@ngneat/reactive-forms';
 import { EFormLayout } from 'src/app/enum/form-layout.enum';
 import { EFormStatus } from 'src/app/enum/form-status.enum';
 import { EInputType } from 'src/app/enum/input-type.enum';
@@ -32,7 +32,7 @@ export class InputRangeComponent implements OnInit {
   }
 
   get formGroup() {
-    return this.controlContainer.control as FormGroup<IInputRange>;
+    return this.controlContainer.control as FormGroup<ControlsOf<IInputRange>>;
   }
 
   get fromControl() {
@@ -59,8 +59,8 @@ export class InputRangeComponent implements OnInit {
     const fromValidator = this.formGroup.controls.from.validator;
     const toValidator = this.formGroup.controls.to.validator;
     return (
-      (fromValidator ? fromValidator({} as AbstractControl<string>)?.required : false) ||
-      (toValidator ? toValidator({} as AbstractControl<string>)?.required : false)
+      (fromValidator ? fromValidator({} as FormControl<string>)?.required : false) ||
+      (toValidator ? toValidator({} as FormControl<string>)?.required : false)
     );
   }
 }

@@ -9,7 +9,7 @@
         "createDefaultProgram": true
       },
       "extends": ["plugin:@angular-eslint/recommended", "plugin:@angular-eslint/template/process-inline-templates"],
-      "plugins": ["import", "unused-imports"],
+      "plugins": ["import", "unused-imports", "@ngneat/reactive-forms"],
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
@@ -29,7 +29,8 @@
         ],
         "@angular-eslint/no-empty-lifecycle-method": "off",
         "import/order": ["warn", { "alphabetize": { "order": "asc", "caseInsensitive": true } }],
-        "unused-imports/no-unused-imports": "warn"
+        "unused-imports/no-unused-imports": "warn",
+        "@ngneat/reactive-forms/no-angular-forms-imports": "error"
       }
     },
     {

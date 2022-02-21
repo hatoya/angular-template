@@ -38,7 +38,7 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   ngOnInit(): void {}
 
   get required() {
-    const validator = this.control?.control.validator;
+    const validator = this.control?.control?.validator;
     return validator ? validator({} as AbstractControl)?.required || false : false;
   }
 

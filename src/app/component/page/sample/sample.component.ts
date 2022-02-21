@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup } from '@ngneat/reactive-forms';
+import { ControlsOf, FormGroup } from '@ngneat/reactive-forms';
 import { EFormLayout } from 'src/app/enum/form-layout.enum';
+import { EFormStatus } from 'src/app/enum/form-status.enum';
 import { EInputType } from 'src/app/enum/input-type.enum';
 import { SnackbarService } from '../../snackbar/state/snackbar.service';
 import { SampleQuery } from './state/sample.query';
@@ -13,9 +14,10 @@ import { SampleStore } from './state/sample.store';
   styleUrls: ['./sample.component.scss']
 })
 export class SampleComponent implements OnInit, AfterViewInit, OnDestroy {
-  formGroup: FormGroup<ISample>;
+  formGroup: FormGroup<ControlsOf<ISample>>;
   formLayoutEnum = EFormLayout;
   inputTypeEnum = EInputType;
+  formStatusEnum = EFormStatus;
 
   constructor(
     public query: SampleQuery,
@@ -31,11 +33,15 @@ export class SampleComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    this.formGroup.patchValue({ text: 'text' });
+    this.formGroup.patchValue({ status: EFormStatus.EDITABLE, text: 'text', range: '50' });
   }
 
   ngOnDestroy(): void {
     this.store.reset();
+  }
+
+  get status() {
+    return this.formGroup.value.status;
   }
 
   createFormGroup() {
@@ -43,13 +49,13 @@ export class SampleComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   submit() {
+    console.log(this.formGroup.value);
     if (this.formGroup.invalid) {
       this.snackbarService.pushValidationMessage();
       this.formGroup.markAllAsTouched();
       scroll(0, 0);
       return;
     }
-    console.log(this.formGroup.value);
     this.snackbarService.pushSuccessMessage();
   }
 }

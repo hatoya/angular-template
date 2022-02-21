@@ -2,7 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit, Input, ViewChild, ElementRef, Self, Optional, ChangeDetectorRef } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { faCalendarAlt } from '@fortawesome/pro-regular-svg-icons';
-import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
+import { ControlValueAccessor, FormControl } from '@ngneat/reactive-forms';
 import { v4 as uuidv4 } from 'uuid';
 import { EFormLayout } from '../../../enum/form-layout.enum';
 import { EFormStatus } from '../../../enum/form-status.enum';
@@ -52,7 +52,7 @@ export class InputComponent implements ControlValueAccessor<string>, OnInit {
 
   get required() {
     const validator = this.control?.control?.validator;
-    return validator ? validator({} as AbstractControl<string | number>)?.required || false : false;
+    return validator ? validator({} as FormControl<string>)?.required || false : false;
   }
 
   get isNumberType() {
@@ -79,7 +79,7 @@ export class InputComponent implements ControlValueAccessor<string>, OnInit {
     return this.layout === EFormLayout.SIDE;
   }
 
-  getReadOnlyLabel(value: string | number) {
+  getReadOnlyLabel(value: string) {
     if (this.isMonthType) {
       return value ? this.datePipe.transform(new Date(value), 'yyyy年M月') : '';
     } else if (this.isDateType) {

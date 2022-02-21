@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, Optional, Self, ViewChild } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { AbstractControl, ControlValueAccessor } from '@ngneat/reactive-forms';
+import { ControlValueAccessor, FormControl } from '@ngneat/reactive-forms';
 import { EFormLayout } from '../../../enum/form-layout.enum';
 import { EFormStatus } from '../../../enum/form-status.enum';
 import { IFile } from '../../../model/file.model';
@@ -38,7 +38,7 @@ export class FileComponent implements ControlValueAccessor<IFile[]>, OnInit {
 
   get required() {
     const validator = this.control?.control.validator;
-    return validator ? validator({} as AbstractControl<IFile[]>)?.required || false : false;
+    return validator ? validator({} as FormControl<IFile[]>)?.required || false : false;
   }
 
   get isReadOnly() {

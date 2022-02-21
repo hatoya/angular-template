@@ -1,25 +1,20 @@
 <div class="sample" [formGroup]="formGroup" *ngIf="query.select() | async as state">
-  <app-input label="Text" formControlName="text"></app-input>
-  <app-input label="List" [options]="state.options" formControlName="list"></app-input>
-  <app-input label="Email" formControlName="email"></app-input>
-  <app-input label="Number" [type]="inputTypeEnum.NUMBER" unit="UNIT" formControlName="number"></app-input>
-  <app-input label="Date" [type]="inputTypeEnum.DATE" formControlName="date"></app-input>
-  <app-input label="Month" [type]="inputTypeEnum.MONTH" formControlName="month"></app-input>
-  <app-input-range label="InputRange" [type]="inputTypeEnum.DATE" formGroupName="inputRange"></app-input-range>
-  <app-textarea label="Textarea" formControlName="textarea"></app-textarea>
-  <app-select label="Select" blank="" [options]="state.options" formControlName="select"></app-select>
-  <app-checkbox label="Checkbox" [options]="state.options" formControlName="checkbox"></app-checkbox>
-  <app-radiobox label="Radiobox" name="radiobox" [options]="state.options" formControlName="radiobox"></app-radiobox>
-  <app-file label="File" formControlName="files"></app-file>
-  <!-- <div class="sample__wrapper">
-    <app-input label="Text" formControlName="text"></app-input>
-    <app-checkbox label="Checkbox" [options]="state.options" formControlName="checkbox"></app-checkbox>
-  </div> -->
-  <!-- <div class="sample__wrapper">
-    <app-input label="Text" formControlName="text"></app-input>
-    <app-radiobox name="radiobox" label="Radiobox" [options]="state.options" formControlName="radiobox"></app-radiobox>
-  </div> -->
+  <app-input label="Text" [status]="status" formControlName="text"></app-input>
+  <app-input label="List" [options]="state.options" [status]="status" formControlName="list"></app-input>
+  <app-input label="Email" [status]="status" formControlName="email"></app-input>
+  <app-input label="Number" [type]="inputTypeEnum.NUMBER" unit="UNIT" [status]="status" formControlName="number"></app-input>
+  <app-input label="Date" [type]="inputTypeEnum.DATE" [status]="status" formControlName="date"></app-input>
+  <app-input label="Month" [type]="inputTypeEnum.MONTH" [status]="status" formControlName="month"></app-input>
+  <app-input-range label="InputRange" [type]="inputTypeEnum.DATE" [status]="status" formGroupName="inputRange"></app-input-range>
+  <app-textarea label="Textarea" [status]="status" formControlName="textarea"></app-textarea>
+  <app-select label="Select" blank="" [options]="state.options" [status]="status" formControlName="select"></app-select>
+  <app-checkbox label="Checkbox" [options]="state.options" [status]="status" formControlName="checkbox"></app-checkbox>
+  <app-radiobox label="Radiobox" [options]="state.options" [status]="status" formControlName="radiobox"></app-radiobox>
+  <app-range label="Range" [status]="formStatusEnum.DISABLED" [status]="status" formControlName="range"></app-range>
+  <app-file label="File" [status]="status" formControlName="files"></app-file>
+  <!-- <div class="sample__wrapper"></div> -->
   <app-button-wrapper>
+    <app-radiobox [options]="state.statuses" formControlName="status"></app-radiobox>
     <app-button type="option" (clickButton)="createFormGroup()">Reset</app-button>
     <app-button [isDisabled]="state.sending" (clickButton)="submit()">Submit</app-button>
   </app-button-wrapper>

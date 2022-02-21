@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { EButtonType } from 'src/app/enum/button-type.enum';
 import { ModalService } from '../../modal/state/modal.service';
 
 @Component({
@@ -10,11 +11,9 @@ import { ModalService } from '../../modal/state/modal.service';
 export class ModalLayoutComponent implements OnInit {
   @Input() loading = false;
 
-  constructor(private modalService: ModalService) {}
+  buttonTypeEnum = EButtonType;
+
+  constructor(public modalService: ModalService) {}
 
   ngOnInit(): void {}
-
-  close() {
-    this.modalService.close();
-  }
 }

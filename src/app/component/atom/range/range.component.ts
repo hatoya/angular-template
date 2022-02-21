@@ -1,30 +1,31 @@
-import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, Optional, Self, ViewChild } from '@angular/core';
+import { Component, OnInit, Self, Optional, ChangeDetectorRef, ViewChild, ElementRef, Input } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { ControlValueAccessor, FormControl } from '@ngneat/reactive-forms';
-import { EFormLayout } from '../../../enum/form-layout.enum';
-import { EFormStatus } from '../../../enum/form-status.enum';
-import { ValidationService } from '../../../service/validation.service';
+import { EFormLayout } from 'src/app/enum/form-layout.enum';
+import { EFormStatus } from 'src/app/enum/form-status.enum';
+import { ValidationService } from 'src/app/service/validation.service';
 
 @Component({
-  selector: 'app-textarea',
-  templateUrl: './textarea.component.html',
-  styleUrls: ['./textarea.component.scss']
+  selector: 'app-range',
+  templateUrl: './range.component.html',
+  styleUrls: ['./range.component.scss']
 })
-export class TextareaComponent implements ControlValueAccessor<string>, OnInit {
-  @Input() type = 'default';
+export class RangeComponent implements ControlValueAccessor<string>, OnInit {
   @Input() label = null;
-  @Input() placeholder = '';
   @Input() status = EFormStatus.EDITABLE;
   @Input() layout = EFormLayout.DEFAULT;
+  @Input() min: number = null;
+  @Input() max: number = null;
+  @Input() step: number = null;
 
-  @ViewChild('textarea') element: ElementRef;
+  @ViewChild('input') element: ElementRef;
 
-  onChange: (value: any) => void;
+  onChange: (value: string) => void;
   onTouched: () => void;
 
   constructor(
     @Self() @Optional() public control: NgControl,
-    public validationMessageService: ValidationService,
+    public validationService: ValidationService,
     private changeDetectorRef: ChangeDetectorRef
   ) {
     if (this.control) {
@@ -35,7 +36,7 @@ export class TextareaComponent implements ControlValueAccessor<string>, OnInit {
   ngOnInit(): void {}
 
   get required() {
-    const validator = this.control?.control.validator;
+    const validator = this.control?.control?.validator;
     return validator ? validator({} as FormControl<string>)?.required || false : false;
   }
 
@@ -52,7 +53,7 @@ export class TextareaComponent implements ControlValueAccessor<string>, OnInit {
   }
 
   // ControlValueAccessor
-  writeValue(value: any) {
+  writeValue(value: string) {
     if (this.element) {
       this.element.nativeElement.value = value;
       this.changeDetectorRef.detectChanges();
