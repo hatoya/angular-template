@@ -17,10 +17,16 @@ export class ModalService {
     this.componentRef?.destroy();
     this.store.update({ opened: true });
     this.componentRef = componentRef;
+    this.setOverflow('hidden');
   }
 
   close() {
     this.store.reset();
     this.componentRef?.destroy();
+    this.setOverflow('visible');
+  }
+
+  setOverflow(overflow: string) {
+    document.getElementsByTagName('html')[0].style.overflow = overflow;
   }
 }
