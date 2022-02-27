@@ -52,6 +52,12 @@ export class SampleComponent implements OnInit, AfterViewInit, OnDestroy {
     this.formGroup = this.service.createFormGroup();
   }
 
+  reset() {
+    this.createFormGroup();
+    this.formGroup.patchValue({ status: EFormStatus.EDITABLE, text: 'text', range: '50' });
+    scroll(0, 0);
+  }
+
   submit() {
     console.log(this.formGroup.value);
     if (this.formGroup.invalid) {
