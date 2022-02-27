@@ -17,7 +17,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(#203347, 0.4);
+    background: rgba(var(--color-bg-canvas), 0.4);
     opacity: 0;
     transition: 0.3s;
     pointer-events: none;
