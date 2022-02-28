@@ -15,7 +15,8 @@
   <!-- <div class="sample__wrapper"></div> -->
   <app-button-wrapper>
     <app-radiobox [options]="state.statuses" formControlName="status"></app-radiobox>
-    <app-button type="option" (clickButton)="createFormGroup()">Reset</app-button>
+    <app-button [type]="buttonTypeENum.OPTION" (clickButton)="modalSampleService.open()">Modal</app-button>
+    <app-button [type]="buttonTypeENum.OPTION" (clickButton)="reset()">Reset</app-button>
     <app-button [isDisabled]="state.sending" (clickButton)="submit()">Submit</app-button>
   </app-button-wrapper>
 </div>

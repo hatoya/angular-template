@@ -15,13 +15,11 @@ jobs:
           node-version: '16'
           cache: 'npm'
       - run: npm ci
-      - name: Build App
-        run: npm run build:prod
-      - name: Build Functions
-        run: npm run build:functions
+      - run: npm run build:prod
+      - run: npm run build:functions
       - uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting,functions,firestore:rules
+          args: deploy --only hosting,functions,firestore:rules,firestore:indexes
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           PROJECT_ID: production

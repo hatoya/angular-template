@@ -23,8 +23,4 @@ export class ModalComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy() {
     this.store.reset();
   }
-
-  close() {
-    this.service.close();
-  }
 }
