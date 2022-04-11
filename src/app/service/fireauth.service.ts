@@ -4,11 +4,12 @@ import {
   authState,
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
+  signInWithCustomToken,
   signInWithEmailAndPassword,
   signOut
 } from '@angular/fire/auth';
 import { from } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,10 @@ export class FireauthService {
   }
 
   getAuthState$() {
+    return authState(this.auth).pipe(take(1));
+  }
+
+  streamAuthState$() {
     return authState(this.auth);
   }
 
@@ -34,5 +39,9 @@ export class FireauthService {
 
   sendPasswordResetEmail$(email: string) {
     return from(sendPasswordResetEmail(this.auth, email));
+  }
+
+  signInWithCustomToken$(customToken: string) {
+    return from(signInWithCustomToken(this.auth, customToken));
   }
 }
