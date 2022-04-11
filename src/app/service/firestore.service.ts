@@ -42,6 +42,10 @@ export class FirestoreService {
     return item as T;
   }
 
+  existDocument$(collectionName: ECollection, id: string) {
+    return from(getDocFromServer(doc(this.firestore, `${collectionName}/${id}`))).pipe(map(snapshot => snapshot.exists()));
+  }
+
   getDocuments$<T extends TFirestore>(collectionName: ECollection, struct: Struct<T>, queryConstraints: QueryConstraint[] = []) {
     return from(getDocsFromServer(query(collection(this.firestore, collectionName), ...queryConstraints))).pipe(
       map(snapshot => snapshot.docs.map(item => struct.mask(item.data())))
@@ -63,7 +67,7 @@ export class FirestoreService {
 
   getDocument$<T extends TFirestore>(collectionName: ECollection, struct: Struct<T>, id: string) {
     return from(getDocFromServer(doc(this.firestore, `${collectionName}/${id}`))).pipe(
-      mergeMap(snapshot => (snapshot.exists ? of(snapshot) : throwError(EMessage.NOT_FOUND))),
+      mergeMap(snapshot => (snapshot.exists() ? of(snapshot) : throwError(EMessage.NOT_FOUND))),
       mergeMap(snapshot => of(struct.mask(snapshot.data())))
     );
   }
@@ -77,8 +81,15 @@ export class FirestoreService {
 
   setDocument$<T extends TFirestore>(collectionName: ECollection, data: Partial<T>) {
     const item = this.updateTimestamp<T>(data);
-    return from(setDoc<any>(doc(this.firestore, `${collectionName}/${item.id}`), item, { merge: true })).pipe(
-      mergeMap(() => of(SFirestore.mask(item)))
+    return this.existDocument$(collectionName, item.id || '').pipe(
+      mergeMap(flag => {
+        if (!flag && !item.created_at) {
+          item.created_at = item.updated_at;
+        }
+        return from(setDoc<any>(doc(this.firestore, `${collectionName}/${item.id}`), item, { merge: true })).pipe(
+          mergeMap(() => of(SFirestore.mask(item)))
+        );
+      })
     );
   }
 
