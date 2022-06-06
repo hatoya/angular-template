@@ -15,8 +15,8 @@ import {
   QueryConstraint,
   setDoc
 } from '@angular/fire/firestore';
-import { EMPTY, from, of, throwError } from 'rxjs';
-import { expand, map, mergeMap } from 'rxjs/operators';
+import { from, of, throwError } from 'rxjs';
+import { map, mergeMap } from 'rxjs/operators';
 import { Struct } from 'superstruct';
 import { ECollection } from '../enum/collection.enum';
 import { EMessage } from '../enum/message.enum';
@@ -55,13 +55,6 @@ export class FirestoreService {
   streamDocuments$<T extends TFirestore>(collectionName: ECollection, struct: Struct<T>, queryConstraints: QueryConstraint[] = []) {
     return from(collectionData(query(collection(this.firestore, collectionName), ...queryConstraints))).pipe(
       map(items => items.map(item => struct.mask(item)))
-    );
-  }
-
-  getAllDocument$<T extends TFirestore>(collectionName: ECollection, struct: Struct<T>, queryConstraints: QueryConstraint[] = []) {
-    return this.getDocuments$(collectionName, struct, queryConstraints).pipe(
-      expand(items => (items.length ? this.getDocuments$(collectionName, struct, queryConstraints) : EMPTY)),
-      mergeMap(items => from(items))
     );
   }
 
