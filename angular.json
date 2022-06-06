@@ -141,8 +141,9 @@
       }
     }
   },
-  "defaultProject": "angular-template",
   "cli": {
-    "defaultCollection": "@datorama/akita"
+    "schematicCollections": [
+      "@datorama/akita"
+    ]
   }
 }
