@@ -55,6 +55,7 @@
     "@ngneat/reactive-forms": "^4.0.4",
     "@sentry/angular": "^7.0.0",
     "@sentry/tracing": "^7.0.0",
+    "crypto": "^1.0.1",
     "firebase": "^9.8.2",
     "rxjs": "~6.6.7",
     "superstruct": "^0.16.0",
