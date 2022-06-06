@@ -23,6 +23,7 @@ import { FileComponent } from './component/atom/file/file.component';
 import { InputComponent } from './component/atom/input/input.component';
 import { LoadingComponent } from './component/atom/loading/loading.component';
 import { OptionComponent } from './component/atom/option/option.component';
+import { PaginationComponent } from './component/atom/pagination/pagination.component';
 import { RadioboxComponent } from './component/atom/radiobox/radiobox.component';
 import { RangeComponent } from './component/atom/range/range.component';
 import { SelectComponent } from './component/atom/select/select.component';
@@ -59,7 +60,8 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
     SnackbarComponent,
     InputRangeComponent,
     RangeComponent,
-    ModalSampleComponent
+    ModalSampleComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
