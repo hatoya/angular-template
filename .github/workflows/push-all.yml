@@ -16,7 +16,7 @@ jobs:
           node-version: '16'
           cache: 'npm'
       - run: npm ci
-      - run: npm run test:cli
+      # - run: npm run test:cli
       - run: npm run build:prod
       - run: npm run build:functions
       - uses: 8398a7/action-slack@v3
