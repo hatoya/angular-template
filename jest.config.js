@@ -5,8 +5,7 @@ module.exports = {
   testPathIgnorePatterns: ['/node_modules/', '/src/app/service/'],
   transformIgnorePatterns: ['node_modules/(?!@ngrx|(?!deck.gl)|ng-dynamic)'],
   moduleNameMapper: {
-    '^src/(.*)$': '<rootDir>/src/$1',
-    '^@/(.*)$': '<rootDir>/src/$1'
+    '^src/(.*)$': '<rootDir>/src/$1'
   },
   collectCoverage: true,
   collectCoverageFrom: ['**/*.service.ts'],
