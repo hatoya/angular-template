@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-          cache: 'npm'
+          # cache: 'npm'
       - run: npm ci --force
       - run: npm run build:prod
       - run: npm run build:functions
