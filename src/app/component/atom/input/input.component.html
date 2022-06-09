@@ -17,9 +17,12 @@
           (blur)="onTouched()"
           [hidden]="isReadOnly"
         />
-        <p class="input__body-preview" [class.-error]="control?.touched && control?.invalid" *ngIf="isNumberType && !isReadOnly">{{
-          text.value | number
-        }}</p>
+        <p
+          class="input__body-preview"
+          [class.-error]="control?.touched && control?.invalid"
+          *ngIf="text.value && isNumberType && !isReadOnly"
+          >{{ text.value | number }}</p
+        >
       </div>
       <app-datalist [uuid]="uuid" [options]="options"></app-datalist>
       <fa-icon class="input__body-calendar" [icon]="faCalendarAlt" *ngIf="isDateType || isMonthType"></fa-icon>

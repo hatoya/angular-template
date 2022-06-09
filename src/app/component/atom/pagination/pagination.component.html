@@ -1,0 +1,13 @@
+<ul class="pagination">
+  <li class="pagination__list" [class.-disabled]="currentPage === 1" (click)="prev()">
+    <fa-icon [icon]="faChevronLeft"></fa-icon>
+  </li>
+  <li class="pagination__list" [class.-on]="currentPage === 1" (click)="switch(1)">1</li>
+  <li class="pagination__list -dot" *ngIf="currentPage > 4 && maxPage > 6">...</li>
+  <li class="pagination__list" [class.-on]="currentPage === page" (click)="switch(page)" *ngFor="let page of pages">{{ page }}</li>
+  <li class="pagination__list -dot" *ngIf="currentPage < maxPage - 2 && maxPage > 6">...</li>
+  <li class="pagination__list" [class.-on]="currentPage === maxPage" (click)="switch(maxPage)" *ngIf="maxPage !== 1">{{ maxPage }}</li>
+  <li class="pagination__list" [class.-disabled]="currentPage === maxPage" (click)="next()">
+    <fa-icon [icon]="faChevronRight"></fa-icon>
+  </li>
+</ul>

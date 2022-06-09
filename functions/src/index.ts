@@ -10,7 +10,7 @@ const adminStorage = storage();
 
 export const createAccount = https.onCall(request => {
   const { uid, email } = request;
-  return createAccount$(adminAuth, uid, email, 'A5xn9tQB').toPromise();
+  return createAccount$(adminAuth, uid, email, '').toPromise();
 });
 
 export const deleteAccount = https.onCall(request => {
