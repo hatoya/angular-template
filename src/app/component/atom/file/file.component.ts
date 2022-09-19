@@ -53,6 +53,10 @@ export class FileComponent implements ControlValueAccessor<IFile[]>, OnInit {
     return this.layout === EFormLayout.SIDE;
   }
 
+  emit() {
+    this.changeDetectorRef.detectChanges();
+  }
+
   dragOver(event) {
     event.preventDefault();
   }
@@ -67,7 +71,7 @@ export class FileComponent implements ControlValueAccessor<IFile[]>, OnInit {
       const fileReader = new FileReader();
       fileReader.addEventListener('load', () => {
         file.path = fileReader.result;
-        this.changeDetectorRef.detectChanges();
+        this.emit();
       });
       fileReader.readAsDataURL(file);
       return file;
