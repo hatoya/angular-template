@@ -1,6 +1,4 @@
-import { ValidationErrors, ValidatorFn } from '@angular/forms';
-import { FormControl } from '@ngneat/reactive-forms';
-import { IInputRange } from '../component/molecule/input-range/state/input-range.service';
+import { FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { IOption } from '../model/option.model';
 
 export class CustomValidators {
@@ -13,7 +11,7 @@ export class CustomValidators {
   }
 
   static dateRange(): ValidatorFn {
-    return (control: FormControl<IInputRange>): ValidationErrors | null => {
+    return (control: FormControl): ValidationErrors | null => {
       const [fromValue, toValue] = [control.value.from, control.value.to];
       const [fromTime, toTime] = [new Date(fromValue).getTime(), new Date(toValue).getTime()];
       return fromValue && toValue && fromTime > toTime ? { daterange: true } : null;

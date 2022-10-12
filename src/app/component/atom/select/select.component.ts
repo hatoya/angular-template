@@ -1,7 +1,6 @@
 import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, Optional, Self, ViewChild } from '@angular/core';
-import { NgControl } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { faChevronDown } from '@fortawesome/pro-regular-svg-icons';
-import { ControlValueAccessor, FormControl } from '@ngneat/reactive-forms';
 import { EFormLayout } from '../../../enum/form-layout.enum';
 import { EFormStatus } from '../../../enum/form-status.enum';
 import { IOption } from '../../../model/option.model';
@@ -12,7 +11,7 @@ import { ValidationService } from '../../../service/validation.service';
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss']
 })
-export class SelectComponent implements ControlValueAccessor<string | number>, OnInit {
+export class SelectComponent implements ControlValueAccessor, OnInit {
   @Input() type = 'default';
   @Input() label = null;
   @Input() blank: string = null;
@@ -45,7 +44,7 @@ export class SelectComponent implements ControlValueAccessor<string | number>, O
 
   get required() {
     const validator = this.control?.control.validator;
-    return validator ? validator({} as FormControl<string>)?.required || false : false;
+    return validator ? validator({} as FormControl)?.required || false : false;
   }
 
   get isReadOnly() {
