@@ -29,8 +29,7 @@
         ],
         "@angular-eslint/no-empty-lifecycle-method": "off",
         "import/order": ["warn", { "alphabetize": { "order": "asc", "caseInsensitive": true } }],
-        "unused-imports/no-unused-imports": "warn",
-        "@ngneat/reactive-forms/no-angular-forms-imports": "error"
+        "unused-imports/no-unused-imports": "warn"
       }
     },
     {
