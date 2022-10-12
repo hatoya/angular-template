@@ -13,7 +13,6 @@
     "build:functions": "cd functions && npm run build",
     "build:prod": "ng build -c production",
     "build:dev": "ng build -c development",
-    "build:storybook": "npm run docs:json && build-storybook",
     "test": "jest service.spec.ts --watch",
     "test:cli": "jest service.spec.ts",
     "prettier": "prettier 'src/**/*.*' --write --loglevel warn",
@@ -29,8 +28,7 @@
     "component:atom": "func() { ng g component component/atom/\"$1\" --skip-tests && ng g af component/atom/\"$1\"/\"$1\" --spec --plain --defaults && npm run lint; }; func",
     "service": "func() { ng g service service/\"$1\"  && npm run lint; }; func",
     "pipe": "func() { ng g pipe pipe/\"$1\"  && npm run lint; }; func",
-    "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
-    "storybook": "npm run docs:json && start-storybook --ci -p 7777"
+    "docs:json": "compodoc -p ./tsconfig.json -e json -d ."
   },
   "workspaces": [
     "functions"
@@ -75,10 +73,6 @@
     "@compodoc/compodoc": "^1.1.19",
     "@datorama/akita-ng-router-store": "^7.0.0",
     "@datorama/akita-ngdevtools": "^7.0.0",
-    "@storybook/addon-actions": "^6.5.12",
-    "@storybook/addon-essentials": "^6.5.12",
-    "@storybook/addon-links": "^6.5.12",
-    "@storybook/angular": "^6.5.12",
     "@types/jest": "^29.1.2",
     "@types/node": "^18.8.4",
     "@types/uuid": "^8.3.4",
