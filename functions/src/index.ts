@@ -9,8 +9,8 @@ const adminFirestore = firestore();
 const adminStorage = storage();
 
 export const createAccount = https.onCall(request => {
-  const { uid, email } = request;
-  return createAccount$(adminAuth, uid, email, '').toPromise();
+  const { email } = request;
+  return createAccount$(adminAuth, email).toPromise();
 });
 
 export const deleteAccount = https.onCall(request => {
