@@ -78,12 +78,14 @@ export class FileComponent implements ControlValueAccessor<IFile[]>, OnInit {
     });
     this.onChange(this.innerFiles);
     this.onTouched();
+    this.emit();
   }
 
   // ControlValueAccessor
   writeValue(value: any) {
     if (this.element) {
       this.innerFiles = value;
+      this.emit();
     }
   }
 
