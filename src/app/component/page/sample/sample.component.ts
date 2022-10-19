@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { ControlsOf, FormGroup } from '@ngneat/reactive-forms';
 import { EButtonType } from 'src/app/enum/button-type.enum';
 import { EFormLayout } from 'src/app/enum/form-layout.enum';
 import { EFormStatus } from 'src/app/enum/form-status.enum';
@@ -7,7 +6,7 @@ import { EInputType } from 'src/app/enum/input-type.enum';
 import { ModalSampleService } from '../../modal/modal-sample/state/modal-sample.service';
 import { SnackbarService } from '../../snackbar/state/snackbar.service';
 import { SampleQuery } from './state/sample.query';
-import { ISample, SampleService } from './state/sample.service';
+import { SampleService } from './state/sample.service';
 import { SampleStore } from './state/sample.store';
 
 @Component({
@@ -16,7 +15,7 @@ import { SampleStore } from './state/sample.store';
   styleUrls: ['./sample.component.scss']
 })
 export class SampleComponent implements OnInit, AfterViewInit, OnDestroy {
-  formGroup: FormGroup<ControlsOf<ISample>>;
+  formGroup = this.service.createFormGroup();
   formLayoutEnum = EFormLayout;
   inputTypeEnum = EInputType;
   formStatusEnum = EFormStatus;

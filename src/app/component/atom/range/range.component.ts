@@ -1,6 +1,5 @@
 import { Component, OnInit, Self, Optional, ChangeDetectorRef, ViewChild, ElementRef, Input } from '@angular/core';
-import { NgControl } from '@angular/forms';
-import { ControlValueAccessor, FormControl } from '@ngneat/reactive-forms';
+import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { EFormLayout } from 'src/app/enum/form-layout.enum';
 import { EFormStatus } from 'src/app/enum/form-status.enum';
 import { ValidationService } from 'src/app/service/validation.service';
@@ -10,7 +9,7 @@ import { ValidationService } from 'src/app/service/validation.service';
   templateUrl: './range.component.html',
   styleUrls: ['./range.component.scss']
 })
-export class RangeComponent implements ControlValueAccessor<string>, OnInit {
+export class RangeComponent implements ControlValueAccessor, OnInit {
   @Input() label = null;
   @Input() status = EFormStatus.EDITABLE;
   @Input() layout = EFormLayout.DEFAULT;
@@ -37,7 +36,7 @@ export class RangeComponent implements ControlValueAccessor<string>, OnInit {
 
   get required() {
     const validator = this.control?.control?.validator;
-    return validator ? validator({} as FormControl<string>)?.required || false : false;
+    return validator ? validator({} as FormControl)?.required || false : false;
   }
 
   get isReadOnly() {

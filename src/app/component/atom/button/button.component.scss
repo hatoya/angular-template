@@ -2,80 +2,91 @@
 
 ::ng-deep app-button {
   @include hidden;
+
   display: table;
 }
 
 .button {
   position: relative;
+
   &__popup {
     position: absolute;
     bottom: 34px;
     left: 50%;
-    line-height: 1.4;
+    z-index: 10;
     padding: 6px 12px;
     font-size: 12px;
+    line-height: 1.4;
+    color: var(--color-text-primary);
     text-align: center;
     white-space: pre;
-    color: var(--color-text-primary);
+    pointer-events: none;
     background: #191919;
     border-radius: 6px;
-    transform: translate(-50%, 0);
     opacity: 0;
-    z-index: 10;
-    pointer-events: none;
     transition: 0.2s;
+    transform: translate(-50%, 0);
   }
+
   &__button {
     display: flex;
     align-items: center;
     justify-content: center;
-    line-height: 30px;
     padding: 0 16px;
     font-size: 14px;
     font-weight: bold;
+    line-height: 30px;
+    color: var(--color-btn-primary-text);
     text-align: center;
     white-space: nowrap;
-    color: var(--color-btn-primary-text);
+    cursor: pointer;
     background: var(--color-btn-primary-bg);
     border: 1px solid var(--color-btn-primary-border);
     border-radius: 6px;
     transition: 0.2s;
-    cursor: pointer;
+
     &:hover {
       background: #2ea043;
       border-color: #3fb950;
     }
+
     &::selection {
       background: none;
     }
+
     ::ng-deep {
       fa-icon {
         margin-left: 8px;
       }
     }
   }
+
   &:hover & {
     &__popup {
       opacity: 1;
     }
   }
+
   &.-option & {
     &__button {
       font-weight: normal;
       color: var(--color-text-primary);
       background: var(--color-btn-bg);
       border: 1px solid var(--color-border-primary);
+
       &:hover {
         background: var(--color-btn-hover-bg);
         border-color: var(--color-btn-hover-border);
       }
     }
   }
+
   &.-warning & {
     &__button {
       color: var(--color-btn-danger-text);
       background: var(--color-btn-bg);
       border: 1px solid var(--color-border-primary);
+
       &:hover {
         color: var(--color-btn-danger-hover-text);
         background: var(--color-btn-danger-hover-bg);
@@ -83,30 +94,35 @@
       }
     }
   }
+
   &.-text & {
     &__button {
       padding: 0;
-      line-height: 1;
       font-weight: normal;
+      line-height: 1;
       color: var(--color-text-link);
       background: none;
       border: none;
+
       &:hover {
         text-decoration: underline;
       }
     }
   }
+
   &.-disabled {
     cursor: not-allowed;
   }
+
   &.-disabled & {
     &__button {
       color: var(--color-btn-primary-disabled-text);
+      pointer-events: none;
       background: var(--color-btn-primary-disabled-bg);
       border-color: var(--color-btn-primary-disabled-border);
-      pointer-events: none;
     }
   }
+
   &.-disabled.-option & {
     &__button {
       color: var(--color-text-disabled);
@@ -114,6 +130,7 @@
       border-color: var(--color-input-disabled-border);
     }
   }
+
   &.-disabled.-warning & {
     &__button {
       color: var(--color-btn-danger-disabled-text);

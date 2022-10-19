@@ -2,29 +2,34 @@
 
 ::ng-deep app-snackbar {
   @include hidden;
+
   display: block;
 }
 
 .snackbar {
   @include empty;
-  display: flex;
-  flex-direction: column-reverse;
+
   position: fixed;
   bottom: 24px;
   left: 24px;
   z-index: 10000;
+  display: flex;
+  flex-direction: column-reverse;
   pointer-events: none;
   @include not-first-child {
     margin-bottom: 16px;
   }
+
   &__list {
     @include wrapper;
+
     display: flex;
     width: fit-content;
     min-height: 50px;
     color: var(--color-text-primary);
     pointer-events: auto;
   }
+
   &__list-status {
     display: flex;
     align-items: center;
@@ -32,16 +37,20 @@
     width: 50px;
     color: #f0f6fc;
     background: var(--color-bg-info-inverse);
+
     &.-success {
       background: var(--color-bg-success-inverse);
     }
+
     &.-warning {
       background: var(--color-bg-warning-inverse);
     }
+
     &.-error {
       background: var(--color-bg-danger-inverse);
     }
   }
+
   &__list-title {
     display: flex;
     align-items: center;
@@ -52,12 +61,14 @@
     line-height: 1.6;
     white-space: pre-wrap;
   }
+
   &__list-close {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 40px;
     cursor: pointer;
+
     &:hover {
       opacity: 0.7;
     }

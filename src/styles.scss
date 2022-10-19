@@ -3,10 +3,10 @@
 @import './scss/dark';
 
 html {
-  height: 100%;
   width: 100%;
-  margin: 0;
+  height: 100%;
   padding: 0;
+  margin: 0;
 }
 
 * {
@@ -37,21 +37,21 @@ p,
 blockquote,
 th,
 td {
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 body {
-  height: 100%;
   width: 100%;
-  font-size: 14px;
+  height: 100%;
   font-family: $defaultFamily;
+  font-size: 14px;
   font-feature-settings: 'palt';
-  -webkit-font-smoothing: antialiased;
   line-height: 1.2;
-  word-wrap: break-word;
   color: var(--color-text-secondary);
+  word-wrap: break-word;
   background: var(--color-bg-canvas);
+  -webkit-font-smoothing: antialiased;
 }
 
 h1,
@@ -93,6 +93,7 @@ fa-icon {
     display: none !important;
   }
 }
+
 .u-sp-hide {
   @include sp-only {
     display: none !important;

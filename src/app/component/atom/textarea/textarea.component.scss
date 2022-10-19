@@ -2,11 +2,13 @@
 
 ::ng-deep app-textarea {
   @include hidden;
+
   display: block;
 }
 
 .textarea {
   @include form();
+
   &__body-input {
     height: 120px;
     padding: 8px;

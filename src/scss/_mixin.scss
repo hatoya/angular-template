@@ -52,61 +52,67 @@
 
 @mixin square() {
   &::before {
-    content: '';
     display: block;
     padding-top: 100%;
+    content: '';
   }
 }
 
 @mixin wrapper() {
+  overflow: hidden;
   background: var(--color-bg-canvas);
   border: 1px solid var(--color-border-primary);
   border-radius: 6px;
   box-shadow: var(--color-shadow-large);
-  overflow: hidden;
 }
 
 @mixin label() {
   @include empty;
+
   margin-bottom: 8px;
-  line-height: 1;
   font-size: 14px;
   font-weight: bold;
-  white-space: nowrap;
+  line-height: 1;
   color: var(--color-text-primary);
+  white-space: nowrap;
+
   &.-required {
     &::after {
-      content: '*';
       display: inline-block;
       margin-left: 4px;
       font-weight: bold;
       color: var(--color-text-danger);
+      content: '*';
     }
   }
 }
 
 @mixin input() {
   @include hidden;
-  appearance: none;
-  display: block;
+
   position: relative;
+  display: block;
   width: 100%;
   height: 32px;
   padding: 0 8px;
-  font-size: 14px;
   font-family: $defaultFamily;
+  font-size: 14px;
   color: var(--color-text-primary);
   background: var(--color-input-contrast-bg);
   border: 1px solid var(--color-border-primary);
   border-radius: 6px;
+  appearance: none;
+
   &:focus {
     border-color: var(--color-text-link);
   }
+
   &:disabled {
     color: var(--color-text-disabled);
-    opacity: 1;
     cursor: not-allowed;
+    opacity: 1;
   }
+
   &.-error {
     border-color: var(--color-text-danger);
   }
@@ -115,43 +121,51 @@
 @mixin readonly() {
   min-width: 140px;
   min-height: 32px;
-  line-height: 1.3;
   padding: 6px 0;
+  line-height: 1.3;
   white-space: nowrap;
 }
 
 @mixin error() {
   @include empty;
-  line-height: 1.3;
+
   margin-top: 4px;
   font-size: 10px;
-  white-space: pre-wrap;
+  line-height: 1.3;
   color: var(--color-text-danger);
+  white-space: pre-wrap;
 }
 
 @mixin form() {
   &__label {
     @include label;
   }
+
   &__content {
   }
+
   &__body {
+    position: relative;
     display: flex;
     align-items: center;
-    position: relative;
   }
+
   &__body-wrapper {
     position: relative;
     width: 100%;
   }
+
   &__body-input {
     @include input;
+
     &:focus + * {
       opacity: 0;
     }
   }
+
   &__body-preview {
     @include input();
+
     position: absolute;
     top: 0;
     left: 0;
@@ -159,53 +173,65 @@
     text-align: right;
     pointer-events: none;
   }
+
   &__body-calendar {
     position: absolute;
     top: 50%;
     right: 8px;
-    transform: translate(0, -50%);
     pointer-events: none;
+    transform: translate(0, -50%);
   }
+
   &__body-unit {
     @include empty;
+
     margin-left: 4px;
     font-size: 12px;
     white-space: nowrap;
   }
+
   &__readonly {
     @include readonly;
   }
+
   &__error {
     @include error;
   }
+
   &.-readonly & {
     &__label {
       &::after {
         display: none;
       }
     }
+
     &__body-calendar {
       display: none;
     }
   }
+
   &.-disabled & {
     &__body-preview {
       color: var(--color-text-disabled);
     }
   }
+
   &.-side {
     display: flex;
     align-items: flex-start;
   }
+
   &.-side & {
     &__label {
       width: 140px;
       margin: 0;
       line-height: 32px;
+
       &:empty {
         display: block;
       }
     }
+
     &__content {
       width: calc(100% - 140px);
     }
@@ -217,29 +243,33 @@
     @include not-first-child {
       margin-top: 24px;
     }
+
     h1 {
-      line-height: 1.5;
       font-size: 28px;
       font-weight: bold;
+      line-height: 1.5;
       @include sp-only {
         font-size: 24px;
       }
     }
+
     h2 {
-      line-height: 1.5;
       font-size: 20px;
       font-weight: bold;
+      line-height: 1.5;
       @include sp-only {
         font-size: 16px;
       }
     }
+
     p {
-      line-height: 1.7;
       font-size: 16px;
+      line-height: 1.7;
       @include sp-only {
         font-size: 16px;
       }
     }
+
     img {
       max-width: 100%;
       margin-right: auto;

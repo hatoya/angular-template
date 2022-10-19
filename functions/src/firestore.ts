@@ -1,10 +1,9 @@
 import { firestore, storage } from 'firebase-admin';
 import { logger } from 'firebase-functions/v1';
-import { from, of, throwError } from 'rxjs';
+import { from } from 'rxjs';
 import { map, mergeMap, tap } from 'rxjs/operators';
 import { Struct } from 'superstruct';
 import { ECollection } from '../../src/app/enum/collection.enum';
-import { EMessage } from '../../src/app/enum/message.enum';
 import { TFirestore } from '../../src/app/model/firestore.model';
 
 export function randomId(adminFirestore: firestore.Firestore) {
@@ -25,16 +24,8 @@ export function existDocument$(adminFirestore: firestore.Firestore, collection: 
   return from(adminFirestore.doc(`${collection}/${id}`).get()).pipe(map(snapshot => snapshot.exists));
 }
 
-export function getDocument$<T extends TFirestore>(
-  adminFirestore: firestore.Firestore,
-  collection: ECollection,
-  struct: Struct<T>,
-  id: string
-) {
-  return from(adminFirestore.doc(`${collection}/${id}`).get()).pipe(
-    mergeMap(snapshot => (snapshot.exists ? of(snapshot) : throwError(EMessage.NOT_FOUND))),
-    mergeMap(snapshot => of(struct.mask(snapshot.data())))
-  );
+export function getDocuments$<T extends TFirestore>(adminFirestore: firestore.Firestore, collection: ECollection, struct: Struct<T>) {
+  return from(adminFirestore.collection(collection).get()).pipe(map(snapshot => snapshot.docs.map(item => struct.mask(item.data()))));
 }
 
 export function setDocument$<T extends TFirestore>(adminFirestore: firestore.Firestore, collection: ECollection, document: Partial<T>) {

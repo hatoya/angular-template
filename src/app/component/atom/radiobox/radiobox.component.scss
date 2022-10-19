@@ -2,30 +2,37 @@
 
 ::ng-deep app-radiobox {
   @include hidden;
+
   display: block;
 }
 
 .radiobox {
   @include form();
+
   &__wrapper {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
   }
+
   &__wrapper-list {
     display: flex;
     align-items: center;
     height: 32px;
     margin-right: 16px;
+
     input {
       display: none;
+
       &:checked {
         & + label {
           fa-icon {
             color: var(--color-text-link);
+
             &:nth-of-type(1) {
               display: none;
             }
+
             &:nth-of-type(2) {
               display: block;
             }
@@ -33,35 +40,43 @@
         }
       }
     }
+
     label {
       display: flex;
       align-items: center;
-      text-align: center;
       color: var(--color-text-primary);
+      text-align: center;
       cursor: pointer;
     }
+
     fa-icon {
       font-size: 20px;
       color: var(--color-border-primary);
       border-radius: 50%;
+
       &:nth-of-type(2) {
         display: none;
       }
     }
+
     span {
       @include empty;
-      line-height: 1;
+
       margin-left: 8px;
       font-size: 14px;
+      line-height: 1;
       white-space: nowrap;
     }
   }
+
   &.-disabled,
   &.-readonly {
     cursor: not-allowed;
+
     label {
       pointer-events: none;
     }
+
     fa-icon {
       color: var(--color-border-primary) !important;
     }

@@ -1,42 +1,46 @@
 @import '../../../scss/import.scss';
 
 .modal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100vw;
   height: 100vh;
-  z-index: 1000;
   pointer-events: none;
+
   &__filter {
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(var(--color-bg-canvas), 0.4);
+    pointer-events: none;
+    background: rgb(var(--color-bg-canvas) 0.4);
     opacity: 0;
     transition: 0.3s;
-    pointer-events: none;
   }
+
   &__content {
-    opacity: 0;
-    transform: scale(0.25);
-    transition: 0.3s;
     pointer-events: none;
+    opacity: 0;
+    transition: 0.3s;
+    transform: scale(0.25);
   }
+
   &.-on & {
     &__filter {
-      opacity: 1;
       pointer-events: auto;
+      opacity: 1;
     }
+
     &__content {
+      pointer-events: auto;
       opacity: 1;
       transform: scale(1);
-      pointer-events: auto;
     }
   }
 }

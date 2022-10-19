@@ -1,8 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit, Input, ViewChild, ElementRef, Self, Optional, ChangeDetectorRef } from '@angular/core';
-import { NgControl } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { faCalendarAlt } from '@fortawesome/pro-regular-svg-icons';
-import { ControlValueAccessor, FormControl } from '@ngneat/reactive-forms';
 import { v4 as uuidv4 } from 'uuid';
 import { EFormLayout } from '../../../enum/form-layout.enum';
 import { EFormStatus } from '../../../enum/form-status.enum';
@@ -15,7 +14,7 @@ import { ValidationService } from '../../../service/validation.service';
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss']
 })
-export class InputComponent implements ControlValueAccessor<string>, OnInit {
+export class InputComponent implements ControlValueAccessor, OnInit {
   @Input() type = EInputType.TEXT;
   @Input() label = null;
   @Input() placeholder = '';
@@ -52,7 +51,7 @@ export class InputComponent implements ControlValueAccessor<string>, OnInit {
 
   get required() {
     const validator = this.control?.control?.validator;
-    return validator ? validator({} as FormControl<string>)?.required || false : false;
+    return validator ? validator({} as FormControl)?.required || false : false;
   }
 
   get isNumberType() {

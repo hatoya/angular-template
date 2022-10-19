@@ -66,33 +66,33 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ...(environment.production ? [] : [AkitaNgDevtools.forRoot()]),
+    ...(environment.id === 'local' ? [AkitaNgDevtools.forRoot()] : []),
     AkitaNgRouterStoreModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => {
       const auth = getAuth();
-      if (!environment.production) {
+      if (environment.id === 'local') {
         connectAuthEmulator(auth, 'http://localhost:9099', { disableWarnings: true });
       }
       return auth;
     }),
     provideFirestore(() => {
       const firestore = getFirestore();
-      if (!environment.production) {
+      if (environment.id === 'local') {
         connectFirestoreEmulator(firestore, 'localhost', 8080);
       }
       return firestore;
     }),
     provideStorage(() => {
       const storage = getStorage();
-      if (!environment.production) {
+      if (environment.id === 'local') {
         connectStorageEmulator(storage, 'localhost', 9199);
       }
       return storage;
     }),
     provideFunctions(() => {
       const functions = getFunctions();
-      if (!environment.production) {
+      if (environment.id === 'local') {
         connectFunctionsEmulator(functions, 'localhost', 5001);
       }
       return functions;

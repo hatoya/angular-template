@@ -2,15 +2,17 @@
 
 .sample {
   width: 800px;
-  margin: 0 auto;
   padding: 16px 0;
+  margin: 0 auto;
   @include not-first-child {
     margin-top: 16px;
   }
+
   &__wrapper {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+
     * {
       width: calc(50% - 8px);
     }

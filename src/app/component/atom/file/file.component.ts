@@ -1,9 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, Optional, Self, ViewChild } from '@angular/core';
-import { NgControl } from '@angular/forms';
-import { ControlValueAccessor, FormControl } from '@ngneat/reactive-forms';
+import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { EFormLayout } from '../../../enum/form-layout.enum';
 import { EFormStatus } from '../../../enum/form-status.enum';
-import { IFile } from '../../../model/file.model';
 import { ValidationService } from '../../../service/validation.service';
 
 @Component({
@@ -11,7 +9,7 @@ import { ValidationService } from '../../../service/validation.service';
   templateUrl: './file.component.html',
   styleUrls: ['./file.component.scss']
 })
-export class FileComponent implements ControlValueAccessor<IFile[]>, OnInit {
+export class FileComponent implements ControlValueAccessor, OnInit {
   @Input() label = null;
   @Input() multiple = false;
   @Input() accept = '*';
@@ -38,7 +36,7 @@ export class FileComponent implements ControlValueAccessor<IFile[]>, OnInit {
 
   get required() {
     const validator = this.control?.control.validator;
-    return validator ? validator({} as FormControl<IFile[]>)?.required || false : false;
+    return validator ? validator({} as FormControl)?.required || false : false;
   }
 
   get isReadOnly() {
@@ -51,6 +49,10 @@ export class FileComponent implements ControlValueAccessor<IFile[]>, OnInit {
 
   get isSideLayout() {
     return this.layout === EFormLayout.SIDE;
+  }
+
+  emit() {
+    this.changeDetectorRef.detectChanges();
   }
 
   dragOver(event) {
@@ -67,19 +69,21 @@ export class FileComponent implements ControlValueAccessor<IFile[]>, OnInit {
       const fileReader = new FileReader();
       fileReader.addEventListener('load', () => {
         file.path = fileReader.result;
-        this.changeDetectorRef.detectChanges();
+        this.emit();
       });
       fileReader.readAsDataURL(file);
       return file;
     });
     this.onChange(this.innerFiles);
     this.onTouched();
+    this.emit();
   }
 
   // ControlValueAccessor
   writeValue(value: any) {
     if (this.element) {
       this.innerFiles = value;
+      this.emit();
     }
   }
 
