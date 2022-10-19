@@ -11,6 +11,7 @@ module.exports = {
     'selector-class-pattern': null,
     'block-no-empty': null,
     'no-descending-specificity': null,
+    'color-function-notation': 'legacy',
     'selector-pseudo-element-no-unknown': [true, { ignorePseudoElements: ['/^ng-/'] }]
   }
 };
