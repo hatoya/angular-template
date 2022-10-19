@@ -2,17 +2,21 @@
 
 ::ng-deep app-select {
   @include hidden;
+
   display: block;
 }
 
 .select {
   @include form;
+
   position: relative;
+
   &__body-input {
     min-width: 100%;
     padding-right: 28px;
     cursor: pointer;
   }
+
   &__body-icon {
     position: absolute;
     top: 10px;
@@ -20,6 +24,7 @@
     color: var(--color-border-primary);
     pointer-events: none;
   }
+
   &.-readonly & {
     &__body-icon {
       display: none;

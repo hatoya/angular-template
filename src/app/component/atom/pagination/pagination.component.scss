@@ -2,6 +2,7 @@
 
 ::ng-deep app-pagination {
   @include hidden;
+
   display: block;
 }
 
@@ -11,6 +12,7 @@
   @include not-first-child {
     margin-left: 4px;
   }
+
   &__list {
     display: flex;
     align-items: center;
@@ -19,24 +21,28 @@
     height: 32px;
     font-size: 14px;
     text-align: center;
-    border: 1px solid rgba(black, 0);
-    border-radius: 6px;
     cursor: pointer;
+    border: 1px solid rgb(black 0);
+    border-radius: 6px;
+
     &:hover {
       border-color: var(--color-border-primary);
     }
+
     &.-on {
       color: white;
+      pointer-events: none;
       background: var(--color-state-selected-primary-bg);
       border-color: var(--color-state-selected-primary-bg);
-      pointer-events: none;
     }
+
     &.-dot {
       pointer-events: none;
     }
+
     &.-disabled {
-      opacity: 0.3;
       pointer-events: none;
+      opacity: 0.3;
     }
   }
 }

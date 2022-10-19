@@ -3,6 +3,7 @@
 ::ng-deep {
   app-table {
     @include hidden;
+
     display: block;
     width: 100%;
   }
@@ -12,55 +13,66 @@
   width: 100%;
   border-collapse: collapse;
   border-bottom: 1px solid $borderColor;
+
   ::ng-deep {
     th,
     td {
-      line-height: 1.7;
       padding: 10px 8px;
       font-size: 14px;
+      line-height: 1.7;
       text-align: left;
+
       &.-right {
         text-align: right;
       }
     }
+
     th {
-      vertical-align: inherit;
       font-size: 12px;
       font-weight: bold;
-      white-space: nowrap;
       color: #616d82;
+      white-space: nowrap;
+      vertical-align: inherit;
+
       &.-checkbox,
       &.-radiobox {
         padding-left: 36px;
       }
+
       &.-orderable {
         cursor: pointer;
+
         &::after {
-          content: '↓';
           display: inline-block;
           margin-left: 4px;
+          content: '↓';
         }
       }
+
       &.-desc {
         &::after {
-          content: '↓';
           color: $brandColor;
+          content: '↓';
         }
       }
+
       &.-asc {
         &::after {
-          content: '↑';
           color: $brandColor;
+          content: '↑';
         }
       }
     }
+
     td {
       border-top: 1px solid $borderColor;
       border-bottom: 1px solid $borderColor;
     }
+
     a {
       color: $brandColor;
       cursor: pointer;
+
       &:hover {
         text-decoration: underline;
       }
