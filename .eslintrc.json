@@ -9,7 +9,7 @@
         "createDefaultProgram": true
       },
       "extends": ["plugin:@angular-eslint/recommended", "plugin:@angular-eslint/template/process-inline-templates"],
-      "plugins": ["import", "unused-imports", "@ngneat/reactive-forms"],
+      "plugins": ["import", "unused-imports"],
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
