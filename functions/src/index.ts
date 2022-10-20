@@ -1,4 +1,5 @@
-import { auth, firestore, initializeApp, storage } from 'firebase-admin';
+import { auth, firestore, storage } from 'firebase-admin';
+import { initializeApp } from 'firebase-admin/app';
 import { https } from 'firebase-functions';
 import { createAccount$, deleteAccount$ } from './fireauth';
 import { createBundle$ } from './firestore';
