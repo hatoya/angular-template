@@ -1,12 +1,11 @@
-name: PushMaster
+name: Release
 
 on:
-  push:
-    branches:
-      - 'master'
+  release:
+    types: [published]
 
 jobs:
-  Deploy:
+  DeployProd:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
