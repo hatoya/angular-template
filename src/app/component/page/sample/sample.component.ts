@@ -15,7 +15,7 @@ import { SampleStore } from './state/sample.store';
   styleUrls: ['./sample.component.scss']
 })
 export class SampleComponent implements OnInit, AfterViewInit, OnDestroy {
-  formGroup = this.service.createFormGroup();
+  formGroup = this.service.formGroup;
   formLayoutEnum = EFormLayout;
   inputTypeEnum = EInputType;
   formStatusEnum = EFormStatus;
@@ -27,9 +27,7 @@ export class SampleComponent implements OnInit, AfterViewInit, OnDestroy {
     private store: SampleStore,
     private snackbarService: SnackbarService,
     public modalSampleService: ModalSampleService
-  ) {
-    this.createFormGroup();
-  }
+  ) {}
 
   ngOnInit(): void {
     this.store.update({ loading: false });
@@ -48,7 +46,7 @@ export class SampleComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   createFormGroup() {
-    this.formGroup = this.service.createFormGroup();
+    this.formGroup = this.service.formGroup;
   }
 
   reset() {
