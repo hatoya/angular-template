@@ -3,6 +3,7 @@ import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { EFormLayout } from '../../../enum/form-layout.enum';
 import { EFormStatus } from '../../../enum/form-status.enum';
 import { ValidationService } from '../../../service/validation.service';
+import { FileService } from './file.service';
 
 @Component({
   selector: 'app-file',
@@ -25,7 +26,8 @@ export class FileComponent implements ControlValueAccessor, OnInit {
   constructor(
     @Self() @Optional() public control: NgControl,
     private changeDetectorRef: ChangeDetectorRef,
-    public validationMessageService: ValidationService
+    public validationMessageService: ValidationService,
+    public service: FileService
   ) {
     if (this.control) {
       this.control.valueAccessor = this;
