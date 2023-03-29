@@ -8,7 +8,7 @@ import { SampleStore } from './sample.store';
 export class SampleService {
   constructor(private store: SampleStore, private inputRangeService: InputRangeService) {}
 
-  createFormGroup() {
+  get formGroup() {
     return new FormGroup({
       status: new FormControl(null, []),
       text: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
@@ -20,10 +20,10 @@ export class SampleService {
       inputRange: this.inputRangeService.createFormGroup([Validators.required], [Validators.required], [CustomValidators.dateRange()]),
       textarea: new FormControl('', [Validators.required]),
       select: new FormControl('', [Validators.required]),
-      checkbox: new FormControl([], [Validators.required]) as any, // TODO
+      checkbox: new FormControl([], [Validators.required]),
       radiobox: new FormControl('', [Validators.required]),
       range: new FormControl('', [Validators.required]),
-      files: new FormControl([], [Validators.required]) as any // TODO
+      files: new FormControl([], [Validators.required])
     });
   }
 }
