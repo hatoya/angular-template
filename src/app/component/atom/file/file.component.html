@@ -3,8 +3,12 @@
   <div class="file__wrapper">
     <label class="file__wrapper-label" [class.-disabled]="isDisabled" for="file"><app-button type="option">Choose File</app-button></label>
     <p class="file__wrapper-preview" *ngIf="innerFiles.length === 0">No file choosen</p>
-    <p class="file__wrapper-preview" *ngIf="innerFiles.length === 1">{{ innerFiles[0].name }}</p>
-    <p class="file__wrapper-preview" *ngIf="innerFiles.length > 1">{{ innerFiles.length }} files chosen</p>
+    <p class="file__wrapper-preview" *ngIf="innerFiles.length > 0"
+      ><ng-container *ngFor="let item of innerFiles; index as i"
+        ><span *ngIf="i > 0">、</span
+        ><a [class.-on]="!service.isFile(item)" (click)="download(item)">{{ service.getFileName(item) }}</a></ng-container
+      ></p
+    >
     <input id="file" class="file__wrapper-input" #file type="file" [multiple]="multiple" [accept]="accept" (change)="change(file.files)" />
   </div>
   <p class="file__error" *ngIf="control?.touched">{{ this.validationMessageService.getErrorMessage(control.errors) }}</p>

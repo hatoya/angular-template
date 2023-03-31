@@ -24,4 +24,8 @@ export class FirestorageService {
   getDownloadUrl$(path: string) {
     return from(getDownloadURL(ref(this.storage, path)));
   }
+
+  getFileName(path: string) {
+    return path.split('/').pop();
+  }
 }
