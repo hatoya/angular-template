@@ -33,6 +33,13 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    a {
+      &.-on {
+        color: blue;
+        cursor: pointer;
+      }
+    }
   }
 
   &__error {

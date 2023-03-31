@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, Optional, Self, ViewChild } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
+import { FirestorageService } from 'src/app/service/firestorage.service';
 import { EFormLayout } from '../../../enum/form-layout.enum';
 import { EFormStatus } from '../../../enum/form-status.enum';
 import { ValidationService } from '../../../service/validation.service';
@@ -19,7 +20,7 @@ export class FileComponent implements ControlValueAccessor, OnInit {
 
   @ViewChild('file') element: ElementRef;
 
-  innerFiles: File[] = [];
+  innerFiles: (File | string)[] = [];
   onChange: (value: any) => void;
   onTouched: () => void;
 
@@ -27,7 +28,8 @@ export class FileComponent implements ControlValueAccessor, OnInit {
     @Self() @Optional() public control: NgControl,
     private changeDetectorRef: ChangeDetectorRef,
     public validationMessageService: ValidationService,
-    public service: FileService
+    public service: FileService,
+    public firestorageService: FirestorageService
   ) {
     if (this.control) {
       this.control.valueAccessor = this;
@@ -79,6 +81,18 @@ export class FileComponent implements ControlValueAccessor, OnInit {
     this.onChange(this.innerFiles);
     this.onTouched();
     this.emit();
+  }
+
+  download(item: File | string) {
+    if (this.service.isFile(item)) return;
+    this.firestorageService.getDownloadUrl$(item as string).subscribe({
+      next: url => {
+        open(url);
+      },
+      error: error => {
+        console.error(error);
+      }
+    });
   }
 
   // ControlValueAccessor

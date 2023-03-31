@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
+import { FirestorageService } from 'src/app/service/firestorage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FileService {
-  constructor() {}
+  constructor(private firestorageService: FirestorageService) {}
 
-  getFileNames(items: File[] | string[]) {
-    return items
-      .map((item: File | string) => (typeof item === 'function' ? (item as File).name : (item as string).split('/').pop()))
-      .join('、');
+  isFile(item: File | string) {
+    return typeof item === 'object';
+  }
+
+  getFileName(item: File | string) {
+    return this.isFile(item) ? (item as File).name : this.firestorageService.getFileName(item as string);
   }
 }
