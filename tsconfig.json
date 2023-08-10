@@ -4,7 +4,7 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "module": "es2020",
-    "target": "es2020",
+    "target": "ES2022",
     "lib": ["es2019", "dom"],
     "typeRoots": ["node_modules/@types"],
     "sourceMap": true,
@@ -14,7 +14,8 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "noErrorTruncation": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
