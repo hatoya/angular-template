@@ -3,7 +3,6 @@ import { EButtonType } from 'src/app/enum/button-type.enum';
 import { EFormLayout } from 'src/app/enum/form-layout.enum';
 import { EFormStatus } from 'src/app/enum/form-status.enum';
 import { EInputType } from 'src/app/enum/input-type.enum';
-import { ModalSampleService } from '../../modal/modal-sample/state/modal-sample.service';
 import { SnackbarService } from '../../snackbar/state/snackbar.service';
 import { SampleService } from './sample.service';
 
@@ -20,7 +19,7 @@ export class SampleComponent implements OnInit, AfterViewInit, OnDestroy {
   formStatusEnum = EFormStatus;
   buttonTypeENum = EButtonType;
 
-  constructor(public service: SampleService, private snackbarService: SnackbarService, public modalSampleService: ModalSampleService) {}
+  constructor(public service: SampleService, private snackbarService: SnackbarService) {}
 
   ngOnInit(): void {}
 

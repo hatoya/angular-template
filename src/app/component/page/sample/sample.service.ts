@@ -1,9 +1,9 @@
 import { Injectable, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { InputRangeService } from 'src/app/component/molecule/input-range/state/input-range.service';
 import { EFormStatus } from 'src/app/enum/form-status.enum';
 import { IOption } from 'src/app/model/option.model';
 import { CustomValidators } from 'src/app/service/custom-validator.service';
+import { InputRangeService } from '../../molecule/input-range/input-range.service';
 
 @Injectable()
 export class SampleService {

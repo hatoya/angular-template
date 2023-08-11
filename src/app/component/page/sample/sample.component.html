@@ -14,7 +14,6 @@
   <app-file label="File" [status]="status" formControlName="files"></app-file>
   <app-button-wrapper>
     <app-radiobox [options]="service.statusOptions()" formControlName="status"></app-radiobox>
-    <app-button [type]="buttonTypeENum.OPTION" (clickButton)="modalSampleService.open()">Modal</app-button>
     <app-button [type]="buttonTypeENum.OPTION" (clickButton)="reset()">Reset</app-button>
     <app-button [isDisabled]="service.sending()" (clickButton)="submit()">Submit</app-button>
   </app-button-wrapper>
