@@ -5,6 +5,7 @@ import { IndexService } from './index.service';
   selector: 'app-index',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss'],
+  providers: [IndexService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IndexComponent implements OnInit, OnDestroy {
