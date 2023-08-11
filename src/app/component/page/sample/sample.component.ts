@@ -3,7 +3,7 @@ import { EButtonType } from 'src/app/enum/button-type.enum';
 import { EFormLayout } from 'src/app/enum/form-layout.enum';
 import { EFormStatus } from 'src/app/enum/form-status.enum';
 import { EInputType } from 'src/app/enum/input-type.enum';
-import { SnackbarService } from '../../snackbar/state/snackbar.service';
+import { SnackbarService } from '../../snackbar/snackbar.service';
 import { SampleService } from './sample.service';
 
 @Component({
