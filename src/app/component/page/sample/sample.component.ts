@@ -39,12 +39,12 @@ export class SampleComponent implements OnInit, AfterViewInit, OnDestroy {
 
   reset() {
     this.createFormGroup();
-    this.formGroup.patchValue({ status: EFormStatus.EDITABLE, text: 'text', range: '50' });
     scroll(0, 0);
   }
 
   submit() {
     console.log(this.formGroup.value);
+    scroll(0, 0);
     if (this.formGroup.invalid) {
       this.snackbarService.pushValidationMessage();
       this.formGroup.markAllAsTouched();

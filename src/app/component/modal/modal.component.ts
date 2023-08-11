@@ -5,7 +5,6 @@ import { ModalService } from './modal.service';
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
-  providers: [ModalService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ModalComponent implements OnInit, AfterViewInit, OnDestroy {
