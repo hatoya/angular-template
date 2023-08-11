@@ -1,7 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { IndexQuery } from './state/index.query';
-import { IndexService } from './state/index.service';
-import { IndexStore } from './state/index.store';
+import { IndexService } from './index.service';
 
 @Component({
   selector: 'app-index',
@@ -10,11 +8,9 @@ import { IndexStore } from './state/index.store';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IndexComponent implements OnInit, OnDestroy {
-  constructor(public query: IndexQuery, private service: IndexService, private store: IndexStore) {}
+  constructor(private service: IndexService) {}
 
   ngOnInit(): void {}
 
-  ngOnDestroy() {
-    this.store.reset();
-  }
+  ngOnDestroy() {}
 }
