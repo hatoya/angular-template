@@ -1,6 +1,6 @@
 import { ComponentFactoryResolver, ComponentRef, Injectable, ViewContainerRef, signal } from '@angular/core';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ModalService {
   opened = signal(false);
   viewContainerRef: ViewContainerRef;
