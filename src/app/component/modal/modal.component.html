@@ -1,8 +1,6 @@
-<ng-container *ngIf="query.select() | async as state">
-  <div class="modal" [class.-on]="state.opened">
-    <div class="modal__filter"></div>
-    <div class="modal__content">
-      <ng-container #inner></ng-container>
-    </div>
+<div class="modal" [class.-on]="service.opened()">
+  <div class="modal__filter"></div>
+  <div class="modal__content">
+    <ng-container #inner></ng-container>
   </div>
-</ng-container>
+</div>

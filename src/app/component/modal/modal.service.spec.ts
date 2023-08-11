@@ -1,19 +1,16 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { ModalService } from './modal.service';
-import { ModalStore } from './modal.store';
 
 describe('ModalService', () => {
   let modalService: ModalService;
-  let modalStore: ModalStore;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ModalService, ModalStore],
+      providers: [ModalService],
       imports: [HttpClientTestingModule]
     });
     modalService = TestBed.inject(ModalService);
-    modalStore = TestBed.inject(ModalStore);
   });
 
   it('should be created', () => {

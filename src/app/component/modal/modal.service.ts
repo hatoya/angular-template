@@ -1,12 +1,12 @@
-import { ComponentFactoryResolver, ComponentRef, Injectable, ViewContainerRef } from '@angular/core';
-import { ModalStore } from './modal.store';
+import { ComponentFactoryResolver, ComponentRef, Injectable, ViewContainerRef, signal } from '@angular/core';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class ModalService {
+  opened = signal(false);
   viewContainerRef: ViewContainerRef;
   componentRef: ComponentRef<any> = null;
 
-  constructor(public store: ModalStore, public resolver: ComponentFactoryResolver) {}
+  constructor(public resolver: ComponentFactoryResolver) {}
 
   open(component: any) {
     if (!component) {
@@ -15,13 +15,13 @@ export class ModalService {
     const factory = this.resolver.resolveComponentFactory(component);
     const componentRef = this.viewContainerRef?.createComponent(factory);
     this.componentRef?.destroy();
-    this.store.update({ opened: true });
+    this.opened.set(true);
     this.componentRef = componentRef;
     this.setOverflow('hidden');
   }
 
   close() {
-    this.store.reset();
+    this.opened.set(false);
     this.componentRef?.destroy();
     this.setOverflow('visible');
   }
