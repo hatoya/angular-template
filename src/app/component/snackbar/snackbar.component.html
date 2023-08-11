@@ -1,5 +1,5 @@
-<ul class="snackbar" *ngIf="query.select() | async as state">
-  <ng-container *ngFor="let message of state.messages; let i = index">
+<ul class="snackbar">
+  <ng-container *ngFor="let message of service.messages(); let i = index">
     <ng-container>
       <li class="snackbar__list" @openClose>
         <div class="snackbar__list-status -{{ message.type }}">

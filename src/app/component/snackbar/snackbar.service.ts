@@ -1,19 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { EMessageType } from 'src/app/enum/message-type.enum';
 import { EMessage } from 'src/app/enum/message.enum';
 import { SMessage, TMessage } from 'src/app/model/message.model';
 import { v4 as uuidv4 } from 'uuid';
-import { SnackbarQuery } from './snackbar.query';
-import { SnackbarStore } from './snackbar.store';
 
 @Injectable({ providedIn: 'root' })
 export class SnackbarService {
-  constructor(private store: SnackbarStore, private query: SnackbarQuery) {}
+  messages = signal<TMessage[]>([]);
+
+  constructor() {}
 
   pushMessage(item: Partial<TMessage>) {
-    const { messages } = this.query.getValue();
     const message = SMessage.mask({ ...item, id: uuidv4() });
-    this.store.update({ messages: [...messages, message] });
+    this.messages.update(messages => [...messages, message]);
     if (message.lifespan) {
       setTimeout(() => {
         this.deleteMessage(message.id);
@@ -22,13 +21,11 @@ export class SnackbarService {
   }
 
   deleteMessage(id: string) {
-    const { messages } = this.query.getValue();
-    const index = messages.findIndex(message => message.id === id);
+    const index = this.messages().findIndex(message => message.id === id);
     if (index === -1) {
       return;
     }
-    messages.splice(index, 1);
-    this.store.update({ messages });
+    this.messages.update(messages => messages.splice(index, 1));
   }
 
   pushSuccessMessage() {

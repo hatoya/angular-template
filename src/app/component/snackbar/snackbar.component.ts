@@ -2,9 +2,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { faCheck, faExclamationTriangle, faInfo, faTimes } from '@fortawesome/pro-regular-svg-icons';
 import { EMessageType } from 'src/app/enum/message-type.enum';
-import { SnackbarQuery } from './state/snackbar.query';
-import { SnackbarService } from './state/snackbar.service';
-import { SnackbarStore } from './state/snackbar.store';
+import { SnackbarService } from './snackbar.service';
 
 @Component({
   selector: 'app-snackbar',
@@ -28,11 +26,9 @@ export class SnackbarComponent implements OnInit, OnDestroy {
   faExclamationTriangle = faExclamationTriangle;
   faTimes = faTimes;
 
-  constructor(public query: SnackbarQuery, public service: SnackbarService, private store: SnackbarStore) {}
+  constructor(public service: SnackbarService) {}
 
   ngOnInit(): void {}
 
-  ngOnDestroy() {
-    this.store.reset();
-  }
+  ngOnDestroy() {}
 }
