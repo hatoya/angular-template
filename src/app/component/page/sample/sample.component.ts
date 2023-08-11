@@ -3,16 +3,14 @@ import { EButtonType } from 'src/app/enum/button-type.enum';
 import { EFormLayout } from 'src/app/enum/form-layout.enum';
 import { EFormStatus } from 'src/app/enum/form-status.enum';
 import { EInputType } from 'src/app/enum/input-type.enum';
-import { ModalSampleService } from '../../modal/modal-sample/state/modal-sample.service';
-import { SnackbarService } from '../../snackbar/state/snackbar.service';
-import { SampleQuery } from './state/sample.query';
-import { SampleService } from './state/sample.service';
-import { SampleStore } from './state/sample.store';
+import { SnackbarService } from '../../snackbar/snackbar.service';
+import { SampleService } from './sample.service';
 
 @Component({
   selector: 'app-sample',
   templateUrl: './sample.component.html',
-  styleUrls: ['./sample.component.scss']
+  styleUrls: ['./sample.component.scss'],
+  providers: [SampleService]
 })
 export class SampleComponent implements OnInit, AfterViewInit, OnDestroy {
   formGroup = this.service.formGroup;
@@ -21,25 +19,15 @@ export class SampleComponent implements OnInit, AfterViewInit, OnDestroy {
   formStatusEnum = EFormStatus;
   buttonTypeENum = EButtonType;
 
-  constructor(
-    public query: SampleQuery,
-    private service: SampleService,
-    private store: SampleStore,
-    private snackbarService: SnackbarService,
-    public modalSampleService: ModalSampleService
-  ) {}
+  constructor(public service: SampleService, private snackbarService: SnackbarService) {}
 
-  ngOnInit(): void {
-    this.store.update({ loading: false });
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit() {
     this.formGroup.patchValue({ status: EFormStatus.EDITABLE, text: 'text', range: '50' });
   }
 
-  ngOnDestroy(): void {
-    this.store.reset();
-  }
+  ngOnDestroy(): void {}
 
   get status() {
     return this.formGroup.value.status;
