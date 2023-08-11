@@ -1,12 +1,27 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { InputRangeService } from 'src/app/component/molecule/input-range/state/input-range.service';
+import { EFormStatus } from 'src/app/enum/form-status.enum';
+import { IOption } from 'src/app/model/option.model';
 import { CustomValidators } from 'src/app/service/custom-validator.service';
-import { SampleStore } from './sample.store';
 
 @Injectable({ providedIn: 'root' })
 export class SampleService {
-  constructor(private store: SampleStore, private inputRangeService: InputRangeService) {}
+  loading = signal(true);
+  sending = signal(false);
+  options = signal<IOption[]>([
+    { value: 'option1', label: 'Option1' },
+    { value: 'option2', label: 'Option2' },
+    { value: 'option3', label: 'Option3' },
+    { value: 'option4', label: 'Option4' }
+  ]);
+  statusOptions = signal<IOption[]>([
+    { value: EFormStatus.EDITABLE, label: EFormStatus.EDITABLE },
+    { value: EFormStatus.DISABLED, label: EFormStatus.DISABLED },
+    { value: EFormStatus.READONLY, label: EFormStatus.READONLY }
+  ]);
+
+  constructor(private inputRangeService: InputRangeService) {}
 
   get formGroup() {
     return new FormGroup({
