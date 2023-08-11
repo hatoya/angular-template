@@ -10,8 +10,6 @@ import { connectStorageEmulator, getStorage, provideStorage } from '@angular/fir
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
-import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
@@ -64,8 +62,6 @@ import { ModalLayoutComponent } from './component/template/modal-layout/modal-la
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ...(environment.id === 'local' ? [AkitaNgDevtools.forRoot()] : []),
-    AkitaNgRouterStoreModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => {
       const auth = getAuth();
