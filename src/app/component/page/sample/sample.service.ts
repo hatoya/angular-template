@@ -5,7 +5,7 @@ import { EFormStatus } from 'src/app/enum/form-status.enum';
 import { IOption } from 'src/app/model/option.model';
 import { CustomValidators } from 'src/app/service/custom-validator.service';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class SampleService {
   loading = signal(true);
   sending = signal(false);

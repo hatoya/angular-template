@@ -10,7 +10,8 @@ import { SampleService } from './sample.service';
 @Component({
   selector: 'app-sample',
   templateUrl: './sample.component.html',
-  styleUrls: ['./sample.component.scss']
+  styleUrls: ['./sample.component.scss'],
+  providers: [SampleService]
 })
 export class SampleComponent implements OnInit, AfterViewInit, OnDestroy {
   formGroup = this.service.formGroup;
